@@ -1,7 +1,5 @@
 package com.putra.portfolio.interceptor;
 
-import java.text.MessageFormat;
-
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -27,16 +25,10 @@ public class AppHandleInterceptor implements HandlerInterceptor {
             @Nullable Object handler,
             @Nullable ModelAndView modelAndView) throws Exception {
 
-        String message = new MessageFormat("""
-                URL {0}
-                Status Code {1}
-                """).format(
-                new String[] { request.getRequestURL().toString(), String.valueOf(response.getStatus()) });
-
         LogDto dto = new LogDto();
         dto.setHttpMethod(request.getMethod());
         dto.setType(LogEnums.LOG.getType());
-        dto.setMessage(message);
+        dto.setMessage(String.valueOf(response.getStatus()));
         logService.createLog(dto);
     }
 

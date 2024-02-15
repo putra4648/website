@@ -33,7 +33,7 @@ public class LogServiceImpl implements LogService {
         if (model != null) {
             repository.save(model);
         } else {
-            log.error("Failed to create log because LogModel is null");
+            log.error("Failed to create log caused by LogModel is null");
         }
     }
 
