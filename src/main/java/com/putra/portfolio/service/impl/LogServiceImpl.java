@@ -27,6 +27,7 @@ public class LogServiceImpl implements LogService {
         typeMap.addMapping(LogDto::getMessage, LogModel::setMessage);
         typeMap.addMapping(LogDto::getHttpMethod, LogModel::setHttpMethod);
         typeMap.addMapping(LogDto::getType, LogModel::setType);
+        typeMap.addMapping(LogDto::getUrl, LogModel::setUrl);
 
         LogModel model = typeMap.map(dto);
 

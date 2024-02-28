@@ -26,6 +26,7 @@ public class AppHandleInterceptor implements HandlerInterceptor {
             @Nullable ModelAndView modelAndView) throws Exception {
 
         LogDto dto = new LogDto();
+        dto.setUrl(request.getRequestURI());
         dto.setHttpMethod(request.getMethod());
         dto.setType(LogEnums.LOG.getType());
         dto.setMessage(String.valueOf(response.getStatus()));

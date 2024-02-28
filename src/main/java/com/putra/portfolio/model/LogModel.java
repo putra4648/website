@@ -1,6 +1,6 @@
 package com.putra.portfolio.model;
 
-import java.util.Date;
+import java.time.Instant;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
@@ -15,7 +15,9 @@ public class LogModel {
     private String id;
 
     @CreatedDate
-    private Date time;
+    private Instant time;
+
+    private String url;
 
     private String type;
 
