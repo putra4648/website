@@ -15,22 +15,103 @@
     <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/webjars/font-awesome/js/all.min.js}"></script>
     <script th:src="@{/webjars/jquery/dist/jquery.min.js}"></script>
+    <script th:src="@{/webjars/pdfobject/pdfobject.min.js}"></script>
   </head>
   <body>
-    <div th:replace="fragments/navbar :: navbar"></div>
-    <div class="d-grid gap-2">
-      <button type="button" name="" id="" class="btn btn-primary">
-        Hello World
-      </button>
+    <div class="container-fluid vh-100">
+      <div class="col">
+        <div th:replace="~{fragments/navbar :: navbar}"></div>
+      </div>
+      <div class="col h-100">
+        <div
+          class="mx-3 row justify-content-center align-items-center g-2 h-100"
+        >
+          <div class="col">
+            <h1>
+              <b>
+                I'm Danar Putra Pradana, <br />
+                Fullstack Java Developer
+              </b>
+            </h1>
+            <h6>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla ea
+              ipsum magnam delectus, vel eligendi quasi quidem aspernatur facere
+              expedita.
+            </h6>
+            <div class="row justify-content-center align-items-center g-2">
+              <div class="col">
+                <div class="d-grid gap-2">
+                  <button type="button" name="" id="" class="btn btn-primary">
+                    Hire Me
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col">
+                <a
+                  class="link-info link-underline-primary link-offset-2"
+                  onclick="downloadCV()"
+                  role="button"
+                  >Download CV</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col">Column</div>
+        </div>
+      </div>
     </div>
-
-    <div class="d-grid gap-2">
-      <button type="button" name="" id="" class="btn btn-primary">
-        <i class="fa-solid fa-user"></i>
-        Button
-      </button>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="myModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Preview</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div id="my-pdf"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 
   <script th:src="@{/js/index.js}"></script>
+  <script>
+    const modal = new bootstrap.Modal("#myModal");
+
+    $(function () {
+      document
+        .getElementById("myModal")
+        .addEventListener("shown.bs.modal", (event) => {
+          PDFObject.embed("/download-cv", "#my-pdf", {
+            height: "100vh",
+            widtH: "100vw",
+          });
+          modal.handleUpdate();
+        });
+    });
+
+    function downloadCV() {
+      if (PDFObject.supportsPDFs) {
+        modal.show();
+      } else {
+        alert("Sorry this browser is not supported. Please use other browser.");
+      }
+    }
+  </script>
 </html>
