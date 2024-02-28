@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.putra.portfolio.dto.PortfolioDto;
 import com.putra.portfolio.request.PortfolioRequest;
 import com.putra.portfolio.response.AppResponse;
 import com.putra.portfolio.service.PortfolioService;
@@ -20,11 +19,6 @@ public class PortfolioController {
 
     @Autowired
     private PortfolioService portfolioService;
-
-    @PostMapping("portfolio")
-    public ResponseEntity<AppResponse<PortfolioDto>> getPortfolio() {
-        return portfolioService.getList();
-    }
 
     @PostMapping(value = "portfolio/upload", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
     public ResponseEntity<AppResponse<String>> uploadPortfolio(

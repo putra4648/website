@@ -8,13 +8,9 @@
       rel="stylesheet"
       th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
     />
-    <!-- <link
-      rel="stylesheet"
-      th:href="@{/webjars/font-awesome/css/fontawesome.min.css}"
-    /> -->
+    <script th:src="@{/webjars/jquery/dist/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/webjars/font-awesome/js/all.min.js}"></script>
-    <script th:src="@{/webjars/jquery/dist/jquery.min.js}"></script>
     <script th:src="@{/webjars/pdfobject/pdfobject.min.js}"></script>
   </head>
   <body>
@@ -89,7 +85,6 @@
       </div>
     </div>
   </body>
-
   <script th:src="@{/js/index.js}"></script>
   <script>
     const modal = new bootstrap.Modal("#myModal");

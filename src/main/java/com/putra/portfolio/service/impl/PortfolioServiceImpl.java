@@ -1,13 +1,20 @@
 package com.putra.portfolio.service.impl;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.text.MessageFormat;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
 import org.apache.commons.io.FilenameUtils;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.gridfs.GridFsOperations;
+import org.springframework.data.mongodb.gridfs.GridFsResource;
 import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -46,7 +53,20 @@ public class PortfolioServiceImpl implements PortfolioService {
             dto.setId(d.getId());
             dto.setName(d.getName());
             dto.setDescription(d.getDescription());
-            dto.setImages(d.getImages());
+            dto.setImages(d.getImageIds().stream().map(f -> {
+                try {
+                    MessageFormat format = new MessageFormat("data:{0};base64,{1}");
+                    GridFsResource resource = new GridFsResource(
+                            template.findOne(new Query(Criteria.where("_id").is(f))));
+                    GridFsResource contents = operations.getResource(resource.getFilename());
+                    return format.format(
+                            new String[] { Files.probeContentType(Paths.get(contents.getFilename())),
+                                    Base64.getMimeEncoder().encodeToString(contents.getContentAsByteArray()) });
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+            }).toList());
             return dto;
         }).toList());
         return ResponseEntity.ok().body(body);
@@ -66,7 +86,7 @@ public class PortfolioServiceImpl implements PortfolioService {
                 PortfolioModel model = new PortfolioModel();
                 model.setName(request.getName());
                 model.setDescription(request.getDescription());
-                model.setImages(request.getImages().stream().map(i -> {
+                model.setImageIds(request.getImages().stream().map(i -> {
 
                     try {
                         Optional<String> ext = Optional.ofNullable(i.getOriginalFilename())
@@ -76,7 +96,6 @@ public class PortfolioServiceImpl implements PortfolioService {
                             throw new IOException("File type is not supported!");
                         } else {
                             String fileExt = FilenameUtils.getExtension(i.getOriginalFilename());
-                            System.out.println(fileExt);
                             boolean isExtImagesValid = fileExt.equalsIgnoreCase("png")
                                     || fileExt.equalsIgnoreCase("jpg");
                             if (!isExtImagesValid) {
@@ -88,8 +107,9 @@ public class PortfolioServiceImpl implements PortfolioService {
                         metadata.put("filesize", i.getBytes());
                         metadata.put("filename", i.getOriginalFilename());
 
-                        ObjectId storeId = template.store(i.getInputStream(), i.getOriginalFilename(), metadata);
-                        return storeId.toByteArray();
+                        ObjectId storeId = template.store(i.getInputStream(), i.getOriginalFilename(),
+                                i.getContentType(), metadata);
+                        return storeId.toString();
                     } catch (IOException e) {
                         isError = true;
                         message = e.getLocalizedMessage();

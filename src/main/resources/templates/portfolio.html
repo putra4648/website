@@ -8,13 +8,69 @@
       rel="stylesheet"
       th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
     />
-    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
-    <script th:src="@{/webjars/font-awesome/js/all.min.js}"></script>
-    <script th:src="@{/webjars/jquery/dist/jquery.min.js}"></script>
   </head>
   <body>
     <div th:replace="fragments/navbar :: navbar"></div>
-  </body>
 
+    <div class="container">
+      <div class="row row-cols-3">
+        <div th:each="data, iter : ${portfolios}" class="col">
+          <div class="card">
+            <div
+              th:id="'portfolioCarousel' + ${iter.index}"
+              class="carousel slide"
+            >
+              <div class="carousel-inner">
+                <div
+                  th:each="image, iter : ${data.images}"
+                  th:attr="class=${iter.index == 0 ? 'carousel-item active' : 'carousel-item'}"
+                >
+                  <img th:src="${image}" class="d-block w-100" />
+                </div>
+              </div>
+              <button
+                class="carousel-control-prev"
+                type="button"
+                th:attr="data-bs-target='#portfolioCarousel' + ${iter.index}"
+                data-bs-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                th:attr="data-bs-target='#portfolioCarousel' + ${iter.index}"
+                data-bs-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">
+                <b th:text="${data.name}"></b>
+              </h4>
+              <p class="card-text" th:text="${data.description}"></p>
+              <a href="" class="btn btn-outline-info w-100">Detail</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script th:src="@{/webjars/jquery/dist/jquery.min.js}"></script>
+  <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+  <script th:src="@{/webjars/font-awesome/js/all.min.js}"></script>
   <script th:src="@{/js/index.js}"></script>
+  <script>
+    $(document).ready(function () {});
+  </script>
 </html>

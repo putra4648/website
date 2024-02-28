@@ -24,5 +24,5 @@ public class PortfolioModel {
 
     private String link;
 
-    private List<byte[]> images;
+    private List<String> imageIds;
 }

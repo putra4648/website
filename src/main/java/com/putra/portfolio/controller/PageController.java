@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +14,13 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.putra.portfolio.service.PortfolioService;
+
 @Controller
 public class PageController {
+    @Autowired
+    private PortfolioService portfolioService;
+
     @GetMapping("/")
     public ModelAndView indexPage(ModelMap model) {
         model.put("isActive", true);
@@ -24,6 +30,7 @@ public class PageController {
     @GetMapping("/portfolio")
     public ModelAndView portfolioPage(ModelMap model) {
         model.put("isActive", true);
+        model.put("portfolios", portfolioService.getList().getBody().getResults());
         return new ModelAndView("portfolio.html", model);
     }
 
