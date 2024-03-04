@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.putra.portfolio.dto.UserModel;
 import com.putra.portfolio.repository.UserRepository;
+import com.putra.portfolio.request.ForgotPasswordRequest;
 import com.putra.portfolio.request.RegisterRequest;
 import com.putra.portfolio.response.AppResponse;
 import com.putra.portfolio.service.UserService;
@@ -49,7 +50,7 @@ public class UserServiceImpl implements UserService {
 
         if (!request.isPresent()) {
             response.setError(true);
-            response.setMessage("Response cannot be empty");
+            response.setMessage("Request body cannot be empty");
             return ResponseEntity.badRequest().body(response);
         }
 
@@ -73,6 +74,47 @@ public class UserServiceImpl implements UserService {
             response.setMessage("User already registered");
             return ResponseEntity.ok().body(response);
         }
+    }
+
+    @Override
+    public ResponseEntity<AppResponse<String>> forgotPassword(Optional<ForgotPasswordRequest> request) {
+        AppResponse<String> response = new AppResponse<>();
+        if (request.isEmpty()) {
+            response.setError(true);
+            response.setMessage("Request body cannot be empty");
+            return ResponseEntity.badRequest().body(response);
+        }
+        ForgotPasswordRequest body = request.get();
+        Optional<UserModel> details = repository.findByUsername(body.getUsername());
+
+        if (details.isPresent()) {
+            UserModel model = details.get();
+
+            if (!passwordEncoder.matches(body.getOldPassword(), model.getPassword())) {
+                response.setError(true);
+                response.setMessage("Password is not same");
+                return ResponseEntity.ok().body(response);
+            }
+
+            if (!body.getNewPassword().equalsIgnoreCase(body.getConfirmationPassword())) {
+                response.setError(true);
+                response.setMessage("Confirmation password is not same");
+                return ResponseEntity.ok().body(response);
+            }
+
+            model.setPassword(passwordEncoder.encode(body.getNewPassword()));
+            repository.save(model);
+
+            response.setError(false);
+            response.setMessage("Success change password");
+
+            return ResponseEntity.ok().body(response);
+        } else {
+            response.setError(true);
+            response.setMessage("User not found");
+            return ResponseEntity.ok().body(response);
+        }
+
     }
 
 }
