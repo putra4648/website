@@ -7,9 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,10 @@ import com.putra.portfolio.response.AppResponse;
 @RestController
 @RequestMapping("api/v1")
 public class ExperienceController {
+
+    @Autowired
+    private ResourceLoader resourceLoader;
+
     private Map<String, Object> exp = new HashMap<>() {
         {
             put("web", List.of("HTML", "CSS", "Javascript"));
@@ -41,9 +46,13 @@ public class ExperienceController {
     @GetMapping("download-cv")
     public ResponseEntity<?> downloadCV() {
         try {
-            File fileCV = ResourceUtils.getFile("classpath:static/cv.pdf");
+            File fileCV = resourceLoader.getResource("classpath:static/cv.pdf").getFile();
             byte[] byteArr = Files.readAllBytes(fileCV.toPath());
-            return ResponseEntity.ok().body(new ByteArrayResource(byteArr));
+            if (byteArr != null) {
+                return ResponseEntity.ok().body(new ByteArrayResource(byteArr));
+            } else {
+                return ResponseEntity.internalServerError().build();
+            }
         } catch (IOException e) {
             e.printStackTrace();
             Map<String, Object> body = new HashMap<>();
