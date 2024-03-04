@@ -7,9 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.ResourceLoader;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,9 +19,6 @@ import com.putra.portfolio.response.AppResponse;
 @RestController
 @RequestMapping("api/v1")
 public class ExperienceController {
-
-    @Autowired
-    private ResourceLoader resourceLoader;
 
     private Map<String, Object> exp = new HashMap<>() {
         {
@@ -46,7 +42,7 @@ public class ExperienceController {
     @GetMapping("download-cv")
     public ResponseEntity<?> downloadCV() {
         try {
-            File fileCV = resourceLoader.getResource("classpath:static/cv.pdf").getFile();
+            File fileCV = new ClassPathResource("static/cv.pdf").getFile();
             byte[] byteArr = Files.readAllBytes(fileCV.toPath());
             if (byteArr != null) {
                 return ResponseEntity.ok().body(new ByteArrayResource(byteArr));
