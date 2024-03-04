@@ -29,11 +29,6 @@
               <h5>Experience</h5>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" th:href="@{/contact}">
-              <h5>Contact</h5>
-            </a>
-          </li>
         </ul>
         <div class="d-flex">
           <button class="btn" type="button">
@@ -44,10 +39,21 @@
       </div>
     </div>
   </nav>
-</div>
+  <!-- <script th:src="@{/webjars/jquery/dist/jquery.min.js}"></script> -->
+  <script>
+    $(function () {
+      console.log("Navbar ready");
+      addClassActive(window.location.pathname);
+    });
 
-<script>
-  $(function () {
-    console.log("Ready");
-  });
-</script>
+    function addClassActive(pathname = "") {
+      $.each($("#navbar").find("a"), function () {
+        if ($(this).attr("href") == pathname) {
+          $(this).addClass("active");
+        } else {
+          $(this).removeClass("active");
+        }
+      });
+    }
+  </script>
+</div>

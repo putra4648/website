@@ -42,12 +42,6 @@ public class PageController {
         return new ModelAndView("experience.html", model);
     }
 
-    @GetMapping("/contact")
-    public ModelAndView contactPage(ModelMap model) {
-        model.put("isActive", true);
-        return new ModelAndView("contact.html", model);
-    }
-
     @GetMapping("/download-cv")
     public ResponseEntity<?> downloadCV() {
         try {
