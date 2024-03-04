@@ -7,9 +7,10 @@ import org.springframework.web.multipart.MultipartFile;
 import lombok.Data;
 
 @Data
-public class PortfolioRequest {
+public class ProjectRequest {
     private String name;
     private String description;
+    private String link;
     private List<String> tags;
     private List<MultipartFile> images;
 }

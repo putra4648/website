@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.putra.portfolio.request.PortfolioRequest;
+import com.putra.portfolio.request.ProjectRequest;
 import com.putra.portfolio.response.AppResponse;
 import com.putra.portfolio.service.ProjectService;
 
 @RestController
 @RequestMapping("api/v1")
-public class PortfolioController {
+public class ProjectController {
 
     @Autowired
     private ProjectService projectService;
@@ -27,7 +27,7 @@ public class PortfolioController {
             @RequestParam String name,
             @RequestParam String description,
             @RequestParam("images") List<MultipartFile> images) {
-        PortfolioRequest body = new PortfolioRequest();
+        ProjectRequest body = new ProjectRequest();
         body.setName(name);
         body.setDescription(description);
         body.setImages(images);

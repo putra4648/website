@@ -24,7 +24,7 @@ import com.mongodb.DBObject;
 import com.putra.portfolio.dto.ProjectDto;
 import com.putra.portfolio.model.ProjectModel;
 import com.putra.portfolio.repository.ProjectRepository;
-import com.putra.portfolio.request.PortfolioRequest;
+import com.putra.portfolio.request.ProjectRequest;
 import com.putra.portfolio.response.AppResponse;
 import com.putra.portfolio.service.ProjectService;
 
@@ -75,7 +75,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public ResponseEntity<AppResponse<String>> upload(PortfolioRequest request) {
+    public ResponseEntity<AppResponse<String>> upload(ProjectRequest request) {
         AppResponse<String> response = new AppResponse<>();
 
         if (!isError) {
@@ -88,6 +88,8 @@ public class ProjectServiceImpl implements ProjectService {
                 ProjectModel model = new ProjectModel();
                 model.setName(request.getName());
                 model.setDescription(request.getDescription());
+                model.setTags(request.getTags());
+                model.setLink(request.getLink());
                 model.setImageIds(request.getImages().stream().map(i -> {
                     try {
                         Optional<String> ext = Optional.ofNullable(i.getOriginalFilename())
