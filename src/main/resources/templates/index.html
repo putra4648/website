@@ -19,41 +19,43 @@
         <div th:replace="~{fragments/navbar :: navbar}"></div>
       </div>
       <div class="col h-100">
-        <div
-          class="mx-3 row justify-content-center align-items-center g-2 h-100"
-        >
-          <div class="col">
+        <div class="mx-3 row h-100">
+          <div class="col align-self-center">
             <h1>
-              <b>
-                I'm Danar Putra Pradana, <br />
-                Fullstack Java Developer
-              </b>
+              <b> I'm Danar Putra Pradana, Fullstack Java Developer </b>
             </h1>
             <h6>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla ea
-              ipsum magnam delectus, vel eligendi quasi quidem aspernatur facere
-              expedita.
+              A programmer with more than 1 year of experience has likely gained
+              a solid understanding of coding languages, software development
+              processes, and problem-solving skills. With over a year in the
+              field, the programmer may have worked on various projects, honing
+              their abilities to write efficient and effective code. This
+              experience can also provide them with insights into best practices
+              and industry standards, allowing them to contribute meaningfully
+              to development teams and projects.
             </h6>
-            <div class="row justify-content-center align-items-center g-2">
-              <div class="col">
-                <div class="d-grid gap-2">
-                  <button type="button" name="" id="" class="btn btn-primary">
-                    Hire Me
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="col">
-                <a
-                  class="link-info link-underline-primary link-offset-2"
-                  onclick="downloadCV()"
-                  role="button"
-                  >Download CV</a
-                >
-              </div>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="downloadCV()"
+            >
+              Download CV
+              <i class="fa-solid fa-file-arrow-down"></i>
+            </button>
+          </div>
+          <div class="col">
+            <div class="d-flex flex-row justify-content-end">
+              <button class="btn" type="button">
+                <i class="fa-brands fa-github"></i>
+              </button>
+              <button class="btn" type="button">
+                <i class="fa-brands fa-linkedin"></i>
+              </button>
+              <button class="btn" type="button">
+                <i class="fa-solid fa-at"></i>
+              </button>
             </div>
           </div>
-          <div class="col">Column</div>
         </div>
       </div>
     </div>
