@@ -22,7 +22,8 @@ public class AppConfig {
     private final String[] ACCEPTED_URLS_ANY_ROLE = new String[] {
             "/api/v1/portfolio",
             "/api/v1/contacts",
-            "/api/v1/experience"
+            "/api/v1/experience",
+            "/api/v1/download-cv"
     };
 
     @Bean
