@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.putra.portfolio.request.ForgotPasswordRequest;
 import com.putra.portfolio.request.RegisterRequest;
 import com.putra.portfolio.response.AppResponse;
 import com.putra.portfolio.service.UserService;
@@ -23,6 +24,11 @@ public class UserController {
     @PostMapping("register")
     public ResponseEntity<AppResponse<String>> registerUser(@RequestBody Optional<RegisterRequest> body) {
         return userService.registerUser(body);
+    }
+
+    @PostMapping("/forgot-password")
+    public ResponseEntity<AppResponse<String>> forgotPassword(@RequestBody Optional<ForgotPasswordRequest> body) {
+        return userService.forgotPassword(body);
     }
 
 }
