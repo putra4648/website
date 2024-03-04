@@ -14,12 +14,12 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.putra.portfolio.service.PortfolioService;
+import com.putra.portfolio.service.ProjectService;
 
 @Controller
 public class PageController {
     @Autowired
-    private PortfolioService portfolioService;
+    private ProjectService portfolioService;
 
     @GetMapping("/")
     public ModelAndView indexPage(ModelMap model) {
@@ -27,17 +27,17 @@ public class PageController {
         return new ModelAndView("index.html");
     }
 
-    @GetMapping("/portfolio")
+    @GetMapping("/projects")
     public ModelAndView portfolioPage(ModelMap model) {
         model.put("isActive", true);
-        model.put("portfolios", portfolioService.getList().getBody().getResults());
-        return new ModelAndView("portfolio.html", model);
+        model.put("projects", portfolioService.getList().getBody().getResults());
+        return new ModelAndView("projects.html", model);
     }
 
-    @GetMapping("/work")
+    @GetMapping("/experience")
     public ModelAndView workPage(ModelMap model) {
         model.put("isActive", true);
-        return new ModelAndView("portfolio.html", model);
+        return new ModelAndView("experience.html", model);
     }
 
     @GetMapping("/contact")
@@ -62,5 +62,4 @@ public class PageController {
             return ResponseEntity.internalServerError().body(body);
         }
     }
-
 }

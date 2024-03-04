@@ -25,4 +25,6 @@ public class PortfolioModel {
     private String link;
 
     private List<String> imageIds;
+
+    private List<String> tags;
 }

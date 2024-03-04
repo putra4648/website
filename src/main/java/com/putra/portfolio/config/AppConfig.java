@@ -17,15 +17,17 @@ public class AppConfig {
 
     private final String[] ACCEPTED_URLS = new String[] {
             "/",
-            "/portfolio",
-            "/work",
+            "/projects",
+            "/experience",
             "/download-cv",
-            "/webjars/**"
+            "/denied",
+            "/webjars/**",
+            "/js/**",
     };
 
     @Bean
     AuthenticationEntryPoint authenticationEntryPoint() {
-        return new NoPopupEntryPointConfig();
+        return new CustomAuthEntryPointConfig();
     }
 
     @Bean

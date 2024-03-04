@@ -26,10 +26,10 @@ import com.putra.portfolio.model.PortfolioModel;
 import com.putra.portfolio.repository.PortfolioRepository;
 import com.putra.portfolio.request.PortfolioRequest;
 import com.putra.portfolio.response.AppResponse;
-import com.putra.portfolio.service.PortfolioService;
+import com.putra.portfolio.service.ProjectService;
 
 @Service("portfolioService")
-public class PortfolioServiceImpl implements PortfolioService {
+public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
     private GridFsTemplate template;
@@ -53,6 +53,8 @@ public class PortfolioServiceImpl implements PortfolioService {
             dto.setId(d.getId());
             dto.setName(d.getName());
             dto.setDescription(d.getDescription());
+            dto.setLink(d.getLink());
+            dto.setTags(d.getTags());
             dto.setImages(d.getImageIds().stream().map(f -> {
                 try {
                     MessageFormat format = new MessageFormat("data:{0};base64,{1}");

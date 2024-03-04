@@ -12,13 +12,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.putra.portfolio.request.PortfolioRequest;
 import com.putra.portfolio.response.AppResponse;
-import com.putra.portfolio.service.PortfolioService;
+import com.putra.portfolio.service.ProjectService;
 
 @RestController
 public class PortfolioController {
 
     @Autowired
-    private PortfolioService portfolioService;
+    private ProjectService portfolioService;
 
     @PostMapping(value = "portfolio/upload", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
     public ResponseEntity<AppResponse<String>> uploadPortfolio(

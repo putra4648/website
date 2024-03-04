@@ -3,18 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio</title>
+    <title>Projects</title>
     <link
       rel="stylesheet"
       th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
     />
   </head>
   <body>
-    <div th:replace="fragments/navbar :: navbar"></div>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
 
     <div class="container">
       <div class="row row-cols-3">
-        <div th:each="data, iter : ${portfolios}" class="col">
+        <div th:each="data, iter : ${projects}" class="col">
           <div class="card">
             <div
               th:id="'portfolioCarousel' + ${iter.index}"
@@ -58,7 +58,13 @@
                 <b th:text="${data.name}"></b>
               </h4>
               <p class="card-text" th:text="${data.description}"></p>
-              <a href="" class="btn btn-outline-info w-100">Detail</a>
+              <span
+                th:each="tag : ${data.tags}"
+                class="me-2 badge text-bg-primary"
+                th:text="${tag}"
+              >
+              </span>
+              <a href="" class="mt-2 btn btn-outline-info w-100">Detail</a>
             </div>
           </div>
         </div>
