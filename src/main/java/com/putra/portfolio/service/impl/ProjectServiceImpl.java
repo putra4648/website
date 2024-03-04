@@ -21,9 +21,9 @@ import org.springframework.stereotype.Service;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
-import com.putra.portfolio.dto.PortfolioDto;
-import com.putra.portfolio.model.PortfolioModel;
-import com.putra.portfolio.repository.PortfolioRepository;
+import com.putra.portfolio.dto.ProjectDto;
+import com.putra.portfolio.model.ProjectModel;
+import com.putra.portfolio.repository.ProjectRepository;
 import com.putra.portfolio.request.PortfolioRequest;
 import com.putra.portfolio.response.AppResponse;
 import com.putra.portfolio.service.ProjectService;
@@ -38,18 +38,18 @@ public class ProjectServiceImpl implements ProjectService {
     private GridFsOperations operations;
 
     @Autowired
-    private PortfolioRepository repository;
+    private ProjectRepository repository;
 
     private boolean isError = false;
     private String message = null;
 
     @Override
-    public ResponseEntity<AppResponse<PortfolioDto>> getList() {
-        AppResponse<PortfolioDto> body = new AppResponse<>();
+    public ResponseEntity<AppResponse<ProjectDto>> getList() {
+        AppResponse<ProjectDto> body = new AppResponse<>();
         body.setError(false);
         body.setMessage("success");
         body.setResults(repository.findAll().stream().map(d -> {
-            PortfolioDto dto = new PortfolioDto();
+            ProjectDto dto = new ProjectDto();
             dto.setId(d.getId());
             dto.setName(d.getName());
             dto.setDescription(d.getDescription());
@@ -79,17 +79,16 @@ public class ProjectServiceImpl implements ProjectService {
         AppResponse<String> response = new AppResponse<>();
 
         if (!isError) {
-            List<PortfolioModel> results = repository.findByName(request.getName());
+            List<ProjectModel> results = repository.findByName(request.getName());
 
             if (results.isEmpty()) {
                 response.setError(false);
                 response.setMessage("Success add new portfolio");
 
-                PortfolioModel model = new PortfolioModel();
+                ProjectModel model = new ProjectModel();
                 model.setName(request.getName());
                 model.setDescription(request.getDescription());
                 model.setImageIds(request.getImages().stream().map(i -> {
-
                     try {
                         Optional<String> ext = Optional.ofNullable(i.getOriginalFilename())
                                 .filter(f -> f.contains("."))

@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Data
 @Document("portfolio")
-public class PortfolioModel {
+public class ProjectModel {
     @Id
     private String id;
 

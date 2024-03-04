@@ -5,7 +5,7 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class PortfolioDto {
+public class ProjectDto {
     private String id;
     private String name;
     private String description;

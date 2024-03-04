@@ -10,5 +10,6 @@ import lombok.Data;
 public class PortfolioRequest {
     private String name;
     private String description;
+    private List<String> tags;
     private List<MultipartFile> images;
 }
