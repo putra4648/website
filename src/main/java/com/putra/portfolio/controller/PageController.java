@@ -1,6 +1,7 @@
 package com.putra.portfolio.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -49,16 +51,16 @@ public class PageController {
     @GetMapping("/download-cv")
     public ResponseEntity<?> downloadCV() {
         try {
-            File file = new File("C:\\Users\\muham\\Downloads\\test.pdf");
+            File file = ResourceUtils.getFile("classpath:static/docs/cv.pdf");
             byte[] res = FileCopyUtils.copyToByteArray(file);
             return ResponseEntity
                     .ok()
-
                     .contentType(MediaType.APPLICATION_PDF)
                     .body(new ByteArrayResource(res));
-        } catch (Exception e) {
+        } catch (IOException e) {
+            e.printStackTrace();
             Map<String, Object> body = new HashMap<>();
-            body.put("message", e.getLocalizedMessage());
+            body.put("message", e.getMessage());
             return ResponseEntity.internalServerError().body(body);
         }
     }
