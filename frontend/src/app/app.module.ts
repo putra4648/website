@@ -5,6 +5,7 @@ import AppRoutingModule from "./app-routing.module";
 import { NavbarModule } from "./navbar/navbar.module";
 import HomeModule from "./home/home.module";
 import CVModule from "./cv/cv.module";
+import OfferModule from "./offer/offer.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,6 +15,7 @@ import CVModule from "./cv/cv.module";
     NavbarModule,
     HomeModule,
     CVModule,
+    OfferModule,
   ],
   bootstrap: [AppComponent]
 })
