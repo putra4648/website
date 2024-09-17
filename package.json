@@ -24,7 +24,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@material-tailwind/html": "^2.2.2",
     "angular-svg-icon": "^17.0.0",
-    "ng2-pdf-viewer": "^10.0.0",
+    "ng2-pdf-viewer": "^10.3.1",
     "rxjs": "~7.8.0",
     "simple-icons": "^11.11.0",
     "tslib": "^2.3.0",
