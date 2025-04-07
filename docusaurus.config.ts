@@ -6,12 +6,11 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 const config: Config = {
   title: "Putra Coderz",
-  tagline: "Hello there 👋",
-
+  tagline: "Welcome to my website. In here you can see my journey and my project in Software Engineering",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://personal-website-production-d8cc.up.railway.app/",
+  url: "https://putracoderz.my.id/",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
@@ -73,7 +72,7 @@ const config: Config = {
           type: "docSidebar",
           sidebarId: "tutorialSidebar",
           position: "left",
-          label: "Tutorial",
+          label: "Menu",
         },
         { to: "/blog", label: "Blog", position: "left" },
       ],
@@ -98,7 +97,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Putra Coderz. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Putra Coderz`,
     },
     prism: {
       theme: prismThemes.github,

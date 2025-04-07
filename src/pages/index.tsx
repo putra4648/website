@@ -24,10 +24,10 @@ function HomepageHeader() {
                     flexDirection: 'row',
                     gap: 2
                 }}>
-                    <Link to='https://www.linkedin.com/in/danar-putra-pradana-8b26a71b1/' className='button button--secondary button--lg'>
+                    {/* <Link to='https://www.linkedin.com/in/danar-putra-pradana-8b26a71b1/' className='button button--secondary button--lg'>
                         <FontAwesomeIcon icon={['fab', 'linkedin']}/>
                         Linkedin
-                    </Link>
+                    </Link> */}
                     <Link to='mailto:danarputrapradana@yahoo.com' className='button button--secondary button--lg'>
                         <FontAwesomeIcon icon={['fas', 'envelope']}/>
                         Mail
