@@ -6,7 +6,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 const config: Config = {
   title: "Putra Coderz",
-  tagline: "Welcome to my website. In here you can see my journey and my project in Software Engineering",
+  tagline: "Software Engineer with a Passion for Digital Innovation",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
@@ -22,6 +22,7 @@ const config: Config = {
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
+  onDuplicateRoutes: "throw",
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -37,7 +38,6 @@ const config: Config = {
       {
         docs: {
           sidebarPath: "./sidebars.ts",
-          editUrl: "https://github.com/putra4648/website/tree/master",
         },
         blog: {
           showReadingTime: true,
@@ -45,7 +45,6 @@ const config: Config = {
             type: ["rss", "atom"],
             xslt: true,
           },
-          editUrl: "https://github.com/putra4648/website/tree/master",
           // Useful options to enforce blogging best practices
           onInlineTags: "warn",
           onInlineAuthors: "warn",
@@ -60,6 +59,7 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
+
     image: "img/docusaurus-social-card.jpg",
     navbar: {
       title: "Putra Coderz",
@@ -70,9 +70,9 @@ const config: Config = {
       items: [
         {
           type: "docSidebar",
-          sidebarId: "tutorialSidebar",
+          sidebarId: "projects",
           position: "left",
-          label: "Menu",
+          label: "Projects",
         },
         { to: "/blog", label: "Blog", position: "left" },
       ],
@@ -83,16 +83,8 @@ const config: Config = {
           title: "Docs",
           items: [
             {
-              label: "Tutorial",
-              to: "/docs/intro",
-            },
-            {
               label: "Projects",
               to: "/docs/projects",
-            },
-            {
-              label: "Tips & Tricks",
-              to: "/docs/tips&tricks",
             },
           ],
         },
