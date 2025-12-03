@@ -1,0 +1,60 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Skill from "../components/Skill.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import Layout from "../layouts/Layout.astro";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<Layout>
+			<main class="container mx-auto p-3 prose my-3">
+				<div class="">
+					<h1>🧑‍🚀 Hello, Astronaut!</h1>
+					<p>
+						I am a Software Engineer with a strong focus on
+						<span class="underline font-bold">backend systems</span
+						>, <span class="underline font-bold"
+							>modular architecture</span
+						>, and <span class="underline font-bold"
+							>enterprise application development</span
+						>. I specialize in building scalable, maintainable
+						systems using Java-based frameworks such as SpringBoot
+						and Quarkus, supported by modern frontend technologies
+						including React, Vue and Nuxt.
+					</p>
+					<p>
+						I am highly detail-oriented in system design,
+						particularly in database modeling, transaction flow, and
+						performance optimization. I value clean architecture,
+						clear separation of concerns, and long-term
+						maintainability over short-term fixes.
+					</p>
+					<p>
+						Currently, I continue to deepen my expertise in <span
+							class="underline font-bold"
+							>distributed systems</span
+						> , <span class="underline font-bold"
+							>IoT integration</span
+						>, and <span class="underline font-bold"
+							>high-performance backend services</span
+						> while delivering reliable and efficient software solutions
+						for real-world business operations.
+					</p>
+					<small class="font-bold"
+						>For more detail about my skill you can check below 👇</small
+					>
+					<Skill />
+				</div>
+			</main>
+			<Footer />
+		</Layout>
+	</body>
+</html>

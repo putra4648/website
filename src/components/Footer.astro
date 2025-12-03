@@ -1,0 +1,55 @@
+---
+const today = new Date();
+const links = [
+  {
+    icon: "fa-github",
+    to: "https://github.com/putra4648",
+  },
+  {
+    icon: "fa-linkedin",
+    to: "",
+  },
+  {
+    icon: "fa-twitter",
+    to: "",
+  },
+];
+---
+
+<footer
+  class="footer footer-horizontal footer-center text-base-content rounded p-10"
+>
+  
+  <form>
+    <fieldset class="fieldset ">
+      <legend class="fieldset-legend">Contact Me</legend>
+      <label for="" class="label">Your Email</label>
+      <input
+        type="text"
+        placeholder="username@site.com"
+        class="input input-bordered join-item"
+      />
+
+      <label class="label">Your concerns</label>
+      <textarea class="textarea" placeholder="Any details"></textarea>
+
+      <button class="btn btn-outline" type="submit">Send</button>
+    </fieldset>
+  </form>
+  <nav>
+    <div class="grid grid-flow-col gap-3">
+      {
+        links.map((link) => {
+          return (
+            <a href={link.to} class="link" target="_blank">
+              <i class={`fab ${link.icon} fa-2x`} />
+            </a>
+          );
+        })
+      }
+    </div>
+  </nav>
+  <aside>
+    <p>Copyright © {today.getFullYear()} - PutraKadangGacor</p>
+  </aside>
+</footer>
