@@ -18,7 +18,7 @@
     "@fortawesome/free-brands-svg-icons": "^7.1.0",
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "@tailwindcss/vite": "^4.1.17",
-    "astro": "^5.16.2",
+    "astro": "^5.16.11",
     "daisyui": "^5.5.5",
     "dayjs": "^1.11.19",
     "mdast-util-to-string": "^4.0.0",
