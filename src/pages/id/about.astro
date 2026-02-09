@@ -1,0 +1,62 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import Skill from "../../components/Skill.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import { getLangFromUrl } from "../../i18n/utils";
+import Layout from "../../layouts/Layout.astro";
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <Layout>
+      <main class="container mx-auto p-3 prose my-3">
+        <div class="">
+          <h1>🧑‍🚀 Halo, Semuanya!</h1>
+          <p>
+            Saya adalah seorang Software Engineer dengan fokus utama pada
+            <span class="underline font-bold">sistem backend</span>,
+            <span class="underline font-bold">arsitektur modular</span>, dan
+            <span class="underline font-bold"
+              >pengembangan aplikasi enterprise</span
+            >. Saya berspesialisasi dalam membangun sistem yang scalable dan
+            mudah dikelola menggunakan framework berbasis Java seperti
+            SpringBoot dan Quarkus, yang didukung oleh teknologi frontend modern
+            termasuk React, Vue, dan Nuxt.
+          </p>
+          <p>
+            Saya sangat detail-oriented dalam perancangan sistem, terutama pada
+            pemodelan database, alur transaksi, dan optimasi performa. Saya
+            sangat menjunjung tinggi clean architecture, pemisahan kepentingan
+            (separation of concerns) yang jelas, dan pemeliharaan jangka panjang
+            dibandingkan sekadar solusi instan (short-term fixes).
+          </p>
+          <p>
+            Saat ini, saya terus memperdalam keahlian saya dalam
+            <span class="underline font-bold">sistem terdistribusi</span>,
+            <span class="underline font-bold">integrasi IoT</span>, dan
+            <span class="underline font-bold"
+              >layanan backend performa tinggi</span
+            >
+            sambil menghadirkan solusi perangkat lunak yang andal dan efisien untuk
+            operasional bisnis di dunia nyata.
+          </p>
+          <small class="font-bold">
+            Untuk detail lebih lanjut mengenai keahlian saya, silakan cek di
+            bawah ini 👇
+          </small>
+          <Skill />
+        </div>
+      </main>
+      <Footer />
+    </Layout>
+  </body>
+</html>

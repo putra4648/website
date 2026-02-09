@@ -1,0 +1,91 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import BaseHead from "../../../components/BaseHead.astro";
+import Footer from "../../../components/Footer.astro";
+import Header from "../../../components/Header.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../../consts";
+import Layout from "../../../layouts/Layout.astro";
+import FormattedDate from "../../../components/FormattedDate.astro";
+import { getLangFromUrl, useTranslatedPath } from "../../../i18n/utils";
+import { randomizeTagColors } from "../../../utils/tag";
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: "en", version: "v1" } },
+    { params: { lang: "id", version: "v2" } },
+  ];
+}
+
+const lang = getLangFromUrl(Astro.url);
+const posts = (await getCollection("blog"))
+  .filter((f) => f.id.startsWith(`${lang}/`))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const translatePath = useTranslatedPath(lang);
+const getCleanSlug = (slug: string) => {
+  const parts = slug.split("/");
+  return parts.length > 1 ? parts.slice(1).join("/") : slug;
+};
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <Layout>
+      <main class="container mx-auto p-3 my-3">
+        <div class="grid md:grid-cols-4 gap-3">
+          {
+            posts.map((post) => {
+              const cleanSlug = getCleanSlug(post.id);
+              const href = translatePath(`/blog/${cleanSlug}`);
+
+              return (
+                <div class="card bg-base-300 shadow-sm">
+                  <figure>
+                    {post.data.heroImage && (
+                      <Image
+                        layout="full-width"
+                        src={post.data.heroImage}
+                        inferSize
+                        alt=""
+                      />
+                    )}
+                  </figure>
+                  <div class="card-body">
+                    <h2 class="card-title">{post.data.title}</h2>
+                    <small class="card-subtitle">
+                      <FormattedDate date={post.data.pubDate} />
+                    </small>
+                    {post.data.description.map((d) => (
+                      <p>{d}</p>
+                    ))}
+                    <div class="flex flex-row flex-wrap gap-2">
+                      {post.data.tags.map((t) => (
+                        <div
+                          class={`badge badge-outline ${randomizeTagColors(t)}`}
+                        >
+                          {t}
+                        </div>
+                      ))}
+                    </div>
+                    <div class="card-actions justify-end">
+                      <a href={href} class="btn btn-primary">
+                        <i class="fas fa-arrow-right" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              );
+            })
+          }
+        </div>
+      </main>
+    </Layout>
+    <Footer />
+  </body>
+</html>

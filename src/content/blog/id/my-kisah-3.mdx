@@ -1,0 +1,49 @@
+---
+title: My Kisah - Part 3
+description: 
+    - "My Kisah Part 3"
+    - Meninggalkan zona nyaman Spring Boot untuk mendalami ekosistem React. Sebuah catatan tentang obsesi pada efisiensi, dominasi TanStack, dan pencarian state management terbaik bersama Zustand.
+pubDate: 2026-02-09 17:00
+tags: [life,journey,tech]
+---
+# My Kisah (Part 3): React Mastery & Efisiensi TanStack Era ⚛️⚡
+
+Setelah berkelana di dunia *backend* Spring Boot yang kaku dan terstruktur, tahun 2024 jadi panggung buat gweh mendalami **React**. Gweh nggak mau cuma jadi "pemakai library" yang asal *copas* komponen. Gweh terobsesi gimana caranya bikin aplikasi *client-side* yang punya performa tinggi, *type-safe*, dan kode yang bener-bener *clean*.
+
+### **⚛️ Deep Dive ke React: Engineering Over UI**
+
+Fokus gweh di React bukan cuma soal bikin tombol warna-warni, tapi di **arsitektur logic** dan optimasi *resource*:
+
+* **Hook Mastery & Render Optimization:** Gweh dalemin `useState` dan `useEffect` sampe ke akar-akarnya. Gweh sadar musuh terbesar di React adalah *unnecessary re-renders*. Makanya, gweh disiplin pake `useMemo` dan `useCallback` buat nge-jagain *heavy computation* dan referensi fungsi agar aplikasi tetep *smooth*.
+* **The Power of Custom Hooks:** Gweh nggak suka komponen UI yang isinya ratusan baris logika bisnis. Gweh pecah semuanya ke dalam **Custom Hooks**. Ini bikin komponen gweh cuma fokus ngerender data, sementara urusan *logic* tersimpan rapi, *reusable*, dan gampang di-*test*.
+* **State Management War (Redux ➡️ Zustand):** Gweh pernah ngerasain "trauma" sama **Redux** yang penuh *boilerplate*. Pindah ke **Zustand** adalah *game changer*. Gweh bisa dapet *global state* yang *lightweight*, tanpa perlu bungkus aplikasi pake ribuan *Provider*, dan tetep dapet performa yang ngebut.
+* **Efficient State Location:** Gweh belajar prinsip *"Lift State Up"* dengan bijak. Gweh tau kapan data harus di *local state*, kapan harus masuk *Zustand store*, dan kapan cukup ditaruh di **URL state** (pake params) biar *user* bisa *copy-paste* link dengan keadaan aplikasi yang sama.
+
+---
+
+### **📦 The TanStack Supremacy: High-End Data Handling**
+
+Awalnya gweh pake **Axios** buat *data fetching* manual, tapi gweh sadar hidup terlalu singkat buat nulis `isLoading`, `isError`, dan `data` berulang kali. Akhirnya gweh "pindah agama" ke ekosistem **TanStack**:
+
+* **TanStack Query (React Query):** Gweh serahin urusan *server-state* ke sini. Fitur *caching*, *stale-while-revalidate*, dan *automatic refetching*-nya bikin aplikasi gweh kerasa jauh lebih responsif dan hemat *bandwidth*.
+* **TanStack Table (The Headless Beast):** Pas ngerjain modul *Inventory* di ERP, gweh butuh tabel yang bisa *sorting, filtering, dan pagination* ribet. TanStack Table ngebantu gweh bikin tabel *powerful* tanpa maksa gweh pake desain UI bawaan. *Headless, but deadly.*
+* **TanStack Router:** Gweh pake ini buat navigasi yang **Type-Safe**. Sebagai orang yang biasa main Java, gweh benci *runtime error* gara-gara salah ketik *path* URL. Dengan TanStack Router, semua terdeteksi pas *development*.
+
+---
+
+### **🛠️ Mindset Backend di Frontend: Type Safety & Robustness**
+
+Gweh bawa disiplin **Spring Boot** gweh ke React. Gweh pastiin setiap API *response* punya *Interface* atau *Type* yang jelas. Gweh juga nerapin **Global Error Handling** lewat *Error Boundaries* dan integrasi *interceptor* di Axios/TanStack. Gweh pengen aplikasi gweh punya *graceful degradation*—kalau ada yang rusak, nggak semuanya langsung *blank* putih.
+
+---
+
+### **🏁 The Plot Twist: Mencari Kerapian yang Lebih Hakiki**
+
+Meskipun gweh udah invest waktu setahun buat nge-masterin React beserta seluruh ekosistem TanStack-nya, gweh ngerasa ada "gesekan" yang bikin gweh kurang produktif. React ngasih kebebasan terlalu luas, dan kadang kebebasan itu malah bikin kita lama di *decision making* daripada *coding*.
+
+Gweh haus akan struktur yang lebih *opinionated*, rapi secara *out-of-the-box*, dan nggak bikin jari keriting cuma buat urusan sepele. Dan di situlah, gweh mulai ngeliat **Vue** dengan tatapan yang berbeda...
+
+> [!NOTE]
+> **Next Episode (Part 4):** "Kenapa Akhirnya Gweh Cerai sama React dan Berlabuh di Vue/Nuxt." Spoiler: Ini soal *Composition API* yang lebih elegan dan produktivitas yang meningkat 200%!
+
+---

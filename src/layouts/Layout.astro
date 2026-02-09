@@ -1,36 +1,43 @@
 ---
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import BaseHead from "../components/BaseHead.astro";
+import { getLangFromUrl } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <!doctype html>
-<html lang="de">
-    <head>
-        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    </head>
-    <body>
-        <slot />
-        {/* this is where your page content is added */}
-    </body>
+<html lang={lang}>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <slot />
+    {/* this is where your page content is added */}
+  </body>
 </html>
 
 <script>
-    // import the required functions and icons
-    import { library, config, dom } from "@fortawesome/fontawesome-svg-core";
-    import { faUser, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-    import { faGithub, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
+  // import the required functions and icons
+  import { library, config, dom } from "@fortawesome/fontawesome-svg-core";
+  import { faUser, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+  import {
+    faGithub,
+    faLinkedin,
+    faTwitter,
+  } from "@fortawesome/free-brands-svg-icons";
 
-    // since we want astro to handle the css we should disable automatic css injection on the client
-    // this is similar to other ssr frameworks like next.js or nuxt
-    config.autoAddCss = false;
+  // since we want astro to handle the css we should disable automatic css injection on the client
+  // this is similar to other ssr frameworks like next.js or nuxt
+  config.autoAddCss = false;
 
-    // create a subset of icons that you are going to use so
-    // astro is able to tree shake and optimize the javascript bundle for best performance
-    library.add(faGithub, faLinkedin, faTwitter, faUser,faArrowRight);
+  // create a subset of icons that you are going to use so
+  // astro is able to tree shake and optimize the javascript bundle for best performance
+  library.add(faGithub, faLinkedin, faTwitter, faUser, faArrowRight);
 
-    // replace the unprocessed icons with the svg and watch for additional icons
-    dom.watch();
+  // replace the unprocessed icons with the svg and watch for additional icons
+  dom.watch();
 </script>
