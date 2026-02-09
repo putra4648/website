@@ -1,146 +1,131 @@
 ---
 const skill = {
-	programmings: ["Javascript", "Typescript", "Bash", "Java", "Dart", "Go"],
-	devtools: [
-		"Git",
-		"Prometheus",
-		"Grafana",
-		"Jira",
-		"Notion",
-		"Flyway",
-		"Excalidraw",
-	],
-	frameworks: [
-		"Springboot",
-		"Quarkus",
-		"React",
-		"Vue",
-		"Flutter",
-		"Express.js",
-		"Nuxt",
-	],
-	infrastructures: [
-		"Sonarqube",
-		"Linux",
-		"Postgres",
-		"Redis",
-		"Docker",
-		"Rabbit MQ",
-		"GitHub Actions",
-		"Nginx",
-	],
-	integrations: [
-		"Keycloak",
-		"OAuth2",
-		"JWT",
-		"Websocket",
-		"Firebase",
-		"Supabase",
-	],
-	specializations: [
-		"Ticketing",
-		"Reporting",
-		"Module Augmentation and Extension",
-		"Migration System",
-	],
+  programmings: ["Javascript", "Typescript", "Bash", "Java", "Dart", "Go"],
+  devtools: [
+    "Git",
+    "Prometheus",
+    "Grafana",
+    "Jira",
+    "Notion",
+    "Flyway",
+    "Excalidraw",
+  ],
+  frameworks: [
+    "Springboot",
+    "Quarkus",
+    "React",
+    "Vue",
+    "Flutter",
+    "Express.js",
+    "Nuxt",
+  ],
+  infrastructures: [
+    "Sonarqube",
+    "Linux",
+    "Postgres",
+    "Redis",
+    "Docker",
+    "Rabbit MQ",
+    "GitHub Actions",
+    "Nginx",
+  ],
+  integrations: [
+    "Keycloak",
+    "OAuth2",
+    "JWT",
+    "Websocket",
+    "Firebase",
+    "Supabase",
+  ],
+  specializations: [
+    "Ticketing",
+    "Reporting",
+    "Module Augmentation and Extension",
+    "Migration System",
+  ],
 };
 ---
 
 <div class="grid gap-3">
-	<details
-		class="collapse collapse-arrow bg-base-100 border border-base-300"
-		name="my-accordion-det-1"
-		open
-	>
-		<summary class="collapse-title font-semibold"
-			>Programming Language</summary
-		>
-		<div class="collapse-content text-sm">
-			{
-				skill.programmings.map((i) => (
-					<span class="badge badge-neutral badge-dash mr-2 mt-2">
-						{i}
-					</span>
-				))
-			}
-		</div>
-	</details>
-	<details
-		class="collapse collapse-arrow bg-base-100 border border-base-300"
-		name="my-accordion-det-1"
-	>
-		<summary class="collapse-title font-semibold">Framework</summary>
-		<div class="collapse-content text-sm">
-			{
-				skill.frameworks.map((i) => (
-					<span class="badge badge-neutral badge-dash mr-2 mt-2">
-						{i}
-					</span>
-				))
-			}
-		</div>
-	</details>
-	<details
-		class="collapse collapse-arrow bg-base-100 border border-base-300"
-		name="my-accordion-det-1"
-	>
-		<summary class="collapse-title font-semibold">Dev Tools</summary>
-		<div class="collapse-content text-sm">
-			{
-				skill.devtools.map((i) => (
-					<span class="badge badge-neutral badge-dash mr-2 mt-2">
-						{i}
-					</span>
-				))
-			}
-		</div>
-	</details>
-	<details
-		class="collapse collapse-arrow bg-base-100 border border-base-300"
-		name="my-accordion-det-1"
-	>
-		<summary class="collapse-title font-semibold"
-			>System & Infrastructure</summary
-		>
-		<div class="collapse-content text-sm">
-			{
-				skill.infrastructures.map((i) => (
-					<span class="badge badge-neutral badge-dash mr-2 mt-2">
-						{i}
-					</span>
-				))
-			}
-		</div>
-	</details>
-	<details
-		class="collapse collapse-arrow bg-base-100 border border-base-300"
-		name="my-accordion-det-1"
-	>
-		<summary class="collapse-title font-semibold">API & Integration</summary
-		>
-		<div class="collapse-content text-sm">
-			{
-				skill.integrations.map((i) => (
-					<span class="badge badge-neutral badge-dash mr-2 mt-2">
-						{i}
-					</span>
-				))
-			}
-		</div>
-	</details>
-	<details
-		class="collapse collapse-arrow bg-base-100 border border-base-300"
-		name="my-accordion-det-1"
-	>
-		<summary class="collapse-title font-semibold">Specialization</summary>
-		<div class="collapse-content text-sm">
-			{
-				skill.specializations.map((i) => (
-					<span class="badge badge-neutral badge-dash mr-2 mt-2">
-						{i}
-					</span>
-				))
-			}
-		</div>
-	</details>
+  <details
+    class="collapse collapse-arrow bg-base-100 border border-base-300"
+    name="my-accordion-det-1"
+    open
+  >
+    <summary class="collapse-title font-semibold">Programming Language</summary>
+    <div class="collapse-content text-sm">
+      {
+        skill.programmings.map((i) => (
+          <span class="badge badge-ghost badge-dash mr-2 mt-2">{i}</span>
+        ))
+      }
+    </div>
+  </details>
+  <details
+    class="collapse collapse-arrow bg-base-100 border border-base-300"
+    name="my-accordion-det-1"
+  >
+    <summary class="collapse-title font-semibold">Framework</summary>
+    <div class="collapse-content text-sm">
+      {
+        skill.frameworks.map((i) => (
+          <span class="badge badge-ghost badge-dash mr-2 mt-2">{i}</span>
+        ))
+      }
+    </div>
+  </details>
+  <details
+    class="collapse collapse-arrow bg-base-100 border border-base-300"
+    name="my-accordion-det-1"
+  >
+    <summary class="collapse-title font-semibold">Dev Tools</summary>
+    <div class="collapse-content text-sm">
+      {
+        skill.devtools.map((i) => (
+          <span class="badge badge-ghost badge-dash mr-2 mt-2">{i}</span>
+        ))
+      }
+    </div>
+  </details>
+  <details
+    class="collapse collapse-arrow bg-base-100 border border-base-300"
+    name="my-accordion-det-1"
+  >
+    <summary class="collapse-title font-semibold"
+      >System & Infrastructure</summary
+    >
+    <div class="collapse-content text-sm">
+      {
+        skill.infrastructures.map((i) => (
+          <span class="badge badge-ghost badge-dash mr-2 mt-2">{i}</span>
+        ))
+      }
+    </div>
+  </details>
+  <details
+    class="collapse collapse-arrow bg-base-100 border border-base-300"
+    name="my-accordion-det-1"
+  >
+    <summary class="collapse-title font-semibold">API & Integration</summary>
+    <div class="collapse-content text-sm">
+      {
+        skill.integrations.map((i) => (
+          <span class="badge badge-ghost badge-dash mr-2 mt-2">{i}</span>
+        ))
+      }
+    </div>
+  </details>
+  <details
+    class="collapse collapse-arrow bg-base-100 border border-base-300"
+    name="my-accordion-det-1"
+  >
+    <summary class="collapse-title font-semibold">Specialization</summary>
+    <div class="collapse-content text-sm">
+      {
+        skill.specializations.map((i) => (
+          <span class="badge badge-ghost badge-dash mr-2 mt-2">{i}</span>
+        ))
+      }
+    </div>
+  </details>
 </div>

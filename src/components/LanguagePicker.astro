@@ -1,0 +1,51 @@
+---
+import { languages } from "../i18n/ui";
+import { getLangFromUrl } from "../i18n/utils";
+
+const currentLang = getLangFromUrl(Astro.url);
+const { pathname } = Astro.url;
+
+// Fungsi untuk membuat URL tujuan
+const translatePath = (targetLang: string) => {
+  const parts = pathname.split("/").filter(Boolean);
+
+  // Jika parts[0] adalah kode bahasa saat ini, hapus
+  if (Object.keys(languages).includes(parts[0])) {
+    parts.shift();
+  }
+
+  // Jika target bukan default (id), tambahkan prefiks
+  if (targetLang !== "en") {
+    return `/${targetLang}/${parts.join("/")}`;
+  }
+
+  return `/${parts.join("/")}`;
+};
+---
+
+<div class="dropdown dropdown-end">
+  <div
+    tabindex="0"
+    role="button"
+    class="btn btn-ghost btn-sm rounded-btn uppercase"
+  >
+    {languages[currentLang]} | {currentLang}
+  </div>
+  <ul
+    tabindex="0"
+    class="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-32 mt-4"
+  >
+    {
+      Object.entries(languages).map(([code]) => (
+        <li>
+          <a
+            href={translatePath(code)}
+            class={code === currentLang ? "active" : ""}
+          >
+            {code.toUpperCase()}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

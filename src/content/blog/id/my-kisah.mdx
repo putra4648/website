@@ -1,0 +1,137 @@
+---
+title: My Kisah - Part 1
+description: 
+  - 'Menelusuri jejak "My Kisah" sebagai Fullstack Engineer'
+  - 'Dari menjinakkan ekosistem Spring Boot, membangun mobile apps dengan Flutter, hingga strategi efisiensi di Nuxt. Bukan sekadar koding, ini soal seni mengelola sistem dan mentalitas engineering'
+pubDate: 2025-12-23 15:00
+tags: [life,journey,tech]
+---
+import Timeline from '../../../components/Timeline.astro'
+import Alert from '../../../components/Alert.astro'
+
+# My Kisah: Labirin Kode dan Ambisi Gweh 🚀
+
+Bagi gweh, ngoding aplikasi *mobile* itu bukan sekadar ngetik, tapi seni menyeimbangkan antara performa HP kentang yang terbatas dengan logika bisnis yang ruwetnya ngalahin hubungan asmara. Sejak tahun 2020, gweh sudah mewakafkan diri untuk menguasai **Flutter**. Bukan cuma buat bikin UI yang *eye-candy* doang, tapi supaya jadi fondasi sistem yang nggak bakal *force close* pas lagi sayang-sayangnya—eh, maksudnya pas lagi dipake *user*.
+
+Petualangan gweh dimulai dari PDKT sama bahasa **Dart**. Dari situ, gweh meluncur ke arsitektur kelas menengah atas (biar gaya tapi berisi). Gweh terapin **Domain-Driven Design (DDD)** biar kode nggak berantakan kayak kamar kosan, plus disiplin **Test-Driven Development (TDD)** buat memastikan tiap modul bersih dari dosa sebelum dilempar ke tangan *user*. Masalah *state management*? Transisi gweh dari **Provider** ke **flutter_bloc** adalah bukti kalau gweh orangnya prinsipil banget soal pemisahan logika bisnis.
+
+### **Kekuatan Inti Gweh di Dunia Persilatan Mobile:**
+
+* **Silat IoT (MQTT):** Gweh bikin aplikasi dan *hardware* ngobrol lancar pakai protokol **MQTT**. *Real-time*, irit daya, dan pastinya sat-set-was-wes.
+* **Security-First (Anti Injeksi-Injeksi Club):** Gweh jagain aplikasi dari serangan *secret injection* dan ngurusin *runtime permissions* Android biar nggak asal tembus. Keamanan adalah koentji!
+* **Cloud Integration:** Maksimalin **Firebase** buat urusan *backend-as-a-service* biar sinkronisasi data secepat kilat.
+
+Meskipun sekarang gweh lagi selingkuh dikit belajar *backend* pakai **Spring Boot**, tapi cinta pertama gweh sama *mobile lifecycle* nggak akan pernah pudar. Gweh nggak cuma bikin aplikasi; gweh lagi ngerakit ekosistem *mobile* yang aman, *scalable*, dan cukup pinter buat interaksi sama dunia luar lewat IoT.
+
+<Alert type='warning' message='Tulisan ini adalah bagian dari "My Kisah" perjalanan karir gweh. Kalau lu baru nyasar di sini, mending *follow* biar nggak ketinggalan episode absurd berikutnya.'/>
+
+---
+
+### **The "Gweh Tech Stack" (Mobile Edition)**
+
+Sebagai penganut sekte skalabilitas dan performa tinggi, inilah *tools* tempur gweh:
+
+| Category | Tech Stack | Keterangan Singkat |
+| :--- | :--- | :--- |
+| **State Management** | `flutter_bloc` | Biar logika UI dan bisnis nggak campur aduk kayak es campur. Bikin *testing* (TDD) gampang. |
+| **Networking** | `Dio` | Urusan manggil API, pakai *interceptor* biar aman dan urusan token nggak jadi beban pikiran. |
+| **Relational DB** | `Drift` | Pas butuh SQL yang kuat buat data relasional yang ribet dan butuh *reactive streams*. |
+| **NoSQL DB** | `Hive` | Pas butuh *key-value store* yang ngebutnya kayak lagi dikejar *deadline*. |
+| **Cloud Services** | `Firebase` | Paket lengkap dari *Auth*, *Real-time DB*, sampe *Crashlytics*. |
+| **Notifications** | `Local Notif` | Biar aplikasi bisa manggil *user*, nggak cuma pasrah nunggu dikabarin duluan. |
+
+#### **Architecture & Methodology:**
+* **DDD (Domain-Driven Design):** Biar kode tetap teratur sesuai domain bisnis, nggak asal tumpuk di satu folder.
+* **TDD (Test-Driven Development):** Ritual wajib biar kode berkualitas dan nggak bikin jantungan pas di-*deploy*.
+* **MQTT Protocol:** Jalur VIP buat komunikasi aplikasi ke *hardware* secara *real-time*.
+* **Google Fonts:** Karena mata user juga butuh asupan tipografi yang estetik namun tetap *readable*.
+
+---
+
+## Momen "Aha!"
+
+### **The "Aha!" Moment: Pas Otak Gweh Akhirnya Connect** 💡
+
+Dalam perjalanan gweh, ada satu titik balik yang bikin gweh ngerasa: *"Oh, begini toh caranya jadi engineer beneran, bukan sekadar tukang copas Stack Overflow."*
+
+Momen itu dateng pas gweh pertama kali nyobain nerapin **DDD (Domain-Driven Design)** dan **TDD** secara barengan. Awalnya gweh ngerasa, *"Anjir, ribet banget mau bikin fitur simpel aja harus bikin test sama misah-misahin folder domain segala!"* Otak gweh sempet nge-lag, berasa kena *brain fog* sisa masa lalu.
+
+**Tapi tiba-tiba... "AHA!"** Pas gweh harus nambahin fitur baru yang kompleks dan gweh sadar kalau kode gweh nggak *break* sama sekali. Gweh nggak perlu takut ngerusak fitur lama karena *unit test*-nya udah nge-jagain di belakang. Di situ gweh sadar: **Arsitektur yang rapi itu investasi, bukan beban.**
+
+Sama satu lagi momen pas gweh pertama kali konekin aplikasi Flutter gweh ke hardware pakai **MQTT**. Pas gweh pencet tombol di layar HP, dan *lampu/sensor* di ujung sana langsung ngerespon *real-time* tanpa delay yang berarti... gweh ngerasa kayak punya kekuatan magis. *That's the power of low-latency communication!*
+
+> **Pelajaran yang gweh ambil:** > "Jangan males ribet di awal (pake TDD/DDD), biar nggak nangis darah di akhir pas sistem udah gede."
+---
+
+> Any fool can write code that a computer can understand. Good programmers write code that humans can understand. — Martin Fowler
+
+<small>(Artinya: Orang bodoh mana pun bisa ngetik kode yang dimengerti komputer. Tapi programmer jagoan itu ngetik kode yang bisa dimengerti sesama manusia.)</small>
+
+> Success is not final, failure is not fatal: it is the courage to continue that counts. — Winston Churchill
+
+<small>Kena tipu klien atau kena bug itu biasa, yang penting mentalitas buat tetep lanjut belajar Spring Boot dan IoT itu yang luar biasa.</small>
+
+### **🎯 Target di Fase Pertama: "The Foundation Age"**
+
+1.  **Zero Defect Mentality:** Nerapin TDD biar gweh bisa tidur nyenyak tanpa mimpi buruk soal *bug*.
+2.  **Architectural Mastery:** Menjinakkan DDD agar kode rapi se-rapi barisan semut.
+3.  **IoT Connectivity:** Memastikan aplikasi *mobile* bisa jadi "remote control" dunia nyata lewat MQTT.
+4.  **Backend Awakening:** Mulai menjamah **Spring Boot** supaya gweh bisa bikin ekosistem sendiri dari hulu ke hilir.
+
+---
+
+## **🛣️ Roadmap: Rute Gerilya Gweh**
+
+Berikut adalah *timeline* singkat persiapan saya sebelum akhirnya memutuskan untuk *pivoting*:
+
+<Timeline 
+  items={[
+    {
+    year: "2020",
+    title: "The Flutter Awakening",
+    content: [
+      "PDKT mendalam dengan bahasa Dart sebagai fondasi utama.",
+      "Evolusi State Management dari Provider ke flutter_bloc demi pemisahan logika yang ketat.",
+      "Implementasi Security: Mitigasi Secret Injection dan manajemen Android Runtime Permissions."
+    ]
+  },
+  {
+    year: "2021 - 2022",
+    title: "The Architect Era",
+    content: [
+      "Adopsi disiplin TDD (Test-Driven Development) untuk menjaga integritas kode.",
+      "Penerapan DDD (Domain-Driven Design) agar struktur project lebih scalable dan teratur.",
+      "Mastering Offline-First Power menggunakan Drift (SQL) dan Hive (NoSQL)."
+    ]
+  },
+  {
+    year: "2023 - Present",
+    title: "Expanding The Universe",
+    content: [
+      "Integrasi IoT melalui protokol MQTT untuk komunikasi real-time aplikasi ke hardware.",
+      "Backend Awakening: Migrasi strategis ke Spring Boot untuk performa server-side yang tangguh.",
+      "Fullstack Vision: Menghubungkan ekosistem Mobile, IoT, dan Backend secara utuh."
+    ]
+  }
+  ]}
+/>
+
+---
+
+## 🤝 **Closing Statement: Belum Selesai, Baru Dimulai**
+
+Perjalanan gweh sejauh ini ngebuktiin satu hal: Jadi *developer* itu bukan soal hafal *syntax*, tapi soal seberapa keras kepala lu buat tetep belajar pas keadaan lagi nggak berpihak—entah itu pas kena tipu klien, atau pas otak lagi mampet-mampetnya karena *bug* yang nggak kelar-kelar.
+
+Gweh emang udah "selingkuh" ke **Spring Boot**, tapi jiwa gweh tetep seorang *mobile engineer* yang haus akan efisiensi. Sekarang, gweh lagi fokus buat ngerakit masa depan yang lebih stabil, satu baris kode (dan satu titik solder) demi satu titik lainnya. 
+
+**Sampai Jumpa di Episode Selanjutnya!**
+Di bagian selanjutnya, gweh bakal cerita gimana caranya gweh perang lawan *brain fog* selama bertahun-tahun sambil tetep maksa ngebangun *Core ERP Inventory* dan mulai belajar bongkar-pasang *hardware* Android. *It’s gonna be messy, but real.*
+
+---
+
+**Punya pengalaman serupa soal transisi teknologi atau kena "ghosting" klien? Coret-coret di bawah, kita sambung silaturahmi antar engineer!**
+
+> [!TIP]
+> **Keep Coding, Keep Sane.** Jangan lupa ngopi biar *logic* tetep jalan, tapi jangan kebanyakan ntar malah tremor pas lagi ngetik `flutter_bloc`.
+
+<small>Yang atas belum jadi jadi abaikan saja :P</small>

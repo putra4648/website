@@ -1,17 +1,35 @@
 ---
 import { SITE_TITLE } from "../consts";
+import { languages } from "../i18n/ui";
+import {
+  getLangFromUrl,
+  useTranslatedPath,
+  useTranslations,
+} from "../i18n/utils";
 import HeaderLink from "./HeaderLink.astro";
+import LanguagePicker from "./LanguagePicker.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 ---
 
 <header class="sticky top-0 navbar bg-base-100 shadow-sm px-3 z-1">
-	<div class="flex-1">
-		<div class="text-lg font-bold">
-			<a href="/">{SITE_TITLE}</a>
-		</div>
-	</div>
-	<div class="flex-none">
-		<HeaderLink class="mx-2" href="/">Home</HeaderLink>
-		<HeaderLink class="mx-2" href="/blog">Blog</HeaderLink>
-		<HeaderLink class="mx-2" href="/about">About</HeaderLink>
-	</div>
+  <div class="flex-1">
+    <div class="text-lg font-bold">
+      <a href="/">{SITE_TITLE}</a>
+    </div>
+  </div>
+  <div class="flex-none">
+    <HeaderLink class="mx-2" href={translatePath("/")}
+      >{t("nav.home")}</HeaderLink
+    >
+    <HeaderLink class="mx-2" href={translatePath("/blog")}
+      >{t("nav.blog")}</HeaderLink
+    >
+    <HeaderLink class="mx-2" href={translatePath("/about")}
+      >{t("nav.about")}</HeaderLink
+    >
+    <LanguagePicker />
+  </div>
 </header>
