@@ -1,0 +1,86 @@
+---
+import { coloring } from "../utils/coloring";
+
+const timeline = [
+  {
+    year: "2021",
+    title: "Freelance",
+    company: "",
+    jobdesk: [
+      "Pengembangan IoT: Mengembangkan aplikasi smart home menggunakan Flutter yang memungkinkan pengguna mengontrol perangkat rumah secara efisien",
+      "Integrasi Protokol: Mengintegrasikan komponen IoT dan protokol komunikasi untuk meningkatkan responsivitas sistem dan pengalaman pengguna",
+      "Monitoring Real-time: Mengimplementasikan pemantauan status perangkat secara langsung (real-time) dan rutinitas otomatisasi",
+    ],
+  },
+  {
+    year: "2023",
+    title: "Fullstack Developer",
+    company: "PT. Astra Honda Motor",
+    jobdesk: [
+      "Modernisasi Sistem: Memimpin migrasi aplikasi warisan (legacy) dari Oracle ADF 11g ke platform berbasis web dan desktop menggunakan Spring Framework dan teknologi frontend native (jQuery, Bootstrap 4).",
+      "Optimasi SQL: Meningkatkan performa sistem dengan mengoptimalkan query SQL kompleks (operasi JOIN dan UNION) untuk mempercepat waktu eksekusi.",
+      "Kualitas Kode: Menerapkan prinsip clean code dan modularisasi komponen untuk meningkatkan keandalan serta kemudahan pemeliharaan aplikasi",
+    ],
+  },
+  {
+    year: "2024",
+    title: "Fullstack Developer",
+    company: "PT. FTS Automotive Indonesia",
+    jobdesk: [
+      "Aplikasi Internal: Membangun sistem Purchase Requisition dan Production Monitoring menggunakan Spring Boot dan React untuk menggantikan modul lama.",
+      "Efisiensi Signifikan: Meningkatkan efisiensi operasional sebesar 50% dengan mendigitalisasi prosedur manual dan menerapkan alur proses yang terstruktur.",
+      "Otomasi DevOps: Mengotomatiskan pipa rilis menggunakan GitLab CI/CD, yang memangkas waktu penerapan (deployment) sebesar 30%.",
+      "Arsitektur Sistem: Merancang arsitektur sistem, mengimplementasikan RESTful API, dan merekayasa model data PostgreSQL.",
+    ],
+  },
+  {
+    year: "2025",
+    title: "Fullstack Developer",
+    company: "PT. Sinar Sukses Mandiri",
+    jobdesk: [
+      "Digitalisasi Proses: Mengembangkan modul menggunakan Spring Boot dan Vue.js untuk mendigitalisasi pencatatan manual, yang berhasil mengurangi kesalahan operasional sekitar 20%.",
+      "Kontrol Internal: Mengimplementasikan sistem approval workflow untuk meningkatkan transparansi proses dan mencegah tindakan yang tidak sah.",
+      "Optimasi Performa: Meningkatkan kecepatan aplikasi hingga 10% melalui strategi caching, optimasi kode backend, dan penyetelan query database.",
+      "Stabilitas Sistem: Mendiagnosis dan menyelesaikan masalah teknis di seluruh lapisan (frontend, backend, dan database) untuk menjaga stabilitas sistem",
+    ],
+  },
+];
+---
+
+<ul
+  class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical"
+>
+  {
+    timeline.map((item, i) => (
+      <li>
+        <div class="timeline-middle">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="h-5 w-5"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </div>
+        <div
+          class={`md:mb-10 ${i % 2 === 0 ? "timeline-start" : "timeline-end"}`}
+        >
+          <time class="font-mono italic ">{item.year}</time>
+          <h2 class={coloring(item.title)}>{item.title}</h2>
+          <p>{item.company}</p>
+          <ul class="list">
+            {item.jobdesk.map((jobdesk) => (
+              <li class="list-row">{jobdesk}</li>
+            ))}
+          </ul>
+        </div>
+        <hr />
+      </li>
+    ))
+  }
+</ul>

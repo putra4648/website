@@ -1,8 +1,8 @@
 export const showDefaultLang = true;
 
 export const languages = {
-  en: "English",
-  id: "Bahasa",
+  en: "🌐 EN",
+  id: "🌐 ID",
 };
 
 export const defaultLang = "en";

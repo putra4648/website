@@ -1,6 +1,7 @@
 ---
 import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
+import Project from "../../components/Project.astro";
 import Layout from "../../layouts/Layout.astro";
 ---
 
@@ -8,23 +9,23 @@ import Layout from "../../layouts/Layout.astro";
   <Header />
   <main class="container mx-auto p-3 prose my-5">
     <div class="flex flex-col">
-      <h1>🧑‍🚀 Halo, Semuanya!</h1>
+      <h1>🧑🚀 Halo, Semuanya!</h1>
+      <h2>Namaku adalah "Putra"</h2>
       <p>
-        Saya adalah seorang Software Engineer yang spesialis dalam sistem
-        backend terukur, arsitektur modular, dan pengembangan aplikasi
-        enterprise. Dengan pengalaman mendalam di framework berbasis Java, stack
-        frontend modern, dan alur kerja DevOps, saya membangun perangkat lunak
-        yang andal serta mudah dikelola untuk mendukung operasional bisnis di
-        dunia nyata.
+        <span class="text-lg font-bold text-red-300"
+          >Fullstack Software Engineer</span
+        > |
+        <span class="text-lg font-bold text-green-300"
+          >Spesialis Ekosistem Java & Modern Frontend</span
+        >
       </p>
       <p>
-        Saya terbuka untuk peluang kolaborasi dan proyek freelance, terutama
-        dalam pengembangan perangkat lunak, integrasi sistem, dan modernisasi
-        aplikasi. Saya menyambut kemitraan dengan individu, startup, maupun
-        organisasi yang membutuhkan eksekusi teknis yang andal dan solusi yang
-        dapat diskalakan.
+        Fullstack Software Engineer yang menjembatani sistem backend Java yang
+        kokoh dengan antarmuka modern yang responsif. Berpengalaman dalam
+        membangun arsitektur modular, alur DevOps, dan solusi enterprise yang
+        siap pakai. Saya membantu organisasi mewujudkan ide menjadi produk
+        digital yang andal dan terukur.!
       </p>
-
       <div class="stats stats-vertical lg:stats-horizontal shadow">
         <div class="stat">
           <div class="stat-title">Pengalaman</div>
@@ -42,5 +43,6 @@ import Layout from "../../layouts/Layout.astro";
       </div>
     </div>
   </main>
+  <!-- <Project /> -->
   <Footer />
 </Layout>
