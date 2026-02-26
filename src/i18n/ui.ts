@@ -12,10 +12,12 @@ export const ui = {
     "nav.home": "Home",
     "nav.about": "About",
     "nav.blog": "Blog",
+    "nav.portfolio": "Portfolio",
   },
   id: {
     "nav.home": "Beranda",
     "nav.about": "Tentang",
     "nav.blog": "Blog",
+    "nav.portfolio": "Portofolio",
   },
 } as const;

@@ -1,0 +1,133 @@
+---
+const portfolio = [
+  {
+    year: 2024,
+    title: "Purchase Requisition (Internal)",
+    description:
+      "Proyek ini adalah sistem manajemen pengadaan barang (e-Procurement) berbasis modul yang dirancang untuk mengotomatisasi siklus pembelian barang di perusahaan mulai dari perencanaan anggaran hingga transfer stok antar gudang. Sistem ini memastikan setiap pengadaan terdata, transparan, dan sesuai dengan anggaran perusahaan.",
+    stack: ["SpringBoot", "React", "ChakraUI", "PostgreSQL", "Typescript"],
+    source: "",
+  },
+  {
+    year: 2025,
+    title: "Production Monitoring System (Internal)",
+    description:
+      "Proyek ini adalah sistem manajemen manufaktur terintegrasi yang dirancang untuk mengoptimalkan efisiensi lantai produksi. Fokus utama sistem ini adalah pada Production Planning & Control (PPC), di mana perusahaan dapat mengatur beban kerja harian berdasarkan kapasitas mesin dan tenaga kerja yang tersedia, serta menyajikan data performa dalam format laporan yang profesional.",
+    stack: ["SpringBoot", "PostgreSQL", "Bootstrap5", "JasperReport"],
+    source: "",
+  },
+  {
+    year: 2025,
+    title: "Transfer Request (Internal)",
+    description:
+      "Proyek ini adalah sistem Enterprise Resource Planning (ERP) skala internal yang fokus pada manajemen perpindahan barang (Transfer Request) dan kontrol proses produksi. Tujuan utamanya adalah memastikan setiap item yang diproduksi sesuai dengan spesifikasi master data dan meminimalisir human error melalui sistem pemindaian barcode yang ketat.",
+    stack: ["SpringBoot", "PostgreSQL", "Bootstrap5", "JasperReport"],
+    source: "",
+  },
+  {
+    year: 2021,
+    title: "Portal Berita Indonesia",
+    description:
+      "Proyek ini adalah aplikasi portal berita yang dirancang untuk menyajikan berita terkini dari berbagai sumber di Indonesia. Aplikasi ini memiliki fitur utama yaitu menampilkan berita berdasarkan kategori, pencarian berita, dan detail berita lengkap dengan gambar dan sumber.",
+    stack: ["Flutter", "REST API", "News API"],
+    source: "https://github.com/putra4648/portal_berita_indonesia",
+  },
+  {
+    year: 2021,
+    title: "Xpense Tracker UI",
+    description:
+      "Slicing UI dari Dribbble untuk aplikasi mobile expense tracker.",
+    stack: ["Flutter", "Figma"],
+    source: "https://github.com/putra4648/xpense_tracker",
+  },
+  {
+    year: 2020,
+    title: "My Anime List App",
+    description:
+      "Aplikasi mobile untuk manajemen anime yang memungkinkan pengguna untuk melacak anime yang sedang ditonton, yang sudah ditonton, dan yang ingin ditonton. Aplikasi ini juga memiliki fitur untuk menambahkan rating dan review untuk setiap anime.",
+    stack: ["Flutter", "REST API", "FlutterBloc", "Jikan API"],
+    source: "https://github.com/putra4648/mal_app",
+  },
+  {
+    year: 2025,
+    title: "Warehouse System (WIP)",
+    description:
+      "Sistem manajemen gudang yang dirancang untuk mengoptimalkan efisiensi operasional gudang. Sistem ini memiliki fitur utama yaitu manajemen stok barang, manajemen lokasi barang, manajemen transfer barang, dan manajemen laporan.",
+    stack: ["SpringBoot", "PostgreSQL", "NuxtJS", "Keycloak"],
+    source: "https://github.com/putra4648/warehouse_system",
+  },
+  {
+    year: 2025,
+    title: "ERP System (WIP)",
+    description:
+      "Proyek ERP yang dirancang untuk mengoptimalkan efisiensi operasional perusahaan. Sistem ini memiliki fitur utama yaitu manajemen stok barang, manajemen lokasi barang, manajemen transfer barang, dan manajemen laporan. Untuk belajar mengenai arsitektur modular dan clean architecture.",
+    stack: ["Golang", "PostgreSQL", "NuxtJS", "Keycloak"],
+    source: "",
+  },
+];
+---
+
+<div class="container mx-auto my-5">
+  <ul class="list bg-base-100 rounded-box shadow-md">
+    {
+      portfolio
+        .sort((a, b) => b.year - a.year || b.title.localeCompare(a.title))
+        .map((item, index) => (
+          <li class="list-row">
+            <div class="text-4xl font-thin opacity-30 tabular-nums">
+              {(index + 1).toString().padStart(2, "0")}
+            </div>
+
+            <div class="font-bold">{item.title}</div>
+            <div class="list-col-wrap space-x-2">
+              <div class="font-bold text-green-300">{item.year}</div>
+              <p class="mb-5">{item.description}</p>
+              {item.stack.map((stack) => (
+                <div class="badge badge-outline badge-dash">{stack}</div>
+              ))}
+            </div>
+            <button class="btn btn-block btn-ghost">
+              Preview
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+                />
+              </svg>
+            </button>
+            {item.source && (
+              <a
+                target="_blank"
+                href={item.source}
+                class="btn btn-block btn-ghost"
+              >
+                Source
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+                  />
+                </svg>
+              </a>
+            )}
+          </li>
+        ))
+    }
+  </ul>
+</div>
