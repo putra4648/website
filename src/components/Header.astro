@@ -21,11 +21,23 @@ const translatePath = useTranslatedPath(lang);
     </div>
   </div>
   <div class="hidden md:flex navbar-end">
-    <HeaderLink class="mx-2" href={translatePath("/blog")}
-      >{t("nav.blog")}</HeaderLink
+    <HeaderLink class="mx-2" href={translatePath("/")}
+      >{t("nav.home")}</HeaderLink
     >
-    <HeaderLink class="mx-2" href={translatePath("/about")}
+    <HeaderLink
+      class="mx-2"
+      href={translatePath("/" + t("nav.portfolio").toLowerCase())}
+      >{t("nav.portfolio")}</HeaderLink
+    >
+    <HeaderLink
+      class="mx-2"
+      href={translatePath("/" + t("nav.about").toLowerCase())}
       >{t("nav.about")}</HeaderLink
+    >
+    <HeaderLink
+      class="mx-2"
+      href={translatePath("/" + t("nav.blog").toLowerCase())}
+      >{t("nav.blog")}</HeaderLink
     >
     <LanguagePicker />
   </div>
@@ -50,8 +62,10 @@ const translatePath = useTranslatedPath(lang);
         tabindex="-1"
         class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
       >
-        <li><a href={translatePath("/blog")}>{t("nav.blog")}</a></li>
+        <li><a href={translatePath("/")}>{t("nav.home")}</a></li>
         <li><a href={translatePath("/about")}>{t("nav.about")}</a></li>
+        <li><a href={translatePath("/portfolio")}>{t("nav.portfolio")}</a></li>
+        <li><a href={translatePath("/blog")}>{t("nav.blog")}</a></li>
         <hr />
         <li>
           <LanguagePicker />
