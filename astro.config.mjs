@@ -24,11 +24,6 @@ export default defineConfig({
     sitemap(),
     vue({
       appEntrypoint: '/src/pages/_app',
-      template: {
-        compilerOptions: {
-          isCustomElement: (tag) => tag.startsWith('vue-')
-        }
-      }
     }),
     icon(),
   ],

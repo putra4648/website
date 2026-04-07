@@ -544,12 +544,3 @@ const options = {
     <vue-particles id="tsparticles" :options="options" />
     <slot />
 </template>
-
-<style>
-.box {
-    width: 100px;
-    height: 100px;
-    background-color: #0cdcf7;
-    border-radius: 5px;
-}
-</style>
