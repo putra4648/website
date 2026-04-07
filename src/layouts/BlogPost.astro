@@ -24,8 +24,8 @@ const { minutesRead, lastModified } = Astro.props;
   </head>
 
   <body>
-    <Layout
-      ><main class="max-w-3/5 mx-auto prose my-3">
+    <Layout title={title} description={description.join(". ")}>
+      <main class="max-w-3/5 mx-auto prose my-3">
         <a role="button" class="btn btn-ghost btn-lg" href="/blog">
           <Icon name="material-symbols:arrow-back" />
           Back to Blog
