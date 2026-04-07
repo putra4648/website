@@ -4,7 +4,7 @@ const portfolio = [
     year: 2024,
     title: "Purchase Requisition (Internal)",
     description:
-      "Proyek ini adalah sistem manajemen pengadaan barang (e-Procurement) berbasis modul yang dirancang untuk mengotomatisasi siklus pembelian barang di perusahaan mulai dari perencanaan anggaran hingga transfer stok antar gudang. Sistem ini memastikan setiap pengadaan terdata, transparan, dan sesuai dengan anggaran perusahaan.",
+      "A module-based e-Procurement system designed to automate the corporate purchasing cycle, from budget planning to inter-warehouse stock transfers. It ensures all procurement activities are documented, transparent, and aligned with company budgets.",
     stack: ["SpringBoot", "React", "ChakraUI", "PostgreSQL", "Typescript"],
     source: "",
   },
@@ -12,7 +12,7 @@ const portfolio = [
     year: 2025,
     title: "Production Monitoring System (Internal)",
     description:
-      "Proyek ini adalah sistem manajemen manufaktur terintegrasi yang dirancang untuk mengoptimalkan efisiensi lantai produksi. Fokus utama sistem ini adalah pada Production Planning & Control (PPC), di mana perusahaan dapat mengatur beban kerja harian berdasarkan kapasitas mesin dan tenaga kerja yang tersedia, serta menyajikan data performa dalam format laporan yang profesional.",
+      "An integrated manufacturing management system built to optimize shop floor efficiency. It focuses on Production Planning & Control (PPC), enabling daily workload management based on machine capacity and labor availability, while generating professional performance reports.",
     stack: ["SpringBoot", "PostgreSQL", "Bootstrap5", "JasperReport"],
     source: "",
   },
@@ -20,7 +20,7 @@ const portfolio = [
     year: 2025,
     title: "Transfer Request (Internal)",
     description:
-      "Proyek ini adalah sistem Enterprise Resource Planning (ERP) skala internal yang fokus pada manajemen perpindahan barang (Transfer Request) dan kontrol proses produksi. Tujuan utamanya adalah memastikan setiap item yang diproduksi sesuai dengan spesifikasi master data dan meminimalisir human error melalui sistem pemindaian barcode yang ketat.",
+      "An internal-scale ERP system focused on item transfer management and production process control. It ensures all manufactured items comply with master data specifications and minimizes human error through a rigorous barcode scanning system.",
     stack: ["SpringBoot", "PostgreSQL", "Bootstrap5", "JasperReport"],
     source: "",
   },
@@ -28,7 +28,7 @@ const portfolio = [
     year: 2021,
     title: "Portal Berita Indonesia",
     description:
-      "Proyek ini adalah aplikasi portal berita yang dirancang untuk menyajikan berita terkini dari berbagai sumber di Indonesia. Aplikasi ini memiliki fitur utama yaitu menampilkan berita berdasarkan kategori, pencarian berita, dan detail berita lengkap dengan gambar dan sumber.",
+      "A news portal application designed to deliver the latest news from various Indonesian sources. Key features include category-based news filtering, search functionality, and detailed news views with integrated images and source links.",
     stack: ["Flutter", "REST API", "News API"],
     source: "https://github.com/putra4648/portal_berita_indonesia",
   },
@@ -36,7 +36,7 @@ const portfolio = [
     year: 2021,
     title: "Xpense Tracker UI",
     description:
-      "Slicing UI dari Dribbble untuk aplikasi mobile expense tracker.",
+      "A UI slicing project based on a Dribbble design for a mobile expense tracker application, focusing on high-fidelity visual implementation.",
     stack: ["Flutter", "Figma"],
     source: "https://github.com/putra4648/xpense_tracker",
   },
@@ -44,7 +44,7 @@ const portfolio = [
     year: 2020,
     title: "My Anime List App",
     description:
-      "Aplikasi mobile untuk manajemen anime yang memungkinkan pengguna untuk melacak anime yang sedang ditonton, yang sudah ditonton, dan yang ingin ditonton. Aplikasi ini juga memiliki fitur untuk menambahkan rating dan review untuk setiap anime.",
+      "A mobile management application that allows users to track their anime watchlist (currently watching, completed, and plan to watch). It includes features for adding personal ratings and reviews for each title.",
     stack: ["Flutter", "REST API", "FlutterBloc", "Jikan API"],
     source: "https://github.com/putra4648/mal_app",
   },
@@ -52,7 +52,7 @@ const portfolio = [
     year: 2025,
     title: "Warehouse System (WIP)",
     description:
-      "Sistem manajemen gudang yang dirancang untuk mengoptimalkan efisiensi operasional gudang. Sistem ini memiliki fitur utama yaitu manajemen stok barang, manajemen lokasi barang, manajemen transfer barang, dan manajemen laporan.",
+      "A warehouse management system (WMS) designed to optimize operational efficiency. Key features include stock management, location tracking, transfer management, and comprehensive reporting.",
     stack: ["SpringBoot", "PostgreSQL", "NuxtJS", "Keycloak"],
     source: "https://github.com/putra4648/warehouse_system",
   },
@@ -60,7 +60,7 @@ const portfolio = [
     year: 2025,
     title: "ERP System (WIP)",
     description:
-      "Proyek ERP yang dirancang untuk mengoptimalkan efisiensi operasional perusahaan. Sistem ini memiliki fitur utama yaitu manajemen stok barang, manajemen lokasi barang, manajemen transfer barang, dan manajemen laporan. Untuk belajar mengenai arsitektur modular dan clean architecture.",
+      "An ERP project focused on streamlining corporate operations through stock, location, and transfer management. This project serves as a deep dive into modular architecture and Clean Architecture principles.",
     stack: ["Golang", "PostgreSQL", "NuxtJS", "Keycloak"],
     source: "",
   },
@@ -80,7 +80,6 @@ const portfolio = [
 
             <div class="font-bold">{item.title}</div>
             <div class="list-col-wrap space-x-2">
-              <div class="font-bold text-green-300">{item.year}</div>
               <p class="mb-5">{item.description}</p>
               {item.stack.map((stack) => (
                 <div class="badge badge-outline badge-dash">{stack}</div>

@@ -1,45 +1,13 @@
 ---
+import type { Fragment } from "vue";
 import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
-import Project from "../components/Project.astro";
 import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Intro from "../components/Intro.astro";
 ---
 
 <Layout>
-  <Header />
-  <meta http-equiv="refresh" content="0;url=/id/" />
-  <main class="container mx-auto p-3 prose my-5">
-    <div class="flex flex-col">
-      <h1>🧑‍🚀 Hello, People!</h1>
-      <p>
-        I am a Software Engineer specializing in scalable backend systems,
-        modular architecture, and enterprise application development. With
-        strong experience in Java-based frameworks, modern frontend stacks, and
-        DevOps workflows, I build reliable, maintainable software that supports
-        real-world business operations.
-      </p>
-      <p>
-        I am open to collaboration opportunities and freelance projects,
-        particularly in software development, system integration, and
-        application modernization. I welcome partnerships with individuals,
-        startups, and organizations seeking reliable technical execution and
-        scalable solutions.
-      </p>
-      <div class="stats stats-vertical lg:stats-horizontal shadow">
-        <div class="stat">
-          <div class="stat-title">Experiences</div>
-          <div class="stat-value">3+ yoe</div>
-          <div class="stat-desc">As Fullstack (with Android Development)</div>
-        </div>
-
-        <div class="stat">
-          <div class="stat-title">Projects</div>
-          <div class="stat-value">5+</div>
-          <div class="stat-desc">Mostly internal project</div>
-        </div>
-      </div>
-    </div>
-  </main>
-  <Project />
+  <Navbar />
+  <Intro />
   <Footer />
 </Layout>

@@ -1,0 +1,138 @@
+---
+import { Icon } from "astro-icon/components";
+import SkillList from "./SkillList.astro";
+
+const skills = [
+    {
+        name: "Full-Stack Proficiency & Versatility",
+        icon: "material-symbols:code",
+        title: "3+ Years of Full-Stack Expertise",
+        description: `Proven track record in building end-to-end applications using a modern tech stack, including Golang, Java (Spring Boot), and Nuxt/Vue. I bridge the gap between complex backend architecture and seamless frontend interfaces`,
+    },
+    {
+        name: "Specialized Domain Knowledge",
+        icon: "material-symbols:domain",
+        title: "Expertise in ERP & Logistics Systems",
+        description: `Deeply focused on developing mission-critical systems like ERP (Enterprise Resource Planning) and WMS (Warehouse Management System). I understand the technical and operational complexities of inventory management and business automation`,
+    },
+    {
+        name: "Product-Driven Mindset",
+        icon: "material-symbols:manufacturing",
+        title: "SaaS & Product Development Focus",
+        description: `Beyond just writing code, I have a strong interest in building SaaS products that solve real-world problems. From conceptualizing MVPs to implementing scalable features, I build with a focus on business value and user efficiency.`,
+    },
+    {
+        name: "Entrepreneurial Spirit",
+        icon: "material-symbols:rocket-launch",
+        title: "Entrepreneurial & Growth-Oriented",
+        description: `Passionate about building digital assets and scalable SaaS solutions. I combine technical skills with a business mindset to transform innovative ideas into functional, revenue-generating products`,
+    },
+];
+---
+
+<div class="md:container mx-auto my-10">
+    <div class="grid md:grid-cols-2 gap-10 justify-items-center content-center">
+        <div>
+            <div
+                class="font-bold md:text-5xl text-2xl mb-5 text-center md:text-left"
+            >
+                Hi, I'm Putra. A Fullstack Developer building scalable web
+                applications
+            </div>
+            <div class="md:text-xl text-lg font-mono text-center md:text-left">
+                Passionate Fullstack Engineer dedicated to crafting clean code
+                and efficient digital solutions. With expertise in Golang, Nuxt,
+                and Spring Boot, I transform complex problems into elegant,
+                user-centric software. Explore my latest projects and technical
+                insights below.
+            </div>
+        </div>
+        <div class="self-center bg-bone aspect-square relative">
+            <div
+                class="bg-base-200 absolute top-2 left-2 w-full h-full -z-10 rounded hover:top-5 hover:left-5 transition-all duration-300"
+            >
+            </div>
+            <img
+                src="https://i.pravatar.cc/300?img=6"
+                alt="Hero"
+                class="w-full h-full rounded z-10"
+                loading="lazy"
+            />
+        </div>
+    </div>
+    <div class="mt-10 flex flex-wrap gap-4">
+        <button
+            class="btn btn-outline btn-primary btn-lg rounded-md ring-1 shadow-[6px_6px_0_0_rgba(0,0,0,0.2)]
+               hover:shadow-[0_4px_0_0_rgba(0,0,0,0.2)]
+               active:shadow-none active:translate-y-1.5
+               transition-all duration-75"
+        >
+            <Icon name="material-symbols:download" />
+            Download CV
+        </button>
+        <button
+            class="btn btn-outline btn-primary btn-lg rounded-md ring-1 shadow-[6px_6px_0_0_rgba(0,0,0,0.2)]
+               hover:shadow-[0_4px_0_0_rgba(0,0,0,0.2)]
+               active:shadow-none active:translate-y-1.5
+               transition-all duration-75"
+        >
+            <Icon name="material-symbols:mail" />
+            Send Me a Message
+        </button>
+    </div>
+    <div class="card shadow-sm mt-10 bg-base-200">
+        <div class="card-body">
+            <div
+                class="card-title font-bold md:text-2xl flex items-center gap-2"
+            >
+                About Me
+            </div>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="md:text-lg font-mono">
+                    I am a Fullstack Developer with over 3 years of professional
+                    experience building scalable web applications. My expertise
+                    lies in bridging the gap between complex backend logic and
+                    intuitive frontend experiences. Currently, I specialize in
+                    the Golang and Nuxt.js/Vue ecosystem, with a strong
+                    background in Java (Spring Boot) and distributed messaging
+                    systems like RabbitMQ. I thrive on solving architectural
+                    challenges and am currently passionate about developing
+                    comprehensive ERP (Enterprise Resource Planning) and WMS
+                    (Warehouse Management System) solutions. My goal is to
+                    transform intricate business requirements into clean,
+                    maintainable, and high-performing code
+                </div>
+                <div class="grid md:grid-cols-2 gap-4">
+                    {
+                        skills.map((skill) => (
+                            <div class="flex items-center gap-2">
+                                <div class="card bg-base-100 shadow-sm min-h-56 relative">
+                                    <div class="card-body z-10">
+                                        <h2 class="card-title text-xl flex items-center gap-2">
+                                            <Icon
+                                                name={skill.icon}
+                                                class="text-xl"
+                                            />
+                                            {skill.name}
+                                        </h2>
+                                        <p>{skill.description}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card bg-base-200 mt-10">
+        <div class="card-body">
+            <div
+                class="card-title font-bold md:text-2xl flex items-center gap-2"
+            >
+                Skills
+            </div>
+            <SkillList />
+        </div>
+    </div>
+</div>

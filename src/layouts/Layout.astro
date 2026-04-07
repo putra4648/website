@@ -2,6 +2,8 @@
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import BaseHead from "../components/BaseHead.astro";
 import { getLangFromUrl } from "../i18n/utils";
+import BGComponent from "../components/BGComponent.vue";
+import { Font } from "astro:assets";
 
 const lang = getLangFromUrl(Astro.url);
 ---
@@ -9,14 +11,29 @@ const lang = getLangFromUrl(Astro.url);
 <!doctype html>
 <html lang={lang}>
   <head>
+    <Font name="Saira Stencil" cssVariable="--font-saira-stencil" />
+    <script is:inline>
+      // ☝️ This script prevent the FART effect.
+      if (localStorage.getItem("theme") === null) {
+        document.documentElement.setAttribute("data-theme", "my-theme");
+      } else
+        document.documentElement.setAttribute(
+          "data-theme",
+          localStorage.getItem("theme"),
+        );
+    </script>
+    <script>
+      import { themeChange } from "theme-change";
+      themeChange();
+    </script>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
-  <body class="bg-[url('/images/bg.svg')]">
+  <body>
+    <BGComponent client:load />
     <slot />
-    {/* this is where your page content is added */}
   </body>
 </html>
 

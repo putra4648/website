@@ -1,0 +1,36 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import BlogPost from "../../layouts/BlogPost.astro";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+
+dayjs.extend(utc);
+
+export async function getStaticPaths() {
+    const pages = await getCollection("blog");
+    const paths = pages.map((page) => {
+        const [...slug] = page.id.split("/");
+        return {
+            params: { slug: slug.join("/") || undefined },
+            props: page,
+        };
+    });
+
+    return paths;
+}
+type Props = CollectionEntry<"blog">;
+
+const page = Astro.props;
+const { Content, remarkPluginFrontmatter } = await render(page);
+const lastModified = dayjs(remarkPluginFrontmatter.lastModified)
+    .utc()
+    .format("HH:mm:ss, DD MMMM YYYY UTC");
+---
+
+<BlogPost
+    post={page.data}
+    minutesRead={remarkPluginFrontmatter.minutesRead}
+    lastModified={lastModified}
+>
+    <Content />
+</BlogPost>
