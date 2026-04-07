@@ -1,0 +1,16 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { Icon } from "astro-icon/components";
+
+type Props = HTMLAttributes<"a"> & {
+  icon: string;
+};
+
+const { href, icon, class: className, ...props } = Astro.props;
+---
+
+<a role="button" href={href} class="btn btn-ghost btn-lg" {...props}>
+  <Icon name={icon} />
+
+  <slot />
+</a>

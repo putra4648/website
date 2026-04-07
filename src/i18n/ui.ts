@@ -1,4 +1,4 @@
-export const showDefaultLang = true;
+export const showDefaultLang = false;
 
 export const languages = {
   en: "🌐 EN",
