@@ -1,0 +1,54 @@
+---
+type Props = {
+  items: {
+    year: string,
+    title: string,
+    content: string[]
+  }[]
+}
+
+const {items } = Astro.props
+---
+
+<ul
+  class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical"
+>
+  {
+    items.map((i, index) => {
+      return (
+    <li>
+          {
+          index > 0 ? 
+        <div class="timeline-middle">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+        </div>
+        <div class={`${index % 2==0 ? 'timeline-end md:text-end' : 'timeline-start'} mb-10 `}>
+             <time class="font-mono italic">{i.year}</time>
+             <div class="text-lg font-black">{i.title}</div>
+             <ul class="list">
+              {i.content.map((c) => (<li class="list-row">{c}</li>))}
+            </ul>
+        </div>
+        <hr /> : 
+        <hr />
+            <div class="timeline-middle">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+            </div>
+        <div class={`${index % 2==0 ? 'timeline-end md:text-end' : 'timeline-start'} md:mb-10`}>
+            <time class="font-mono italic">{i.year}</time>
+            <div class="text-lg font-black">{i.title}</div>
+            <ul class="list">
+              {i.content.map((c) => (<li class="list-row">{c}</li>))}
+            </ul>
+        </div>
+            <hr />
+        }
+    </li>
+      );
+    })
+  }
+</ul>
