@@ -1,132 +1,43 @@
 ---
-const portfolio = [
-  {
-    year: 2024,
-    title: "Purchase Requisition (Internal)",
-    description:
-      "A module-based e-Procurement system designed to automate the corporate purchasing cycle, from budget planning to inter-warehouse stock transfers. It ensures all procurement activities are documented, transparent, and aligned with company budgets.",
-    stack: ["SpringBoot", "React", "ChakraUI", "PostgreSQL", "Typescript"],
-    source: "",
-  },
-  {
-    year: 2025,
-    title: "Production Monitoring System (Internal)",
-    description:
-      "An integrated manufacturing management system built to optimize shop floor efficiency. It focuses on Production Planning & Control (PPC), enabling daily workload management based on machine capacity and labor availability, while generating professional performance reports.",
-    stack: ["SpringBoot", "PostgreSQL", "Bootstrap5", "JasperReport"],
-    source: "",
-  },
-  {
-    year: 2025,
-    title: "Transfer Request (Internal)",
-    description:
-      "An internal-scale ERP system focused on item transfer management and production process control. It ensures all manufactured items comply with master data specifications and minimizes human error through a rigorous barcode scanning system.",
-    stack: ["SpringBoot", "PostgreSQL", "Bootstrap5", "JasperReport"],
-    source: "",
-  },
-  {
-    year: 2021,
-    title: "Portal Berita Indonesia",
-    description:
-      "A news portal application designed to deliver the latest news from various Indonesian sources. Key features include category-based news filtering, search functionality, and detailed news views with integrated images and source links.",
-    stack: ["Flutter", "REST API", "News API"],
-    source: "https://github.com/putra4648/portal_berita_indonesia",
-  },
-  {
-    year: 2021,
-    title: "Xpense Tracker UI",
-    description:
-      "A UI slicing project based on a Dribbble design for a mobile expense tracker application, focusing on high-fidelity visual implementation.",
-    stack: ["Flutter", "Figma"],
-    source: "https://github.com/putra4648/xpense_tracker",
-  },
-  {
-    year: 2020,
-    title: "My Anime List App",
-    description:
-      "A mobile management application that allows users to track their anime watchlist (currently watching, completed, and plan to watch). It includes features for adding personal ratings and reviews for each title.",
-    stack: ["Flutter", "REST API", "FlutterBloc", "Jikan API"],
-    source: "https://github.com/putra4648/mal_app",
-  },
-  {
-    year: 2025,
-    title: "Warehouse System (WIP)",
-    description:
-      "A warehouse management system (WMS) designed to optimize operational efficiency. Key features include stock management, location tracking, transfer management, and comprehensive reporting.",
-    stack: ["SpringBoot", "PostgreSQL", "NuxtJS", "Keycloak"],
-    source: "https://github.com/putra4648/warehouse_system",
-  },
-  {
-    year: 2025,
-    title: "ERP System (WIP)",
-    description:
-      "An ERP project focused on streamlining corporate operations through stock, location, and transfer management. This project serves as a deep dive into modular architecture and Clean Architecture principles.",
-    stack: ["Golang", "PostgreSQL", "NuxtJS", "Keycloak"],
-    source: "",
-  },
-];
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+type Props = {
+  portfolios: CollectionEntry<"portfolio">[];
+};
+
+const { portfolios } = Astro.props;
 ---
 
 <div class="container mx-auto my-5">
-  <ul class="list bg-base-100 rounded-box shadow-md">
+  <div class="grid md:grid-cols-3 gap-4">
     {
-      portfolio
-        .sort((a, b) => b.year - a.year || b.title.localeCompare(a.title))
-        .map((item, index) => (
-          <li class="list-row">
-            <div class="text-4xl font-thin opacity-30 tabular-nums">
-              {(index + 1).toString().padStart(2, "0")}
-            </div>
-
-            <div class="font-bold">{item.title}</div>
-            <div class="list-col-wrap space-x-2">
-              <p class="mb-5">{item.description}</p>
-              {item.stack.map((stack) => (
-                <div class="badge badge-outline badge-dash">{stack}</div>
-              ))}
-            </div>
-            <button class="btn btn-block btn-ghost">
-              Preview
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="size-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
-                />
-              </svg>
-            </button>
-            {item.source && (
-              <a
-                target="_blank"
-                href={item.source}
-                class="btn btn-block btn-ghost"
-              >
-                Source
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="size-6"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
-                  />
-                </svg>
-              </a>
+      portfolios.map((item, index) => (
+        <div
+          class="card card-border bg-base-100  shadow-[6px_6px_0_0_rgba(0,0,0,0.2)]
+               hover:shadow-[0_4px_0_0_rgba(0,0,0,0.2)]
+               active:shadow-none active:translate-y-1.5
+               transition-all duration-75"
+        >
+          <figure class="aspect-square ">
+            {item.data.image && (
+              <Image src={item.data.image} alt={item.data.title} />
             )}
-          </li>
-        ))
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title flex justify-between">
+              {item.data.title}
+              <span>{item.data.year}</span>
+            </h2>
+            <p>{item.data.description.join(". ")}</p>
+            <div class="card-actions justify-end">
+              <a href={`/portfolio/${item.id}`} class="btn btn-primary">
+                Preview
+              </a>
+            </div>
+          </div>
+        </div>
+      ))
     }
-  </ul>
+  </div>
 </div>

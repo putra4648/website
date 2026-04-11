@@ -1,0 +1,41 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import { Icon } from "astro-icon/components";
+import Layout from "./Layout.astro";
+
+interface Props {
+    post: CollectionEntry<"portfolio">["data"];
+    id: string;
+}
+
+const { post, id } = Astro.props;
+const { title, description, year } = post;
+---
+
+<html>
+    <head>
+        <BaseHead title={title} description={description.join(". ")} />
+    </head>
+    <body>
+        <Layout title={title} description={description.join(". ")}>
+            <main class="max-w-3/5 mx-auto prose my-3">
+                <a role="button" class="btn btn-ghost btn-lg" href="/portfolio">
+                    <Icon name="material-symbols:arrow-back" />
+                    Back to Portfolio
+                </a>
+                <div class="">
+                    <h1>{title}</h1>
+                    <div>{year}</div>
+                    <div>
+                        {description.map((d) => <p>{d}</p>)}
+                        <hr />
+                    </div>
+                </div>
+                <div>
+                    <slot />
+                </div>
+            </main>
+        </Layout>
+    </body>
+</html>

@@ -1,0 +1,80 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import Layout from "../../layouts/Layout.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import { getLangFromUrl, useTranslatedPath } from "../../i18n/utils";
+import Navbar from "../../components/Navbar.astro";
+import type { Page, PaginateFunction } from "astro";
+import Pagination from "../../components/Pagination.astro";
+
+type Props = {
+  page: Page<any>;
+};
+
+export async function getStaticPaths({ paginate }: any) {
+  const posts = (await getCollection("blog")).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  );
+  return paginate(posts, { pageSize: 10 });
+}
+
+const { page } = Astro.props;
+---
+
+<!doctype html>
+<html>
+  <head>
+    <BaseHead
+      title={SITE_TITLE}
+      description={SITE_DESCRIPTION}
+      image={`https://www.readmecodegen.com/api/og-generator?title=${encodeURIComponent(SITE_TITLE)}&subtitle=${encodeURIComponent(SITE_DESCRIPTION)}&author=Putra&template=cleanModernArticle&pattern=tech&appName=putracoderz.my.id`}
+    />
+  </head>
+  <body>
+    <Navbar />
+    <Layout>
+      <main class="container mx-auto p-3 my-3">
+        <div class="flex flex-col space-y-4 items-center">
+          <div class="grid md:grid-cols-3 gap-3">
+            {
+              ((page as any).data || []).map((post: any) => {
+                return (
+                  <div
+                    class="card card-border bg-base-100 shadow-[6px_6px_0_0_rgba(0,0,0,0.2)]
+               hover:shadow-[0_4px_0_0_rgba(0,0,0,0.2)]
+               active:shadow-none active:translate-y-1.5
+               transition-all duration-75"
+                  >
+                    <figure>
+                      <img
+                        src={`https://www.readmecodegen.com/api/og-generator?title=${encodeURIComponent(post.data.title)}&subtitle=${encodeURIComponent(post.data.description.join(". "))}&author=Putra&template=cleanModernArticle&pattern=tech&appName=putracoderz.my.id`}
+                        alt=""
+                      />
+                    </figure>
+                    <div class="card-body">
+                      <h2 class="card-title">{post.data.title}</h2>
+                      <small class="card-subtitle">
+                        <FormattedDate date={post.data.pubDate} />
+                      </small>
+                      <div class="card-actions justify-end">
+                        <a href={`/blog/${post.id}`} class="btn btn-primary">
+                          <i class="fas fa-arrow-right" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            }
+          </div>
+          <Pagination page={page} />
+        </div>
+      </main>
+    </Layout>
+    <Footer />
+  </body>
+</html>

@@ -18,11 +18,14 @@
     "@fortawesome/free-brands-svg-icons": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@tailwindcss/vite": "^4.2.2",
+    "@tsparticles/slim": "^3.9.1",
     "@tsparticles/vue3": "^3.0.1",
     "astro": "^5.18.1",
     "astro-icon": "^1.1.5",
+    "canvaskit-wasm": "^0.41.1",
     "daisyui": "^5.5.19",
     "dayjs": "^1.11.20",
+    "flag-icons": "^7.5.0",
     "framer-motion": "^12.38.0",
     "mdast-util-to-string": "^4.0.0",
     "motion-v": "^2.2.0",
@@ -30,7 +33,6 @@
     "sharp": "^0.34.5",
     "tailwindcss": "^4.2.2",
     "theme-change": "^2.5.0",
-    "tsparticles": "^3.9.1",
     "vue": "^3.5.32"
   },
   "devDependencies": {
