@@ -1,0 +1,25 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import PortfolioLayout from "../../layouts/PortfolioLayout.astro";
+
+export async function getStaticPaths() {
+    const pages = await getCollection("portfolio");
+    const paths = pages.map((page) => {
+        const slug = page.id.replace(/\.mdx$/, "");
+        return {
+            params: { slug },
+            props: page,
+        };
+    });
+
+    return paths;
+}
+type Props = CollectionEntry<"portfolio">;
+
+const page = Astro.props;
+const { Content } = await render(page);
+---
+
+<PortfolioLayout post={page.data} id={Astro.params.slug!}>
+    <Content />
+</PortfolioLayout>

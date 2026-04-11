@@ -9,7 +9,6 @@ const blog = defineCollection({
     z.object({
       title: z.string(),
       description: z.array(z.string()),
-      // Transform string to Date object
       pubDate: z.coerce.date(),
       updatedDate: z.coerce.date().optional(),
       heroImage: image().optional(),
@@ -17,4 +16,20 @@ const blog = defineCollection({
     }),
 });
 
-export const collections = { blog };
+const portfolio = defineCollection({
+  // Load Markdown and MDX files in the `src/content/portfolio/` directory.
+  loader: glob({ base: "./src/content/portfolio", pattern: "**/*.{md,mdx}" }),
+  // Type-check frontmatter using a schema
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.array(z.string()),
+      year: z.number(),
+      stack: z.array(z.string()).default([]),
+      source: z.string().optional(),
+      image: image().optional(),
+      hidden: z.boolean().default(false),
+    }),
+});
+
+export const collections = { blog, portfolio };

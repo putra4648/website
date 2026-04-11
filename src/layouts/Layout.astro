@@ -11,7 +11,7 @@ const lang = getLangFromUrl(Astro.url);
 <!doctype html>
 <html lang={lang}>
   <head>
-    <Font name="Saira Stencil" cssVariable="--font-saira-stencil" />
+    <Font cssVariable="--font-saira-stencil" />
     <script is:inline>
       // ☝️ This script prevent the FART effect.
       if (localStorage.getItem("theme") === null) {

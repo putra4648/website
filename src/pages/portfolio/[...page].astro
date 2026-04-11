@@ -1,0 +1,30 @@
+---
+import type { Page } from "astro";
+import { getCollection } from "astro:content";
+import Footer from "../../components/Footer.astro";
+import Navbar from "../../components/Navbar.astro";
+import PortfolioList from "../../components/PortfolioList.astro";
+import Layout from "../../layouts/Layout.astro";
+import Pagination from "../../components/Pagination.astro";
+
+type Props = {
+    page: Page<any>;
+};
+
+export async function getStaticPaths({ paginate }: any) {
+    const posts = await getCollection("portfolio");
+    const filteredPosts = posts.filter((post) => !post.data.hidden);
+    return paginate(filteredPosts, { pageSize: 6 });
+}
+
+const { page } = Astro.props;
+---
+
+<Layout>
+    <Navbar />
+    <div class="flex flex-col space-y-4 items-center min-h-[calc(100vh-200px)]">
+        <PortfolioList portfolios={page.data} />
+        <Pagination page={page} />
+    </div>
+    <Footer />
+</Layout>
