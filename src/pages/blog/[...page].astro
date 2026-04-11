@@ -31,7 +31,7 @@ const { page } = Astro.props;
     <BaseHead
       title={SITE_TITLE}
       description={SITE_DESCRIPTION}
-      image={`https://www.readmecodegen.com/api/og-generator?title=${SITE_TITLE}&subtitle=${SITE_DESCRIPTION}&author=Putra&template=cleanModernArticle&pattern=tech&appName=putracoderz.my.id`}
+      image={`https://www.readmecodegen.com/api/og-generator?title=${encodeURIComponent(SITE_TITLE)}&subtitle=${encodeURIComponent(SITE_DESCRIPTION)}&author=Putra&template=cleanModernArticle&pattern=tech&appName=putracoderz.my.id`}
     />
   </head>
   <body>

@@ -23,7 +23,7 @@ const { minutesRead, lastModified } = Astro.props;
     <BaseHead
       title={title}
       description={description.join(". ")}
-      image={`https://www.readmecodegen.com/api/og-generator?title=${title}&subtitle=${description.join(". ")}&author=Putra&template=cleanModernArticle&pattern=tech&appName=putracoderz.my.id`}
+      image={`https://www.readmecodegen.com/api/og-generator?title=${encodeURIComponent(title)}&subtitle=${encodeURIComponent(description.join(". "))}&author=Putra&template=cleanModernArticle&pattern=tech&appName=putracoderz.my.id`}
     />
   </head>
 
