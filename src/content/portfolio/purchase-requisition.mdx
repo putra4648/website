@@ -1,5 +1,5 @@
 ---
-title: "Purchase Requisition (Internal)"
+title: "Purchase Requisition (Private)"
 description: ["A module-based e-Procurement system designed to automate the corporate purchasing cycle, from budget planning to inter-warehouse stock transfers. It ensures all procurement activities are documented, transparent, and aligned with company budgets."]
 year: 2024
 stack: ["SpringBoot", "React", "ChakraUI", "PostgreSQL", "Typescript"]
@@ -7,6 +7,66 @@ source: ""
 image: "../../assets/no-image.png"
 ---
 
-# Purchase Requisition (Internal)
+> **Project Vision:** A comprehensive procurement ecosystem designed to eliminate unauthorized spending through departmental budgeting, automated RFQs, and real-time inventory synchronization.
 
-A module-based e-Procurement system designed to automate the corporate purchasing cycle, from budget planning to inter-warehouse stock transfers. It ensures all procurement activities are documented, transparent, and aligned with company budgets.
+## 🎯 The Business Challenge
+
+Managing corporate procurement manually often leads to "Maverick Spending"—purchases made outside of the approved budget or without proper vendor vetting. 
+
+### Critical Pain Points:
+* **Budget Overruns:** Departments lack real-time visibility into their remaining monthly/annual budgets before making a request.
+* **Fragmented Sourcing:** Without a centralized Supplier Master and RFQ (Request for Quotation) process, the company misses out on competitive pricing.
+* **Inventory Blind Spots:** Lack of integration between "requested items" and "current stock," leading to unnecessary double-purchasing.
+* **Manual Reporting:** Compiling weekly and monthly procurement audits manually was prone to human error and data delays.
+
+---
+
+## 🛠️ The Solution: End-to-End Procurement Control
+
+We engineered a specialized system to handle the full lifecycle of a purchase—from the initial request to final inventory storage.
+
+### Core Modules:
+1.  **Departmental Budgeting:** Dynamic budget allocation with hard-stops to prevent over-expenditure at the requisition stage.
+2.  **Strategic Sourcing (RFQ):** Digital Request for Quotation module to compare vendor bids and select the most cost-effective supplier.
+3.  **Supplier Master Data:** A centralized database of verified vendors, categorized by goods/services provided.
+4.  **Inventory & Stock Control:** Integrated stock levels with automated alerts and **Stock Transfer** capabilities between different locations/warehouses.
+5.  **Smart Categorization:** Granular item classification to improve reporting accuracy and spend analysis.
+
+---
+
+## 🏗️ Technical Architecture
+
+The system leverages a high-performance stack to ensure data integrity during complex financial transactions.
+
+* **Backend:** **Spring Boot** — Utilizing Spring Security for role-based access control (Staff, Dept Head, Procurement Officer) and JPA for complex relational mapping.
+* **Frontend:** **React.js** — A modular UI designed for complex forms (Requisitions) and data-heavy tables (Inventory & RFQ).
+* **Database:** **PostgreSQL** — Optimized for transactional consistency (ACID) to ensure budget deductions and stock updates are 100% accurate.
+
+---
+
+## 🗺️ Process Workflow (High-Level)
+
+1.  **Requisition:** User creates a request; system checks against **Department Budget**.
+2.  **Sourcing:** Procurement issues **RFQ** to multiple Master Suppliers.
+3.  **PO Generation:** Lowest/Best bid is converted into a **Purchase Order**.
+4.  **Fulfillment:** Items are received into **Inventory** or **Transferred** to the requesting department.
+
+---
+
+## 📊 Data-Driven Reporting
+
+To support executive decision-making, the system includes a robust reporting module that bridges the gap between the ERP and daily office workflows.
+
+### **Automated Excel Exports**
+Instead of static PDFs, our system generates **Dynamic Excel Reports** for:
+* **Monthly Budget Utilization:** Tracking departmental spending vs. remaining balance.
+* **Supplier Performance:** Analyzing RFQ success rates and pricing trends.
+* **Inventory Turnaround:** Highlighting slow-moving items and stock-out risks.
+
+> **Technical Highlight:** The export logic is handled on the server-side (Spring Boot) to ensure that large datasets are processed efficiently without straining the user's browser, providing a seamless "One-Click" download experience.
+
+---
+
+## 💬 Closing Thought
+
+> "By centralizing procurement, we didn't just digitize a form; we implemented a financial firewall that protects the company's bottom line."

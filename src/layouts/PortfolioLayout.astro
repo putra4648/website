@@ -3,14 +3,15 @@ import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "./Layout.astro";
+import { Image } from "astro:assets";
 
 interface Props {
     post: CollectionEntry<"portfolio">["data"];
     id: string;
 }
 
-const { post, id } = Astro.props;
-const { title, description, year } = post;
+const { post } = Astro.props;
+const { title, description, year, image, stack } = post;
 ---
 
 <html>
@@ -27,10 +28,31 @@ const { title, description, year } = post;
                 <div class="">
                     <h1>{title}</h1>
                     <div>{year}</div>
+                    <div class="flex gap-2">
+                        {
+                            stack.map((s) => (
+                                <div class="badge badge-secondary">{s}</div>
+                            ))
+                        }
+                    </div>
                     <div>
                         {description.map((d) => <p>{d}</p>)}
                         <hr />
                     </div>
+
+                    {
+                        image && (
+                            <div>
+                                <h2>Preview</h2>
+                                <Image
+                                    src={image}
+                                    alt={title}
+                                    width={image.width}
+                                    height={image.height}
+                                />
+                            </div>
+                        )
+                    }
                 </div>
                 <div>
                     <slot />
