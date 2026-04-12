@@ -1,0 +1,34 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import image1 from "../assets/1.gif";
+---
+
+<Layout>
+    <div class="flex flex-col justify-center items-center h-full">
+        <form
+            action="https://wa.me/6281234567890"
+            method="post"
+            class="flex flex-col gap-2 my-10"
+        >
+            <h1 class="text-4xl text-center font-bold">NICHIYOBI777</h1>
+            <p>
+                Hai kakak tampan/cantik♦️𝐃𝐀𝐅𝐓𝐀𝐑 𝐀𝐊𝐔𝐍 Nichiyobi 𝐂𝐔𝐊𝐔𝐏 𝟏𝟐𝐗 𝐒𝐏𝐈𝐍
+                𝐏𝐀𝐒𝐓𝐈 𝐎𝐅𝐈𝐓
+            </p>
+
+            <label class="label">♦️𝐔𝐒𝐄𝐑 𝐈𝐃 :</label>
+            <input class="input w-full" type="text" />
+            <label class="label">♦️𝐍𝐎𝐌𝐎𝐑 𝐑𝐄𝐊𝐄𝐍𝐈𝐍𝐆:</label>
+            <input class="input w-full" type="text" />
+            <label class="label">♦️𝐍𝐀𝐌𝐀 𝐑𝐄𝐊𝐄𝐍𝐈𝐍𝐆 :</label>
+            <input class="input w-full" type="text" />
+            <label class="label">♦️𝐁𝐀𝐍𝐊 / l 𝐖𝐀𝐋𝐋𝐄𝐓 :</label>
+            <input class="input w-full" type="text" />
+            <label class="label">♦️𝐍𝐎𝐌𝐎𝐑 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 :</label>
+            <input class="input w-full" type="text" />
+            <button class="btn btn-primary w-full" type="submit">Daftar</button>
+            <Image src={image1} alt="" fit="cover" class="w-full" />
+        </form>
+    </div>
+</Layout>
