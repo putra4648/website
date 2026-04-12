@@ -2,9 +2,74 @@
 title: Transfer Request
 description: ["An internal-scale ERP system focused on item transfer management and production process control. It ensures all manufactured items comply with master data specifications and minimizes human error through a rigorous barcode scanning system."]
 year: 2025
-stack: ["SpringBoot", "PostgreSQL", "Bootstrap5", "JasperReport"]
+stack: ["SpringBoot", "PostgreSQL", "Thymeleaf", "JasperReport"]
 source: ""
 image: "../../assets/no-image.png"
 ---
 
-# Transfer Request
+> **Project Vision:** A high-speed, localized production management system designed to bridge the gap between "Order Entry" and "Physical Manufacturing" using barcode-driven workflows.
+
+---
+
+## 🎯 The Business Challenge
+
+On the production floor, manual tracking often leads to "Ghost Production" (items made but not recorded) or "Double Counts." The client needed a way to ensure that every item produced was strictly validated against an official order.
+
+### Critical Pain Points:
+* **Manual Login Bottlenecks:** Workers losing time typing usernames/passwords on rugged factory terminals.
+* **Lack of Real-time Validation:** No system to verify if a worker is producing the correct item according to the Production Order.
+* **Production Discrepancy:** Difficulty in tracking which orders are "Work-In-Progress" versus "Completed."
+* **Hardware Integration:** The need for instant, physical labeling (POS Printing) once a production step is validated.
+
+---
+
+## 🛠️ The Solution: Barcode-First Production Workflow
+
+We developed a specialized system optimized for **Localhost Server** deployment to ensure zero-latency during high-speed scanning operations.
+
+### Core Features:
+1.  **Fast Authentication:** Workers login instantly by **scanning their Badge Barcode**, eliminating the need for keyboards.
+2.  **Order-Based Production:** Every production run must be initiated from a **Production Order**, ensuring all activities are authorized.
+3.  **Scan-to-Verify Logic:** A rigorous validation engine that checks each scanned item against the order requirements to prevent over-production or wrong-item errors.
+4.  **POS Printer Integration:** Native support for **Epson POS Printers** to automatically print production labels or transfer slips upon successful validation.
+5.  **Master Data Management:** Centralized control for **Items (Goods)** and **User Roles**.
+
+---
+
+## 📊 Reporting & Analytics
+
+To facilitate daily evaluations, the system provides detailed insights through **Excel-based reporting**:
+
+* **Daily Output Reports:** A summary of all items produced per shift.
+* **Validation Logs:** Tracking any failed scan attempts or unauthorized production tries.
+* **Order Progress:** Visualizing the percentage of completion for every Production Order.
+
+> **Technical Highlight:** The reporting engine utilizes **Apache POI** to generate formatted Excel sheets directly from the local Postgres database, allowing managers to perform offline analysis instantly.
+
+---
+
+## 🏗️ Technical Architecture (Localized Stack)
+
+The system is optimized for a **Localhost Environment** to provide maximum stability and speed in areas with limited internet connectivity.
+
+* **Backend & Templating:** **Spring Boot with Thymeleaf** — A monolithic approach that ensures fast server-side rendering and simplified maintenance for local servers.
+* **Database:** **PostgreSQL** — Storing high-frequency scan logs and production master data with strong relational integrity.
+* **Hardware Interface:** Integrated with **Epson POS Printers** using low-level thermal printing commands for high-speed output.
+* **Security:** Barcode-based authentication logic mapped to Spring Security roles.
+
+---
+
+## 🏁 Key Operational Benefits
+
+| Feature | Manual Process | ScanTrack System |
+| :--- | :--- | :--- |
+| **Login Speed** | 15-30 Seconds | **< 1 Second (Scan)** |
+| **Item Validation** | Visual/Manual Check | **System-Enforced (Scan)** |
+| **Labeling** | Handwritten/Pre-printed | **On-Demand POS Printing** |
+| **Data Access** | Paper Logs | **Instant Excel Reports** |
+
+---
+
+## 💬 Closing Thought
+
+> "By moving the server to the 'Edge' (Localhost) and implementing Barcode-First logic, we reduced production logging errors to nearly zero while increasing worker throughput."

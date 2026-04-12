@@ -2,11 +2,77 @@
 title: "Warehouse System"
 description: ["A warehouse management system (WMS) designed to optimize operational efficiency. Key features include stock management, location tracking, transfer management, and comprehensive reporting."]
 year: 2025
-stack: ["SpringBoot", "PostgreSQL", "NuxtJS", "Keycloak"]
+stack: ["SpringBoot", "PostgreSQL", "NuxtJS", "Auth0"]
 source: "https://github.com/putra4648/warehouse_system"
 image: "../../assets/wms.png"
 ---
+import ProjectImageCarousel from "../../components/ProjectImageCarousel.astro";
 
-# Warehouse System (WIP)
 
-A warehouse management system (WMS) designed to optimize operational efficiency. Key features include stock management, location tracking, transfer management, and comprehensive reporting.
+> **Project Vision:** A high-performance, cloud-ready Warehouse Management System (WMS) designed to optimize storage density and automate the full inbound-to-outbound lifecycle.
+
+---
+
+## 🎯 The Business Challenge
+
+Scaling warehouse operations often fails due to a lack of "Spatial Intelligence"—knowing exactly where an item is located down to the specific bin. Manual tracking leads to lost stock, inefficient picking routes, and security vulnerabilities.
+
+### Critical Pain Points:
+* **Storage Inefficiency:** Difficulty managing complex warehouse hierarchies (Zones, Racks, and Bins).
+* **Security Compliance:** The need for enterprise-grade authentication to protect sensitive inventory data.
+* **Infrastructure Friction:** Slow development cycles due to inconsistent local database environments.
+* **Inventory Shrinkage:** Lack of rigorous stock adjustment and inbound/outbound validation.
+
+---
+
+## 🛠️ The Solution: A Modern Full-Stack Ecosystem
+
+We built a robust, dockerized WMS that prioritizes data integrity and developer productivity.
+
+### Core Strategic Features:
+1.  **Granular Spatial Mapping:** Manage physical layouts from high-level **Warehouses** down to specific **Bin Numbers**, allowing for precision inventory placement.
+2.  **Enterprise Security (OAuth2):** Integrated with **Auth0 & Okta**, providing a secure, industry-standard identity layer for all users.
+3.  **Comprehensive Stock Lifecycle:** Full support for **Inbound (Receiving)**, **Outbound (Shipping)**, and **Adjustments** to ensure the physical stock always matches the digital record.
+4.  **Developer-First Infrastructure:** Fully **Dockerized** setup with **Testcontainers** for automated integration testing, ensuring the system is production-ready from day one.
+
+---
+
+## 🖥️ Platform Overview & Screenshots
+
+<ProjectImageCarousel imageFolder="warehouse"/>
+    
+
+---
+
+## 🏗️ Technical Architecture
+
+This project showcases a "best-practice" approach to full-stack development, utilizing the latest versions of Java and Vue.
+
+* **Backend:** **Spring Boot 3.5 (Java 21)** — Utilizing Virtual Threads and modern JPA features.
+* **Frontend:** **Nuxt 3 & Vue 3** — A high-performance SSR framework paired with **Nuxt UI (Tailwind CSS)** for a sleek, responsive admin interface.
+* **Identity:** **Auth0 / OAuth2** — Decoupled authentication for maximum security and scalability.
+* **Database:** **PostgreSQL** — Relational power for complex inventory joins and ACID compliance.
+* **API Excellence:** Fully documented with **OpenAPI/Swagger** for seamless frontend-backend integration.
+
+---
+
+## 📈 Operational Efficiency
+
+| Feature | Technical Implementation | Business Value |
+| :--- | :--- | :--- |
+| **Authentication** | OAuth2 + Auth0 | **Enterprise-grade Security** |
+| **Hierarchy** | Zone > Rack > Location > Bin | **100% Location Accuracy** |
+| **API Integration** | Swagger / OpenAPI Spec | **Faster Third-party Sync** |
+| **Reliability** | Testcontainers / JUnit 5 | **Stable, Bug-free Deployments** |
+
+---
+
+## 🚀 Scalability & Deployment
+
+The system is designed to be **Docker-Native**. By using `docker-compose`, the entire infrastructure (including the PostgreSQL database) can be spun up in seconds, making it ideal for both local development and cloud-based CI/CD pipelines.
+
+---
+
+## 💬 Closing Thought
+
+> "This WMS isn't just about counting boxes; it's about creating a transparent, secure, and scalable digital twin of your physical warehouse."

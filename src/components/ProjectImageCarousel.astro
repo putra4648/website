@@ -1,0 +1,58 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+    imageFolder: string;
+}
+
+const { imageFolder } = Astro.props;
+const matches = import.meta.glob(`../assets/**/*.{png,jpg,jpeg,webp}`, {
+    eager: true,
+});
+const images = Object.values(matches)
+    .filter((image) => image.default.src.includes("/" + imageFolder + "/"))
+    .map((image) => {
+        const img = image.default as ImageMetadata;
+        function caption() {
+            if (img.src.includes("erp-dashboard.png")) {
+                return "MyERP ERP Dashboard: A unified view of total products, low stock alerts, recent movements, and pending adjustments.";
+            }
+            if (img.src.includes("erp-index.png")) {
+                return `MyERP Homepage: "Enterprise Simplified." and unified platform for managing your business.`;
+            }
+            if (img.src.includes("erp-stock-transaction.png")) {
+                return "MyERP Stock Transactions: Track date, product, warehouse, supplier, and quantity for inventory movements.";
+            }
+            if (img.src.includes("erp-movement.png")) {
+                return "MyERP Stock Movement: View movement numbers, origin, destination, and status for inventory transfers.";
+            }
+            return "";
+        }
+        console.log(img.src);
+        return {
+            src: img,
+            caption: caption(),
+        };
+    });
+---
+
+<div class="carousel w-full">
+    {
+        images.map((image, index) => (
+            <div id={`slide${index}`} class="carousel-item relative w-full">
+                <figure>
+                    <Image src={image.src} alt={image.caption} />
+                    <figcaption>{image.caption}</figcaption>
+                </figure>
+                <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                    <a href={`#slide${index - 1}`} class="btn btn-circle">
+                        ❮
+                    </a>
+                    <a href={`#slide${index + 1}`} class="btn btn-circle">
+                        ❯
+                    </a>
+                </div>
+            </div>
+        ))
+    }
+</div>

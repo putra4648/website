@@ -2,7 +2,7 @@
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import BaseHead from "../components/BaseHead.astro";
 import { getLangFromUrl } from "../i18n/utils";
-import BGComponent from "../components/BGComponent.vue";
+import BGComponent from "../components/vue-component/BGComponent.vue";
 import { Font } from "astro:assets";
 
 const lang = getLangFromUrl(Astro.url);
