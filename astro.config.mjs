@@ -27,7 +27,11 @@ export default defineConfig({
     }),
     icon(),
   ],
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    }
+  }),
   experimental: {
     fonts: [{
       provider: fontProviders.google(),
