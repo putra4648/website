@@ -6,6 +6,7 @@ type Props = {
     company: string,
     jobdesk: string[]
     stack: string[]
+    content?: string[]
   }[]
 }
 
@@ -30,13 +31,16 @@ const {items } = Astro.props
              <time class="font-mono italic">{i.year}</time>
              <div class="text-lg font-black">{i.title}</div>
              <ul class="list">
-              {i.jobdesk.map((c) => {
+              {i.jobdesk && i.jobdesk.map((c) => {
                 const split = c.split(":");
                 const [, val2] = split;
                 return <li class="list-row">{val2}</li>;
               })}
+              {i.content && i.content.map((c) => {
+                return <li class="list-row">{c}</li>;
+              })}
               <div class="flex flex-wrap gap-2 mt-2">
-              {i.stack.map((s) => {
+              {i.stack && i.stack.map((s) => {
                 return (
                   <div class="badge badge-secondary badge-outline">{s}</div>
                 );
@@ -55,13 +59,16 @@ const {items } = Astro.props
             <time class="font-mono italic">{i.year}</time>
             <div class="text-lg font-black">{i.title}</div>
             <ul class="list">
-              {i.jobdesk.map((c) => {
+              {i.jobdesk && i.jobdesk.map((c) => {
                 const split = c.split(":");
                 const [, val2] = split;
                 return <li class="list-row">{val2}</li>;
               })}
+              {i.content && i.content.map((c) => {
+                return <li class="list-row">{c}</li>;
+              })}
               <div class="flex flex-wrap gap-2 mt-2">
-              {i.stack.map((s) => {
+              {i.stack && i.stack.map((s) => {
                 return (
                   <div class="badge badge-secondary badge-outline">{s}</div>
                 );
