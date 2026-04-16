@@ -57,8 +57,16 @@ const { page } = Astro.props;
                         height={500}
                       />
                     </figure>
+
                     <div class="card-body">
-                      <h2 class="card-title">{post.data.title}</h2>
+                      <h2 class="card-title flex justify-between">
+                        <p class="line-clamp-2">{post.data.title}</p>
+                        <div>
+                          <span
+                            class={`fi fi-${post.data.lang == "en" ? "gb" : "id"}`}
+                          />
+                        </div>
+                      </h2>
                       <small class="card-subtitle">
                         <FormattedDate date={post.data.pubDate} />
                       </small>

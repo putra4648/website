@@ -1,0 +1,74 @@
+---
+title: "The Struggle with Flutter"
+description: 
+    - "Things I wish I knew before starting Flutter"
+pubDate: 2026-04-16 12:25
+tags: ["Flutter", "Firebase", "App Development", "Android", "Dart"]
+lang: en
+---
+
+![Flutter](../../assets/flutter.png)
+
+## The Honeymoon Phase is Over
+
+In my last post, I talked about why I fell in love with Flutter. But let’s be real: every relationship has its friction. After the initial "Aha!" moments with Hot Reload, I started diving deeper into the technicalities of building a production-ready app, and that’s when I hit the **"The Struggle."**
+
+If you’ve ever felt like throwing your laptop out the window because of a single indentation error in a YAML file, this post is for you.
+
+Check out my previous post: [Why I Chose Flutter as an Android Developer: A Journey of Constraints and Conviction](/blog/why-flutter)
+
+---
+
+## The "Manual Labor" of Assets
+
+One of the most frustrating things for me initially was the sheer amount of manual work required for basic assets. I remember thinking: 
+
+> "I just want to add a custom font and a few icons. Why does it feel like I'm performing surgery on the project structure?"
+
+Adding fonts, custom icons, and images meant constantly jumping back and forth into the `pubspec.yaml` file. If you missed a single space or forgot to declare a specific asset path, the whole app would fail to build. It was, quite frankly, exhausting.
+
+### The Turning Point: Discovering the Ecosystem
+
+Just as I was about to lose my patience, I realized I was "reinventing the wheel." I discovered that the Flutter community had already built incredible libraries to solve these exact headaches. 
+
+Instead of manually configuring everything, I found packages like `flutter_launcher_icons`, `flutter_gen`, and massive icon libraries that were essentially "plug-and-play." It was a reminder that **being a good developer isn't about doing everything manually; it's about knowing which tools make you more efficient.**
+
+---
+
+## Firebase: The Ultimate Wingman
+
+As an Android Developer, I often faced the "Backend Barrier." What if I want to build a full-scale app but don't have a dedicated backend team or a custom API ready? 
+
+This is where I discovered the **Firebase + Flutter** ecosystem. For those of us who want to ship fast without managing servers, Firebase isn't just a tool; it's a lifesaver.
+
+### 1. Firebase Auth: The Gatekeeper
+Setting up a login system used to take days. With **Firebase Auth**, I had Google Sign-In, Email/Password, and Phone Auth running in hours. The best part? Flutter’s official `firebase_auth` package is so well-documented it feels like the two platforms were built in the same room.
+
+### 2. Cloud Firestore: Real-time Magic
+Then there’s **Firestore**. Coming from a SQL background, the NoSQL structure was a shift, but the real-time syncing blew my mind. 
+* No more polling for data.
+* Automatic offline persistence.
+* The "Full Support" in Flutter means your UI updates instantly as the database changes.
+
+---
+## 💡 Things I Wish I Knew
+
+Looking back at my 2-month trial period, here are a few things I wish someone had whispered in my ear:
+
+1.  **Don't Hardcode Strings:** Use an asset generator early. Typing `"assets/icons/home_v2_final.png"` will eventually hurt you.
+2.  **The `pubspec.yaml` Indentation Rule:** It’s exactly two spaces. Not one, not three. Two. Save yourself the headache.
+3.  **Firebase is "Plug and Play," but Plan Your Rules:** Security rules in Firestore are easy to ignore at first, but don't leave them as `allow read, write: if true;` for too long!
+4.  **Check `pub.dev` First:** Before you write a custom function for something common (seperti *image cropping* atau *permission handling*), check the community libraries. You'll save days of work.
+5.  **The "Fat APK" Syndrome:** In the beginning, I was shocked to see my "Hello World" app was 20MB+. I thought, *"Is this the price of Flutter?"* Then I learned about **Splitting per ABI**. By running `flutter build apk --split-per-abi`, I could reduce the download size significantly by creating specific files for different CPU architectures (like `armeabi-v7a` or `arm64-v8a`). It was a game-changer for my users with limited storage.
+
+---
+
+## The Grind is Worth It
+
+The "muak" (sickening) feeling of repetitive configuration was just a rite of passage. Those struggles forced me to look deeper into the ecosystem and ultimately led me to the power of Firebase. 
+
+When you combine **Flutter’s UI speed** with **Firebase’s backend power**, you become a one-man army. You aren't just a "Frontend Dev" anymore; you're a product creator.
+
+**Have you ever spent an hour debugging a space in a YAML file? Or did Firebase save your project too? Let's swap struggle stories in the comments!** 👇
+
+---

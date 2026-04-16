@@ -1,0 +1,89 @@
+---
+import { Icon } from "astro-icon/components";
+
+const skill = {
+    programmings: ["Javascript", "Typescript", "Bash", "Java", "Dart", "Go"],
+    devtools: [
+        "Git",
+        "Prometheus",
+        "Grafana",
+        "Jira",
+        "Notion",
+        "Flyway",
+        "Excalidraw",
+    ],
+    databases: ["Postgres", "Redis", "MongoDB"],
+    frontend: ["React", "Vue", "Flutter", "Nuxt"],
+    backend: ["Springboot", "Quarkus", "Golang"],
+    infrastructures: [
+        "Sonarqube",
+        "Linux",
+        "Docker",
+        "Rabbit MQ",
+        "GitHub Actions",
+        "Nginx",
+    ],
+    integrations: [
+        "Keycloak",
+        "OAuth2",
+        "JWT",
+        "Websocket",
+        "Firebase",
+        "Supabase",
+    ],
+    softskills: [
+        "Teamwork",
+        "Communication",
+        "Problem Solving",
+        "Adaptability",
+    ],
+};
+const mapIcons = (key: string) => {
+    switch (key) {
+        case "programmings":
+            return "material-symbols:code";
+        case "devtools":
+            return "material-symbols:code";
+        case "databases":
+            return "material-symbols:database";
+        case "frontend":
+            return "material-symbols:web";
+        case "backend":
+            return "material-symbols:computer";
+        case "infrastructures":
+            return "material-symbols:cloud";
+        case "integrations":
+            return "material-symbols:link";
+        case "softskills":
+            return "material-symbols:article-person";
+    }
+};
+---
+
+<div class="card bg-base-200 mt-10">
+    <div class="card-body">
+        <div class="card-title font-bold md:text-2xl flex items-center gap-2">
+            Skills
+        </div>
+        <div class="grid md:grid-cols-4 gap-3">
+            {
+                Object.entries(skill).map(([key, value]) => (
+                    <div class="card bg-base-100">
+                        <div class="card-body">
+                            <h2 class="card-title flex items-center gap-2 capitalize">
+                                <Icon name={mapIcons(key)} /> {key}
+                            </h2>
+                            <div class="flex flex-wrap gap-2">
+                                {value.map((i) => (
+                                    <span class="badge badge-soft rounded-md">
+                                        {i}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</div>
