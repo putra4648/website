@@ -60,6 +60,55 @@ const { minutesRead, lastModified } = Astro.props;
         </div>
         <div>
           <slot />
+          <div id="disqus_thread"></div>
+          <script is:inline>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+
+            // Patch for Disqus OKLCH issue
+            // Disqus script crashes when it encounters oklch() colors during theme detection
+            (function () {
+              const _getComputedStyle = window.getComputedStyle;
+              window.getComputedStyle = function (el, pseudo) {
+                const style = _getComputedStyle(el, pseudo);
+                return new Proxy(style, {
+                  get(target, prop) {
+                    const value = target[prop];
+                    if (typeof value === "string" && value.includes("oklch")) {
+                      // Return a safe fallback that Disqus can parse
+                      return "rgb(255, 255, 255)";
+                    }
+                    if (prop === "getPropertyValue") {
+                      return (propertyName) => {
+                        const val = target.getPropertyValue(propertyName);
+                        return typeof val === "string" && val.includes("oklch")
+                          ? "rgb(255, 255, 255)"
+                          : val;
+                      };
+                    }
+                    return typeof value === "function"
+                      ? value.bind(target)
+                      : value;
+                  },
+                });
+              };
+            })();
+
+            var disqus_config = function () {
+              this.page.url = window.location.href; // Better to use dynamic URL
+              this.page.identifier = window.location.pathname; // Unique identifier
+            };
+
+            (function () {
+              // DON'T EDIT BELOW THIS LINE
+              var d = document,
+                s = d.createElement("script");
+              s.src = "https://putracoderz.disqus.com/embed.js";
+              s.setAttribute("data-timestamp", +new Date());
+              (d.head || d.body).appendChild(s);
+            })();
+          </script>
         </div>
         <!-- <Footer /> -->
       </main>
