@@ -10,6 +10,7 @@ import { getLangFromUrl, useTranslatedPath } from "../../i18n/utils";
 import Navbar from "../../components/Navbar.astro";
 import type { Page, PaginateFunction } from "astro";
 import Pagination from "../../components/Pagination.astro";
+import { Icon } from "astro-icon/components";
 
 type Props = {
   page: Page<any>;
@@ -72,7 +73,10 @@ const { page } = Astro.props;
                       </small>
                       <div class="card-actions justify-end">
                         <a href={`/blog/${post.id}`} class="btn btn-primary">
-                          <i class="fas fa-arrow-right" />
+                          <Icon
+                            name="material-symbols:arrow-forward"
+                            class="text-xl"
+                          />
                         </a>
                       </div>
                     </div>

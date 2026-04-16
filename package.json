@@ -14,9 +14,6 @@
     "@astrojs/sitemap": "^3.7.2",
     "@astrojs/vercel": "^9.0.5",
     "@astrojs/vue": "^5.1.4",
-    "@fortawesome/fontawesome-svg-core": "^7.2.0",
-    "@fortawesome/free-brands-svg-icons": "^7.2.0",
-    "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@tailwindcss/vite": "^4.2.2",
     "@tsparticles/slim": "^3.9.1",
     "@tsparticles/vue3": "^3.0.1",
@@ -35,7 +32,12 @@
     "vue": "^3.5.32"
   },
   "devDependencies": {
+    "@iconify-json/cib": "^1.2.3",
     "@iconify-json/material-symbols": "^1.2.65",
     "@tailwindcss/typography": "^0.5.19"
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "not ie 11"
+  ]
 }

@@ -1,13 +1,15 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const today = new Date();
 const links = [
   {
-    icon: "fa-github",
+    icon: "cib:github",
     to: "https://github.com/putra4648",
   },
   {
-    icon: "fa-linkedin",
-    to: "",
+    icon: "cib:discord",
+    to: "https://discord.com/users/1414837624257904741",
   },
 ];
 ---
@@ -21,7 +23,7 @@ const links = [
         links.map((link) => {
           return (
             <a href={link.to} class="link" target="_blank">
-              <i class={`fab ${link.icon} fa-2x`} />
+              <Icon name={link.icon} class="text-3xl" />
             </a>
           );
         })
