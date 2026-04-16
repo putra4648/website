@@ -1,6 +1,5 @@
 ---
 import { Icon } from "astro-icon/components";
-import SkillList from "./SkillList.astro";
 import Timeline from "./Timeline.astro";
 
 const skills = [
@@ -92,164 +91,148 @@ const timelines = [
 ];
 ---
 
-<div class="md:container mx-auto my-10">
-    <div class="grid md:grid-cols-2 gap-10 justify-items-center content-center">
-        <div>
-            <div
-                class="font-bold md:text-5xl text-2xl mb-5 text-center md:text-left"
-            >
-                Hi, I'm Putra. A Fullstack Developer building scalable web
-                applications
-            </div>
-            <div class="md:text-xl text-lg font-mono text-center md:text-left">
-                Passionate Fullstack Engineer dedicated to crafting clean code
-                and efficient digital solutions. With expertise in Golang, Nuxt,
-                and Spring Boot, I transform complex problems into elegant,
-                user-centric software. Explore my latest projects and technical
-                insights below.
-            </div>
+<div class="grid md:grid-cols-2 gap-10 justify-items-center content-center">
+    <div>
+        <div
+            class="font-bold md:text-5xl text-2xl mb-5 text-center md:text-left"
+        >
+            Hi, I'm Putra. A Fullstack Developer building scalable web
+            applications
         </div>
-        <div class="self-center bg-bone aspect-square relative">
-            <div
-                class="bg-base-200 absolute top-2 left-2 w-full h-full -z-10 rounded hover:top-5 hover:left-5 transition-all duration-300"
-            >
-            </div>
-            <img
-                src="https://i.pravatar.cc/300?img=12"
-                alt="Hero"
-                class="w-full h-full rounded z-10"
-                loading="lazy"
-            />
+        <div class="md:text-xl text-lg font-mono text-center md:text-left">
+            Passionate Fullstack Engineer dedicated to crafting clean code and
+            efficient digital solutions. With expertise in Golang, Nuxt, and
+            Spring Boot, I transform complex problems into elegant, user-centric
+            software. Explore my latest projects and technical insights below.
         </div>
     </div>
-    <div class="mt-10 flex flex-wrap gap-4">
-        <button
-            onclick="my_modal_1.showModal()"
-            class="btn btn-outline btn-primary btn-lg rounded-md ring-1 shadow-[6px_6px_0_0_rgba(0,0,0,0.2)]
+    <div class="self-center bg-bone aspect-square relative">
+        <div
+            class="bg-base-200 absolute top-2 left-2 w-full h-full -z-10 rounded hover:top-5 hover:left-5 transition-all duration-300"
+        >
+        </div>
+        <img
+            src="https://i.pravatar.cc/300?img=12"
+            alt="Hero"
+            class="w-full h-full rounded z-10"
+            loading="lazy"
+        />
+    </div>
+</div>
+<div class="mt-10 flex flex-wrap gap-4">
+    <button
+        onclick="my_modal_1.showModal()"
+        class="btn btn-outline btn-primary btn-lg rounded-md ring-1 shadow-[6px_6px_0_0_rgba(0,0,0,0.2)]
                hover:shadow-[0_4px_0_0_rgba(0,0,0,0.2)]
                active:shadow-none active:translate-y-1.5
                transition-all duration-75"
-        >
-            <Icon name="material-symbols:cases" />
-            Work Experience
-        </button>
-        <button
-            onclick="my_modal_2.showModal()"
-            class="btn btn-outline btn-primary btn-lg rounded-md ring-1 shadow-[6px_6px_0_0_rgba(0,0,0,0.2)]
+    >
+        <Icon name="material-symbols:cases" />
+        Work Experience
+    </button>
+    <button
+        onclick="my_modal_2.showModal()"
+        class="btn btn-outline btn-primary btn-lg rounded-md ring-1 shadow-[6px_6px_0_0_rgba(0,0,0,0.2)]
                hover:shadow-[0_4px_0_0_rgba(0,0,0,0.2)]
                active:shadow-none active:translate-y-1.5
                transition-all duration-75"
-        >
-            <Icon name="material-symbols:mail" />
-            Send Me a Message
-        </button>
-    </div>
-    <div class="card shadow-sm mt-10 bg-base-200">
-        <div class="card-body">
-            <div
-                class="card-title font-bold md:text-2xl flex items-center gap-2"
-            >
-                About Me
+    >
+        <Icon name="material-symbols:mail" />
+        Send Me a Message
+    </button>
+</div>
+<div class="card shadow-sm mt-10 bg-base-200">
+    <div class="card-body">
+        <div class="card-title font-bold md:text-2xl flex items-center gap-2">
+            About Me
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+            <div class="md:text-lg font-mono">
+                I am a Fullstack Developer with over 3 years of professional
+                experience building scalable web applications. My expertise lies
+                in bridging the gap between complex backend logic and intuitive
+                frontend experiences. Currently, I specialize in the Golang and
+                Nuxt.js/Vue ecosystem, with a strong background in Java (Spring
+                Boot) and distributed messaging systems like RabbitMQ. I thrive
+                on solving architectural challenges and am currently passionate
+                about developing comprehensive ERP (Enterprise Resource
+                Planning) and WMS (Warehouse Management System) solutions. My
+                goal is to transform intricate business requirements into clean,
+                maintainable, and high-performing code
             </div>
             <div class="grid md:grid-cols-2 gap-4">
-                <div class="md:text-lg font-mono">
-                    I am a Fullstack Developer with over 3 years of professional
-                    experience building scalable web applications. My expertise
-                    lies in bridging the gap between complex backend logic and
-                    intuitive frontend experiences. Currently, I specialize in
-                    the Golang and Nuxt.js/Vue ecosystem, with a strong
-                    background in Java (Spring Boot) and distributed messaging
-                    systems like RabbitMQ. I thrive on solving architectural
-                    challenges and am currently passionate about developing
-                    comprehensive ERP (Enterprise Resource Planning) and WMS
-                    (Warehouse Management System) solutions. My goal is to
-                    transform intricate business requirements into clean,
-                    maintainable, and high-performing code
-                </div>
-                <div class="grid md:grid-cols-2 gap-4">
-                    {
-                        skills.map((skill) => (
-                            <div class="flex items-center gap-2">
-                                <div class="card bg-base-100 shadow-sm min-h-56 relative">
-                                    <div class="card-body z-10">
-                                        <h2 class="card-title text-xl flex items-center gap-2">
-                                            <Icon
-                                                name={skill.icon}
-                                                class="text-xl"
-                                            />
-                                            {skill.name}
-                                        </h2>
-                                        <p>{skill.description}</p>
-                                    </div>
+                {
+                    skills.map((skill) => (
+                        <div class="flex items-center gap-2">
+                            <div class="card bg-base-100 shadow-sm min-h-56 relative">
+                                <div class="card-body z-10">
+                                    <h2 class="card-title text-xl flex items-center gap-2">
+                                        <Icon
+                                            name={skill.icon}
+                                            class="text-xl"
+                                        />
+                                        {skill.name}
+                                    </h2>
+                                    <p>{skill.description}</p>
                                 </div>
                             </div>
-                        ))
-                    }
-                </div>
+                        </div>
+                    ))
+                }
             </div>
         </div>
     </div>
-    <div class="card bg-base-200 mt-10">
-        <div class="card-body">
-            <div
-                class="card-title font-bold md:text-2xl flex items-center gap-2"
-            >
-                Skills
-            </div>
-            <SkillList />
-        </div>
-    </div>
-
-    <dialog id="my_modal_1" class="modal">
-        <div class="modal-box w-11/12 max-w-5xl">
-            <form method="dialog">
-                <button class="btn btn-circle btn-ghost absolute right-2 top-2">
-                    <Icon name="material-symbols:close" />
-                </button>
-            </form>
-            <h3 class="text-lg font-bold">Work Experience</h3>
-            <Timeline items={timelines} />
-        </div>
-    </dialog>
-
-    <dialog id="my_modal_2" class="modal">
-        <div class="modal-box w-11/12 max-w-5xl">
-            <form method="dialog">
-                <button class="btn btn-circle btn-ghost absolute right-2 top-2">
-                    <Icon name="material-symbols:close" />
-                </button>
-            </form>
-            <h3 class="text-lg font-bold">Send Me a Message</h3>
-            <form
-                action="https://formspree.io/f/xojyqzoz"
-                method="post"
-                class="flex flex-col gap-2"
-            >
-                <label class="form-control w-full">
-                    <div class="label">
-                        <span class="label-text">Your email?</span>
-                    </div>
-                    <input
-                        required
-                        name="email"
-                        type="email"
-                        placeholder="youremail@domain.name"
-                        class="input input-bordered w-full"
-                    />
-                </label>
-                <label class="form-control w-full">
-                    <div class="label">
-                        <span class="label-text">Your message</span>
-                    </div>
-                    <textarea
-                        required
-                        name="message"
-                        placeholder="Type here"
-                        rows={5}
-                        class="textarea textarea-bordered w-full"></textarea>
-                </label>
-                <button type="submit" class="btn btn-primary">Send</button>
-            </form>
-        </div>
-    </dialog>
 </div>
+
+<dialog id="my_modal_1" class="modal">
+    <div class="modal-box w-11/12 max-w-5xl">
+        <form method="dialog">
+            <button class="btn btn-circle btn-ghost absolute right-2 top-2">
+                <Icon name="material-symbols:close" />
+            </button>
+        </form>
+        <h3 class="text-lg font-bold">Work Experience</h3>
+        <Timeline items={timelines} />
+    </div>
+</dialog>
+
+<dialog id="my_modal_2" class="modal">
+    <div class="modal-box w-11/12 max-w-5xl">
+        <form method="dialog">
+            <button class="btn btn-circle btn-ghost absolute right-2 top-2">
+                <Icon name="material-symbols:close" />
+            </button>
+        </form>
+        <h3 class="text-lg font-bold">Send Me a Message</h3>
+        <form
+            action="https://formspree.io/f/xojyqzoz"
+            method="post"
+            class="flex flex-col gap-2"
+        >
+            <label class="form-control w-full">
+                <div class="label">
+                    <span class="label-text">Your email?</span>
+                </div>
+                <input
+                    required
+                    name="email"
+                    type="email"
+                    placeholder="youremail@domain.name"
+                    class="input input-bordered w-full"
+                />
+            </label>
+            <label class="form-control w-full">
+                <div class="label">
+                    <span class="label-text">Your message</span>
+                </div>
+                <textarea
+                    required
+                    name="message"
+                    placeholder="Type here"
+                    rows={5}
+                    class="textarea textarea-bordered w-full"></textarea>
+            </label>
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </div>
+</dialog>

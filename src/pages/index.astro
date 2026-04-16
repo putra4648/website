@@ -4,10 +4,26 @@ import Footer from "../components/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Intro from "../components/Intro.astro";
+import Skills from "../components/Skills.astro";
+import { Image } from "astro:assets";
 ---
 
 <Layout>
   <Navbar />
-  <Intro />
+  <div class="md:container mx-auto my-10">
+    <Intro />
+    <Skills />
+    <div class="flex flex-col items-center my-10">
+      <Image
+        src={`https://github-readme-activity-graph.vercel.app/graph?username=putra4648&bg_color=00000000&color=ffffff&line=9ecbff&point=f97583&area=true&hide_border=true&custom_title=${encodeURIComponent("Putra4648 Github Activity Graph")}`}
+        alt="Github Activity Graph"
+        layout="constrained"
+        width={1000}
+        height={1000}
+      />
+      <small>* Auto update</small>
+    </div>
+  </div>
+
   <Footer />
 </Layout>
