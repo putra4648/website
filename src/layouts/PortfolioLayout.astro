@@ -28,7 +28,7 @@ const { title, description, year, image, stack } = post;
                 <div class="">
                     <h1>{title}</h1>
                     <div>{year}</div>
-                    <div class="flex gap-2">
+                    <div class="flex flex-wrap gap-2">
                         {
                             stack.map((s) => (
                                 <div class="badge badge-secondary">{s}</div>
