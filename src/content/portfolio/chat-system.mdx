@@ -1,0 +1,62 @@
+---
+title: "Simple Real-Time Chat System"
+year: 2026
+description: 
+    - "A high-performance chat application built with Golang, PGX, Parsley, GoFiber, and WebSockets."
+    - "This project serves as a deep dive into modular architecture and Clean Architecture principles."
+stack: ["Golang", "PostgreSQL", "WebSocket", "Redis", "Fiber"]
+image: "../../assets/no-image.png"
+---
+
+## 📝 Overview
+
+In this project, I developed a simple yet robust real-time chat application using **Golang**, **PGX**, **Parsley**, **GoFiber**, and **WebSockets**. The goal was to create a lightweight communication system that prioritizes performance, clean code architecture, and secure data handling.
+
+This application features secure user authentication, private 1-on-1 messaging, a dynamic friend list, and persistent message history.
+
+## 🚀 Key Features
+
+- **Real-Time Messaging**: Seamless bi-directional communication powered by WebSockets (Fiber v3 extension).
+- **Private Conversations**: Instant 1-on-1 chats between users.
+- **Dynamic Friend List**: Real-time sidebar to find and initiate chats instantly.
+- **Message History**: Persistent storage of all conversations using PostgreSQL for reliable data retrieval.
+- **Secure by Design**: 
+  - Token-based **CSRF Protection**.
+  - Session Management backed by **Redis**.
+  - Industry-standard password hashing via **Bcrypt**.
+  - Custom Auth Middleware for protected route management.
+- **Modern UI**: A clean, mobile-first dashboard built with Bootstrap 5.
+
+## 🛠️ Technology Stack
+
+| Layer | Technology |
+| :--- | :--- |
+| **Backend** | Go (Golang) |
+| **Web Framework** | Fiber v3 |
+| **Real-time** | Fiber WebSocket Extension |
+| **Database** | PostgreSQL (via `pgxpool`) |
+| **Caching** | Redis (Session & State) |
+| **Dependency Injection** | Parsley |
+| **Frontend** | HTML5, Vanilla JavaScript, Bootstrap 5 |
+
+## 🏗️ Project Architecture
+
+The project follows a clean, modular structure to ensure maintainability and scalability:
+
+- `cmd/`: Application entry point.
+- `internal/app/`: Main application setup and dependency orchestration.
+- `internal/handlers/`: Route handlers organized by domain (Auth, Dashboard, WS).
+- `internal/services/`: Core business logic layer.
+- `internal/repositories/`: Data access layer utilizing PostgreSQL.
+- `internal/middleware/`: Security and system configurations.
+- `views/`: HTML templates and frontend assets.
+
+## 💡 Technical Insight
+
+A key highlight of this project was implementing **Parsley** for Dependency Injection, which significantly improved the testability and organization of the code. Managing WebSocket connection states while ensuring message persistence in **PostgreSQL** without sacrificing speed was a challenging yet rewarding part of the development process.
+
+## 🔗 Github Repository
+
+[https://github.com/putra4648/my-chat-app](https://github.com/putra4648/my-chat-app)
+
+---

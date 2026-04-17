@@ -1,26 +1,52 @@
 ---
-title: "ERP System"
-description: ["An ERP project focused on streamlining corporate operations through stock, location, and transfer management. This project serves as a deep dive into modular architecture and Clean Architecture principles."]
+title: "My ERP"
 year: 2025
-stack: ["Golang", "PostgreSQL", "NuxtJS", "Keycloak"]
-source: ""
+description: 
+    - "A high-performance enterprise resource planning system focused on real-time inventory tracking and master data management."
+stack: ["Go", "Nuxt 4", "PostgreSQL", "Auth0", "Tailwind CSS"]
 image: "../../assets/erp.png"
+github: "https://github.com/yourusername/my-erp"
 ---
 import ProjectImageCarousel from "../../components/ProjectImageCarousel.astro";
 
 
+## 🏢 Project Overview
 
-> **Executive Overview:** Re-engineering legacy logistics workflows into a cloud-native ecosystem, eliminating data silos for 15+ regional distribution centers.
+**My ERP** is a modern, high-performance Enterprise Resource Planning system specifically engineered for **Inventory Management**. The goal of this project was to bridge the gap between complex enterprise needs and a seamless user experience. 
 
+Built with a robust **Go** backend and a cutting-edge **Nuxt 4** frontend, it provides businesses with real-time visibility into their supply chain, from multi-warehouse stock levels to intelligent replenishment alerts.
 
-## 🏛️ Solution Architecture (High-Level)
+## ✨ Key Features
 
-## 🎯 The Business Challenge
+### 📦 Inventory Management
+- **Real-Time Stock Monitoring**: Track product quantities across multiple warehouses simultaneously.
+- **Dynamic Stock Movements**: Comprehensive tracking for inbound, outbound, and internal transfers.
+- **Inventory Adjustments**: Manual correction tools with integrated reason-tracking for auditing.
+- **Smart Alerts**: Automated dashboard notifications for low-stock items to prevent supply chain gaps.
 
-## 🗺️ Reimagined User Journey
+### 🗂️ Master Data & Security
+- **Resource Management**: Centralized control for Products, Categories, UOMs (Units of Measure), Suppliers, and Warehouses.
+- **RBAC (Role-Based Access Control)**: Granular security ensuring users only access data relevant to their role.
+- **OIDC Integration**: Secure authentication and authorization powered by **Auth0**.
 
-## 💎 Value Delivered
+### 🎨 Modern UI/UX
+- **Data-Driven Dashboard**: High-level statistics and recent activity feeds at a glance.
+- **Next-Gen Styling**: Built with **Tailwind CSS 4** and **@nuxt/ui**, featuring native Dark/Light mode support.
 
-## 📸 Solution Gallery
+## 🛠️ Technical Stack
 
-<ProjectImageCarousel imageFolder="erp" />
+### Backend (The Engine)
+* **Go (1.25+)**: Leveraging high-concurrency for enterprise-grade performance.
+* **Fiber v2**: Fast and minimalist web framework.
+* **GORM & PostgreSQL**: Robust ORM for complex relational data mapping.
+* **Dig (Uber)**: Dependency Injection for cleaner, more maintainable code.
+* **Zap**: Blazing fast, structured logging.
+
+### Frontend (The Interface)
+* **Nuxt 4 (Vue 3)**: Utilizing
+
+## 🔗 Github Repository
+
+[https://github.com/putra4648/erp](https://github.com/putra4648/erp)
+
+{/* <ProjectImageCarousel imageFolder="erp" /> */}
