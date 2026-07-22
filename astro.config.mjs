@@ -32,13 +32,12 @@ export default defineConfig({
       enabled: true,
     }
   }),
-  experimental: {
-    fonts: [{
-      provider: fontProviders.google(),
-      name: "Saira Stencil",
-      cssVariable: "--font-saira-stencil",
-    }],
-  },
+  fonts: [{
+    provider: fontProviders.google(),
+    name: "Saira Stencil",
+    cssVariable: "--font-saira-stencil",
+  }],
+  experimental: {},
   vite: {
     plugins: [
       tailwindcss(),
