@@ -22,19 +22,16 @@ const {items } = Astro.props
     items.sort((a, b) => b.year.localeCompare(a.year)).map((i, index) => {
       return (
     <li>
-          {
-          index > 0 ? 
+          
         <div class="timeline-middle">
             <Icon name="material-symbols:star" />
         </div>
-        <div class={`${index % 2==0 ? 'timeline-end md:text-end' : 'timeline-start'} mb-10 `}>
+        <div class='timeline-start md:mb-10'>
              <p class="font-mono italic">{i.year}</p>
              <div class="text-lg font-black">{i.title} {i.company && `- ${i.company}`}</div>
              <ul class="list">
               {i.jobdesk && i.jobdesk.map((c) => {
-                const split = c.split(":");
-                const [, val2] = split;
-                return <li class="list-row">{val2}</li>;
+                return <li class="list-row">{c}</li>;
               })}
               {i.content && i.content.map((c) => {
                 return <li class="list-row">{c}</li>;
@@ -48,35 +45,7 @@ const {items } = Astro.props
             </div>
             </ul>
         </div>
-        <hr /> : 
-        <hr />
-            <div class="timeline-middle">
-                <Icon name="material-symbols:star" />
-            </div>
-        <div class={`${index % 2==0 ? 'timeline-end md:text-end' : 'timeline-start'} md:mb-10`}>
-            <time class="font-mono italic">{i.year}</time>
-                         <div class="text-lg font-black">{i.title} {i.company && `- ${i.company}`}</div>
-
-            <ul class="list">
-              {i.jobdesk && i.jobdesk.map((c) => {
-                const split = c.split(":");
-                const [, val2] = split;
-                return <li class="list-row">{val2}</li>;
-              })}
-              {i.content && i.content.map((c) => {
-                return <li class="list-row">{c}</li>;
-              })}
-              <div class="flex flex-wrap gap-2 mt-2">
-              {i.stack && i.stack.map((s) => {
-                return (
-                  <div class="badge badge-secondary badge-outline">{s}</div>
-                );
-              })}
-            </div>
-            </ul>
-        </div>
-            <hr />
-        }
+        <hr /> 
     </li>
       );
     })
