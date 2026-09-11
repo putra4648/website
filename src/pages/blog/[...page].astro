@@ -24,16 +24,17 @@ export async function getStaticPaths({ paginate }: any) {
 }
 
 const { page } = Astro.props;
+
 ---
 
 <!doctype html>
 <html>
   <head>
-    <BaseHead
+    <!-- <BaseHead
       title={SITE_TITLE}
       description={SITE_DESCRIPTION}
       image={`https://www.readmecodegen.com/api/og-generator?title=${encodeURIComponent(SITE_TITLE)}&subtitle=${encodeURIComponent(SITE_DESCRIPTION)}&author=Putra&template=cleanModernArticle&pattern=tech&appName=putracoderz.my.id`}
-    />
+    /> -->
   </head>
   <body>
     <Navbar />
@@ -52,7 +53,7 @@ const { page } = Astro.props;
                   >
                     <figure>
                       <Image
-                        src={`https://www.readmecodegen.com/api/og-generator?title=${encodeURIComponent(post.data.title)}&subtitle=${encodeURIComponent(post.data.description.join(". "))}&author=Putra&template=cleanModernArticle&pattern=tech&appName=putracoderz.my.id`}
+                        src={`https://og-image.org/api/og?template=photo-duotone&title=${encodeURIComponent(post.data.title)}&description=${encodeURIComponent(post.data.description)}&icon=🎯&bgId=bKESVqfxass&overlay=0.7`}
                         alt=""
                         width={500}
                         height={500}
