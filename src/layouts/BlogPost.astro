@@ -1,8 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import BaseHead from "../components/BaseHead.astro";
 import FormattedDate from "../components/FormattedDate.astro";
-import { randomizeTagColors } from "../utils/tag";
 import { Icon } from "astro-icon/components";
 import Layout from "./Layout.astro";
 
@@ -11,24 +9,16 @@ interface Props {
   post: CollectionEntry<"blog">["data"];
   // Tambahkan property minutesRead secara manual di sini
   minutesRead: string;
-  lastModified: string;
+  // lastModified: string;
 }
 
 const { title, tags, pubDate, updatedDate, description } = Astro.props.post;
-const { minutesRead, lastModified } = Astro.props;
+const { minutesRead } = Astro.props;
 ---
 
 <html>
-  <head>
-    <BaseHead
-      title={title}
-      description={description.join(". ")}
-      image={`https://www.readmecodegen.com/api/og-generator?title=${encodeURIComponent(title)}&subtitle=${encodeURIComponent(description.join(". "))}&author=Putra&template=cleanModernArticle&pattern=tech&appName=putracoderz.my.id`}
-    />
-  </head>
-
   <body>
-    <Layout title={title} description={description.join(". ")}>
+    <Layout title={title} description={description}>
       <main class="max-w-3/5 mx-auto prose my-3">
         <a role="button" class="btn btn-ghost btn-lg" href="/blog">
           <Icon name="material-symbols:arrow-back" />
@@ -49,11 +39,11 @@ const { minutesRead, lastModified } = Astro.props;
                 }
               </div>
               <h1>{title}</h1>
-              {description.map((d) => <p>{d}</p>)}
+              {description}
               <div class="flex gap-1 my-2">
                 {tags.map((t) => <div class={`badge badge-soft`}>{t}</div>)}
               </div>
-              <p class="text-end">Last Edited {lastModified}</p>
+              <!-- <p class="text-end">Last Edited {lastModified}</p> -->
               <hr />
             </div>
           </div>
