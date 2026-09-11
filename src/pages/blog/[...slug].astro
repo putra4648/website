@@ -1,6 +1,6 @@
 ---
 import { type CollectionEntry, getCollection, render } from "astro:content";
-import BlogPost from "../../layouts/BlogPost.astro";
+import BlogPostLayout from "../../layouts/BlogPostLayout.astro";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 
@@ -27,9 +27,9 @@ const { Content, remarkPluginFrontmatter } = await render(page);
 //     .format("DD MMMM YYYY UTC");
 ---
 
-<BlogPost
+<BlogPostLayout
     post={page.data}
     minutesRead={remarkPluginFrontmatter.minutesRead}
 >
     <Content />
-</BlogPost>
+</BlogPostLayout>

@@ -24,7 +24,6 @@ export async function getStaticPaths({ paginate }: any) {
 }
 
 const { page } = Astro.props;
-
 ---
 
 <!doctype html>
@@ -39,56 +38,56 @@ const { page } = Astro.props;
   <body>
     <Navbar />
     <Layout>
-      <main class="container mx-auto p-3 my-3">
-        <div class="flex flex-col space-y-4 items-center">
-          <div class="grid md:grid-cols-3 gap-3">
-            {
-              ((page as any).data || []).map((post: any) => {
-                return (
-                  <div
-                    class="card card-border bg-base-100 shadow-[6px_6px_0_0_rgba(0,0,0,0.2)]
+      <div
+        class="flex flex-col space-y-4 items-center min-h-[calc(100vh-200px)]"
+      >
+        <div class="grid md:grid-cols-3 gap-3">
+          {
+            ((page as any).data || []).map((post: any) => {
+              return (
+                <div
+                  class="card card-border bg-base-100 shadow-[6px_6px_0_0_rgba(0,0,0,0.2)]
                hover:shadow-[0_4px_0_0_rgba(0,0,0,0.2)]
                active:shadow-none active:translate-y-1.5
                transition-all duration-75"
-                  >
-                    <figure>
-                      <Image
-                        src={`https://og-image.org/api/og?template=photo-duotone&title=${encodeURIComponent(post.data.title)}&description=${encodeURIComponent(post.data.description)}&icon=🎯&bgId=bKESVqfxass&overlay=0.7`}
-                        alt=""
-                        width={500}
-                        height={500}
-                      />
-                    </figure>
+                >
+                  <figure>
+                    <Image
+                      src={`https://og-image.org/api/og?template=photo-duotone&title=${encodeURIComponent(post.data.title)}&description=${encodeURIComponent(post.data.description)}&icon=🎯&bgId=bKESVqfxass&overlay=0.7`}
+                      alt=""
+                      width={500}
+                      height={500}
+                    />
+                  </figure>
 
-                    <div class="card-body">
-                      <h2 class="card-title flex justify-between">
-                        <p class="line-clamp-2">{post.data.title}</p>
-                        <div>
-                          <span
-                            class={`fi fi-${post.data.lang == "en" ? "gb" : "id"}`}
-                          />
-                        </div>
-                      </h2>
-                      <small class="card-subtitle">
-                        <FormattedDate date={post.data.pubDate} />
-                      </small>
-                      <div class="card-actions justify-end">
-                        <a href={`/blog/${post.id}`} class="btn btn-primary">
-                          <Icon
-                            name="material-symbols:arrow-forward"
-                            class="text-xl"
-                          />
-                        </a>
+                  <div class="card-body">
+                    <h2 class="card-title flex justify-between">
+                      <p class="line-clamp-2">{post.data.title}</p>
+                      <div>
+                        <span
+                          class={`fi fi-${post.data.lang == "en" ? "gb" : "id"}`}
+                        />
                       </div>
+                    </h2>
+                    <small class="card-subtitle">
+                      <FormattedDate date={post.data.pubDate} />
+                    </small>
+                    <div class="card-actions justify-end">
+                      <a href={`/blog/${post.id}`} class="btn btn-primary">
+                        <Icon
+                          name="material-symbols:arrow-forward"
+                          class="text-xl"
+                        />
+                      </a>
                     </div>
                   </div>
-                );
-              })
-            }
-          </div>
-          <Pagination page={page} />
+                </div>
+              );
+            })
+          }
         </div>
-      </main>
+        <Pagination page={page} />
+      </div>
     </Layout>
     <Footer />
   </body>

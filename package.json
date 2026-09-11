@@ -32,7 +32,10 @@
   "devDependencies": {
     "@iconify-json/cib": "^1.2.3",
     "@iconify-json/material-symbols": "^1.2.65",
-    "@tailwindcss/typography": "^0.5.19"
+    "@tailwindcss/typography": "^0.5.19",
+    "eslint": "^10.10.0",
+    "eslint-plugin-astro": "^3.1.0",
+    "typescript-eslint": "^8.70.0"
   },
   "browserslist": [
     "defaults",
