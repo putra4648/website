@@ -28,7 +28,7 @@ const {items } = Astro.props
             <Icon name="material-symbols:star" />
         </div>
         <div class={`${index % 2==0 ? 'timeline-end md:text-end' : 'timeline-start'} mb-10 `}>
-             <p class="font-mono italic">{i.year}</time>
+             <p class="font-mono italic">{i.year}</p>
              <div class="text-lg font-black">{i.title} {i.company && `- ${i.company}`}</div>
              <ul class="list">
               {i.jobdesk && i.jobdesk.map((c) => {
