@@ -1,14 +1,11 @@
 ---
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-import BaseHead from "../../components/BaseHead.astro";
 import Footer from "../../components/Footer.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
 import Layout from "../../layouts/Layout.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
-import { getLangFromUrl, useTranslatedPath } from "../../i18n/utils";
 import Navbar from "../../components/Navbar.astro";
-import type { Page, PaginateFunction } from "astro";
+import type { Page } from "astro";
 import Pagination from "../../components/Pagination.astro";
 import { Icon } from "astro-icon/components";
 
@@ -28,13 +25,6 @@ const { page } = Astro.props;
 
 <!doctype html>
 <html>
-  <head>
-    <!-- <BaseHead
-      title={SITE_TITLE}
-      description={SITE_DESCRIPTION}
-      image={`https://www.readmecodegen.com/api/og-generator?title=${encodeURIComponent(SITE_TITLE)}&subtitle=${encodeURIComponent(SITE_DESCRIPTION)}&author=Putra&template=cleanModernArticle&pattern=tech&appName=putracoderz.my.id`}
-    /> -->
-  </head>
   <body>
     <Navbar />
     <Layout>
@@ -53,8 +43,8 @@ const { page } = Astro.props;
                 >
                   <figure>
                     <Image
-                      src={`https://og-image.org/api/og?template=photo-duotone&title=${encodeURIComponent(post.data.title)}&description=${encodeURIComponent(post.data.description)}&icon=🎯&bgId=bKESVqfxass&overlay=0.7`}
-                      alt=""
+                      src={`/open-graph/${post.id}.png`}
+                      alt={post.data.title}
                       width={500}
                       height={500}
                     />
