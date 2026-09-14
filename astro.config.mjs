@@ -14,19 +14,16 @@ import { remarkModifiedTime } from "./remark-modified-time.mjs";
 
 import icon from "astro-icon";
 
+import { intlayer } from "astro-intlayer";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://putracoderz.my.id",
-  integrations: [
-    mdx({
-      remarkPlugins: [remarkReadingTime, remarkModifiedTime],
-    }),
-    sitemap(),
-    vue({
-      appEntrypoint: '/src/pages/_app',
-    }),
-    icon(),
-  ],
+  integrations: [mdx({
+    remarkPlugins: [remarkReadingTime, remarkModifiedTime],
+  }), sitemap(), vue({
+    appEntrypoint: '/src/pages/_app',
+  }), icon(), intlayer()],
   adapter: vercel({
     webAnalytics: {
       enabled: true,

@@ -4,6 +4,7 @@ import BaseHead from "../components/BaseHead.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "./Layout.astro";
 import { Image } from "astro:assets";
+import { getIntlayer, getLocaleFromPath, type LocalesValues } from "intlayer";
 
 interface Props {
     post: CollectionEntry<"portfolio">["data"];
@@ -11,19 +12,26 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const { title, description, year, image, stack } = post;
+const { year, image, stack } = post;
+const locale = getLocaleFromPath(Astro.url.pathname) as LocalesValues;
+const labels = getIntlayer("portfolio", locale);
+type PortfolioArticle = { title: string; description: string };
+const slug = Astro.props.id;
+const article = (
+    labels as unknown as { articles: Record<string, PortfolioArticle> }
+).articles[slug];
 ---
 
 <html>
     <body>
-        <Layout title={title} description={description.join(". ")}>
-            <main class="max-w-3/5 mx-auto prose my-3">
-                <a role="button" class="btn btn-ghost btn-lg" href="/portfolio">
+        <Layout title={article.title} description={article.description}>
+            <main class="max-w-4/5 mx-auto prose my-3">
+                <a role="button" class="btn btn-ghost btn-lg" href={locale === "en" ? "/portfolio" : `/${locale}/portfolio`}>
                     <Icon name="material-symbols:arrow-back" />
-                    Back to Portfolio
+                    {labels.actions.back}
                 </a>
                 <div class="">
-                    <h1>{title}</h1>
+                    <h1>{article.title}</h1>
                     <div>{year}</div>
                     <div class="flex flex-wrap gap-2">
                         {
@@ -33,17 +41,17 @@ const { title, description, year, image, stack } = post;
                         }
                     </div>
                     <div>
-                        {description.map((d) => <p>{d}</p>)}
+                        <p>{article.description}</p>
                         <hr />
                     </div>
 
                     {
                         image && (
                             <div>
-                                <h2>Preview</h2>
+                                <h2>{labels.sections.preview}</h2>
                                 <Image
                                     src={image}
-                                    alt={title}
+                                    alt={article.title}
                                     width={image.width}
                                     height={image.height}
                                 />

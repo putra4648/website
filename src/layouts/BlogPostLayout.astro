@@ -3,6 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "./Layout.astro";
+import { getIntlayer, getLocaleFromPath, type LocalesValues } from "intlayer";
 
 interface Props {
   // Ambil semua data dari skema Zod
@@ -12,17 +13,21 @@ interface Props {
   // lastModified: string;
 }
 
-const { title, tags, pubDate, updatedDate, description } = Astro.props.post;
+const locale = getLocaleFromPath(Astro.url.pathname) as LocalesValues;
+const labels = getIntlayer("blog", locale);
+const slug = Astro.params.slug ?? Astro.url.pathname.split("/").filter(Boolean).pop()!;
+const article = (labels.articles as Record<string, { title: string; description: string; tags: string[] }>)[slug];
+const { pubDate, updatedDate } = Astro.props.post;
 const { minutesRead } = Astro.props;
 ---
 
 <html>
   <body>
-    <Layout title={title} description={description}>
-      <main class="max-w-3/5 mx-auto prose my-3">
-        <a role="button" class="btn btn-ghost btn-lg" href="/blog">
+    <Layout title={article.title} description={article.description}>
+      <main class="max-w-4/5 mx-auto prose my-3">
+        <a role="button" class="btn btn-ghost btn-lg" href={locale === "en" ? "/blog" : `/${locale}/blog`}>
           <Icon name="material-symbols:arrow-back" />
-          Back to Blog
+          {labels.actions.back}
         </a>
         <div class="">
           <div class="">
@@ -33,15 +38,15 @@ const { minutesRead } = Astro.props;
                 {
                   updatedDate && (
                     <div class="last-updated-on">
-                      Last updated on <FormattedDate date={updatedDate} />
+                      {labels.metadata.updated} <FormattedDate date={updatedDate} />
                     </div>
                   )
                 }
               </div>
-              <h1>{title}</h1>
-              {description}
+              <h1>{article.title}</h1>
+              {article.description}
               <div class="flex gap-1 my-2">
-                {tags.map((t) => <div class={`badge badge-soft`}>{t}</div>)}
+                {article.tags.map((tag) => <div class={`badge badge-soft`}>{tag}</div>)}
               </div>
               <!-- <p class="text-end">Last Edited {lastModified}</p> -->
               <hr />

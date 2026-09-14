@@ -1,0 +1,26 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import { Locales } from "intlayer";
+import PortfolioLayout from "../../../layouts/PortfolioLayout.astro";
+
+export async function getStaticPaths() {
+  const pages = await getCollection("portfolio");
+  return pages
+    .filter((page) => !page.data.hidden)
+    .map((page) => ({
+      params: {
+        locale: Locales.INDONESIAN,
+        slug: page.id.split("/").pop()!.replace(/\.mdx?$/, ""),
+      },
+      props: page,
+    }));
+}
+
+type Props = CollectionEntry<"portfolio">;
+const page = Astro.props;
+const { Content } = await render(page);
+---
+
+<PortfolioLayout post={page.data} id={Astro.params.slug!}>
+  <Content />
+</PortfolioLayout>

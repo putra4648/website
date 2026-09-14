@@ -1,15 +1,12 @@
 ---
 import { SITE_TITLE } from "../consts";
-import {
-  getLangFromUrl,
-  useTranslatedPath,
-  useTranslations,
-} from "../i18n/utils";
+import { getIntlayer, getLocaleFromPath, getLocalizedUrl, type LocalesValues } from "intlayer";
 import NavbarLink from "./NavbarLink.astro";
+import LanguagePicker from "./LanguagePicker.astro";
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
-const translatePath = useTranslatedPath(lang);
+const lang = getLocaleFromPath(Astro.url.pathname) as LocalesValues;
+const t = getIntlayer("app", lang);
+const translatePath = (path: string) => getLocalizedUrl(path, lang);
 ---
 
 <div
@@ -26,21 +23,21 @@ const translatePath = useTranslatedPath(lang);
       <NavbarLink
         icon="material-symbols:home"
         class="mx-2"
-        href={translatePath("/")}>{t("nav.home")}</NavbarLink
+        href={translatePath("/")}>{t.nav.home}</NavbarLink
       >
       <NavbarLink
         class="mx-2"
         icon="material-symbols:folder-code"
-        href={translatePath("/" + t("nav.portfolio").toLowerCase())}
-        >{t("nav.portfolio")}</NavbarLink
+        href={translatePath("/portfolio")}
+        >{t.nav.portfolio}</NavbarLink
       >
       <NavbarLink
         icon="material-symbols:globe"
         class="mx-2"
-        href={translatePath("/" + t("nav.blog").toLowerCase())}
-        >{t("nav.blog")}</NavbarLink
+        href={translatePath("/blog")}
+        >{t.nav.blog}</NavbarLink
       >
-      <!-- <LanguagePicker /> -->
+      <LanguagePicker /> 
     </div>
     <div class="navbar-end md:hidden">
       <div class="dropdown dropdown-end">
@@ -63,21 +60,21 @@ const translatePath = useTranslatedPath(lang);
           tabindex="-1"
           class="menu menu-lg dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
         >
-          <li><a href={translatePath("/")}>{t("nav.home")}</a></li>
+          <li><a href={translatePath("/")}>{t.nav.home}</a></li>
           <li>
-            <a href={translatePath("/" + t("nav.portfolio").toLowerCase())}
-              >{t("nav.portfolio")}</a
+            <a href={translatePath("/portfolio")}
+              >{t.nav.portfolio}</a
             >
           </li>
           <li>
-            <a href={translatePath("/" + t("nav.blog").toLowerCase())}
-              >{t("nav.blog")}</a
+            <a href={translatePath("/blog")}
+              >{t.nav.blog}</a
             >
           </li>
           <!-- <hr /> -->
-          <!-- <li>
+          <li>
             <LanguagePicker />
-          </li> -->
+          </li> 
         </ul>
       </div>
     </div>

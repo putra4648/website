@@ -8,19 +8,24 @@ import Navbar from "../../components/Navbar.astro";
 import type { Page } from "astro";
 import Pagination from "../../components/Pagination.astro";
 import { Icon } from "astro-icon/components";
+import { getIntlayer, getLocaleFromPath, getLocalizedUrl, type LocalesValues } from "intlayer";
 
 type Props = {
   page: Page<any>;
 };
 
 export async function getStaticPaths({ paginate }: any) {
-  const posts = (await getCollection("blog")).sort(
+  const posts = (await getCollection("blog")).filter((post) => post.data.lang === "en").sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
   );
   return paginate(posts, { pageSize: 10 });
 }
 
 const { page } = Astro.props;
+const locale = getLocaleFromPath(Astro.url.pathname) as LocalesValues;
+const blog = getIntlayer("blog", locale);
+type BlogArticle = { title: string; description: string };
+const articles = blog.articles as unknown as Record<string, BlogArticle>;
 ---
 
 <!doctype html>
@@ -34,6 +39,8 @@ const { page } = Astro.props;
         <div class="grid md:grid-cols-3 gap-3">
           {
             ((page as any).data || []).map((post: any) => {
+              const slug = post.id.split("/").pop()!.replace(/\.mdx?$/, "");
+              const article = articles[slug];
               return (
                 <div
                   class="card card-border bg-base-100 shadow-[6px_6px_0_0_rgba(0,0,0,0.2)]
@@ -44,7 +51,7 @@ const { page } = Astro.props;
                   <figure>
                     <Image
                       src={`/open-graph/${post.id}.png`}
-                      alt={post.data.title}
+                      alt={article.title}
                       width={500}
                       height={500}
                     />
@@ -52,7 +59,7 @@ const { page } = Astro.props;
 
                   <div class="card-body">
                     <h2 class="card-title flex justify-between">
-                      <p class="line-clamp-2">{post.data.title}</p>
+                      <p class="line-clamp-2">{article.title}</p>
                       <div>
                         <span
                           class={`fi fi-${post.data.lang == "en" ? "gb" : "id"}`}
@@ -63,7 +70,7 @@ const { page } = Astro.props;
                       <FormattedDate date={post.data.pubDate} />
                     </small>
                     <div class="card-actions justify-end">
-                      <a href={`/blog/${post.id}`} class="btn btn-primary">
+                      <a href={getLocalizedUrl(`/blog/${post.id}`, locale)} class="btn btn-primary" aria-label={blog.actions.readMore}>
                         <Icon
                           name="material-symbols:arrow-forward"
                           class="text-xl"
