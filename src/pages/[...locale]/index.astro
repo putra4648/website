@@ -5,21 +5,21 @@ import Intro from "../../components/Intro.astro";
 import Navbar from "../../components/Navbar.astro";
 import Layout from "../../layouts/Layout.astro";
 import Skills from "../../components/Skills.astro";
+import Resume from "../../components/Resume.astro";
 
 export function getStaticPaths() {
   return localeMap(({ locale }) => ({
     params: { locale },
   }));
 }
-
 ---
 
 <Layout>
   <Navbar />
   <div class="container mx-auto my-10">
     <Intro />
-    <Skills id="skills"/>
+    <Resume id="resume" />
+    <Skills id="skills" />
   </div>
-  
   <Footer />
 </Layout>

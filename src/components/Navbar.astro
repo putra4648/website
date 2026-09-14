@@ -29,10 +29,8 @@ const mapUrl = (url: string) => {
         <a href="/">{SITE_TITLE}</a>
       </div>
     </div>
-    <div class="ml-auto">
-      <LanguagePicker />
-    </div>
     <div class="hidden md:flex navbar-end">
+      <LanguagePicker />
       <NavbarLink
         icon="material-symbols:home"
         class="mx-2"
@@ -41,7 +39,7 @@ const mapUrl = (url: string) => {
       <NavbarLink
         class="mx-2"
         icon="material-symbols:folder-code"
-        href={mapUrl("/skills")}>{t.nav.skills}</NavbarLink
+        href={mapUrl("#resume")}>{t.nav.resume}</NavbarLink
       >
       <NavbarLink class="mx-2" icon="material-symbols:book" href={"/guestbook"}
         >{t.nav.guestbook}</NavbarLink
@@ -49,7 +47,7 @@ const mapUrl = (url: string) => {
       <NavbarLink
         icon="material-symbols:globe"
         class="mx-2"
-        href={translatePath("/blog")}>{t.nav.blog}</NavbarLink
+        href={mapUrl("/blog")}>{t.nav.blog}</NavbarLink
       >
     </div>
     <div class="navbar-end md:hidden">
@@ -74,14 +72,9 @@ const mapUrl = (url: string) => {
           class="menu menu-lg dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
         >
           <li><a href={mapUrl("/")}>{t.nav.home}</a></li>
-          <li><a href={mapUrl("/guestbook")}>{t.nav.guestbook}</a></li>
-          <li>
-            <a href={mapUrl("/skills")}>{t.nav.skills}</a>
-          </li>
-          <li>
-            <a href={mapUrl("/blog")}>{t.nav.blog}</a>
-          </li>
-          <!-- <hr /> -->
+          <li><a href={mapUrl("#resume")}>{t.nav.resume}</a></li>
+          <li><a href={mapUrl("guestbook")}>{t.nav.guestbook}</a></li>
+          <li><a href={mapUrl("/blog")}>{t.nav.blog}</a></li>
           <li>
             <LanguagePicker />
           </li>

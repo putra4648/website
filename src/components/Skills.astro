@@ -58,30 +58,23 @@ const mapIcons = (key: string) => {
             return "material-symbols:article-person";
     }
 };
-const {id} = Astro.props;
+const { id } = Astro.props;
 ---
 
 <div class="card bg-base-200 mt-10" id={id}>
     <div class="card-body">
-        <div class="card-title font-bold flex items-center gap-2">
-            Skills
-        </div>
+        <div class="card-title font-bold flex items-center gap-2">Skills</div>
         <div class="grid md:grid-cols-4 gap-3">
             {
                 Object.entries(skill).map(([key, value]) => (
-                    <div class="card bg-base-100">
-                        <div class="card-body">
-                            <h2 class="card-title flex items-center gap-2 capitalize">
-                                <Icon name={mapIcons(key)} /> {key}
-                            </h2>
-                            <div class="flex flex-wrap gap-2">
-                                {value.map((i) => (
-                                    <span class="badge badge-soft rounded-md">
-                                        {i}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
+
+                    <div class="breadcrumbs text-sm p-0">
+                        <ul>
+                            <li class="font-bold no-underline">{key}</li>
+                            {value.map((i) => (
+                                <li class="badge badge-soft rounded-md">{i}</li>
+                            ))}
+                        </ul>
                     </div>
                 ))
             }

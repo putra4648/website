@@ -1,0 +1,122 @@
+---
+import { Icon } from "astro-icon/components";
+import Skills from "./Skills.astro";
+
+const experiences = [
+  {
+    year: "2021-2022",
+    title: "Freelance",
+    company: "",
+    jobdesk: [
+      "Developed a high-performance smart home mobile application using Flutter, enabling intuitive control over various IoT devices.",
+      "Integrated complex IoT communication protocols and REST APIs to enhance system responsiveness and user experience.",
+      "Implemented real-time device status monitoring and automated routines to streamline user interaction.",
+    ],
+    stack: ["Flutter", "Firebase", "REST API"],
+  },
+  {
+    year: "2023-2024",
+    title: "Fullstack Developer",
+    company: "PT. Astra Honda Motor (Outsourcing)",
+    jobdesk: [
+      "Spearheaded the modernization of legacy Oracle ADF 11g applications, migrating them to modern web and desktop platforms using Spring Boot and frontend technologies.",
+      "Enhanced system responsiveness by optimizing complex SQL queries (JOINS and UNIONs) to significantly reduce execution time.",
+      "Improved long-term maintainability by refactoring legacy codebases, modularizing components, and applying Clean Code principles.",
+    ],
+    stack: ["Spring Boot", "jQuery", "Oracle ADF", "Oracle Database", ".NET"],
+  },
+  {
+    year: "2024-2025",
+    title: "Fullstack Developer",
+    company: "PT. FTS Automotive Indonesia",
+    jobdesk: [
+      "Spearheaded the development of Purchase Requisition and Production Monitoring systems using Spring Boot and React to replace inflexible legacy modules.",
+      "Achieved a 50% increase in operational efficiency by streamlining budgeting and inventory processes through structured, system-driven validation.",
+      "Streamlined development operations by implementing GitLab CI/CD pipelines, resulting in a 30% reduction in deployment time.",
+      "Engineered robust system architectures, implemented RESTful APIs, and designed PostgreSQL data models.",
+    ],
+    stack: ["Spring Boot", "React", "PostgreSQL", "GitLab CI/CD", "Docker"],
+  },
+  {
+    year: "2025-2026",
+    title: "Fullstack Developer",
+    company: "PT. Sinar Sukses Mandiri",
+    jobdesk: [
+      "Developed core modules using Spring Boot and Vue.js to digitalize manual recording processes, resulting in a 20% reduction in operational errors.",
+      "Strengthened process transparency by designing and implementing an automated approval workflow system to ensure authorized critical actions.",
+      "Optimized application performance by 10% through caching strategies, backend code refinement, and PostgreSQL query tuning.",
+      "Enhanced system stability by diagnosing and resolving full-stack bottlenecks across frontend, backend, and database layers using Betterstack.",
+    ],
+    stack: [
+      "Java 17",
+      "Spring Boot",
+      "Vue.js",
+      "PostgreSQL",
+      "Betterstack",
+      "Golang",
+      "Docker",
+    ],
+  },
+  {
+    year: "2026-Present",
+    title: "Fullstack Developer",
+    company: "PT. Pesonna Optima Jasa (Outsourcing)",
+    jobdesk: [
+      "Placed as Fullstack Developer to manage, maintain, and enhance client core enterprise applications built with legacy Java (Java 6) and Vaadin framwork",
+      "Developed new business functionalities and updated existing features, including inpurt field validations, backend business logic, and interface enhancements",
+      "Constructed and optimized complex SQL queries to ensure smooth data retrieval and processing on IBM DB2 database",
+    ],
+    stack: ["Java 6", "Java EE", "Vaadin", "DB2", "Docker"],
+  },
+];
+
+const { id } = Astro.props;
+---
+
+<div id={id} >
+  <ul
+    class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical"
+  >
+    <Skills />
+    {
+      experiences
+        .sort((a, b) => b.year.localeCompare(a.year))
+        .map((i, index) => {
+          return (
+            <li>
+              <div class="timeline-middle">
+                <Icon name="material-symbols:star" />
+              </div>
+              <div class="timeline-start md:mb-10">
+                <p class="font-mono italic">{i.year}</p>
+                <div class="font-black">
+                  {i.title} {i.company && `- ${i.company}`}
+                </div>
+                <ul class="list">
+                  {i.jobdesk &&
+                    i.jobdesk.map((c) => {
+                      return <li class="list-row">{c}</li>;
+                    })}
+                  {/* {i.content &&
+                  i.content.map((c) => {
+                    return <li class="list-row">{c}</li>;
+                  })} */}
+                  <div class="flex flex-wrap gap-2 mt-2">
+                    {i.stack &&
+                      i.stack.map((s) => {
+                        return (
+                          <div class="badge badge-secondary badge-outline">
+                            {s}
+                          </div>
+                        );
+                      })}
+                  </div>
+                </ul>
+              </div>
+              <hr />
+            </li>
+          );
+        })
+    }
+  </ul>
+</div>

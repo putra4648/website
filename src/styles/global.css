@@ -1,13 +1,15 @@
 @import "tailwindcss";
 
 @theme inline {
-    --font-sans: var(--font-saira-stencil);
+  --font-sans: var(--font-saira-stencil);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 @plugin "@tailwindcss/typography";
 @plugin "daisyui";
-
-
 @plugin "daisyui/theme" {
   name: "my-theme";
   default: false;
