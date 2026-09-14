@@ -14,12 +14,10 @@ type Props = {
 
 const { portfolios } = Astro.props;
 const locale = getLocaleFromPath(Astro.url.pathname) as LocalesValues;
-const labels = getIntlayer("portfolio", locale);
+const { actions, articles } = getIntlayer("portfolio", locale);
 type PortfolioArticle = { title: string; description: string };
-const articles = (labels as unknown as {
-  articles: Record<string, PortfolioArticle>;
-}).articles;
----P
+const portfolioArticles = articles as unknown as Record<string, PortfolioArticle>;
+---
 
 <div class="container mx-auto my-5">
   <div class="grid md:grid-cols-3 gap-4">
@@ -27,7 +25,7 @@ const articles = (labels as unknown as {
       portfolios.map((item, index) => (
         (() => {
           const slug = item.id.split("/").pop()!.replace(/\.mdx?$/, "");
-          const article = articles[slug];
+          const article = portfolioArticles[slug];
           return (
         <div
           class="card card-border bg-base-100  shadow-[6px_6px_0_0_rgba(0,0,0,0.2)]
@@ -50,9 +48,9 @@ const articles = (labels as unknown as {
               <a
                 href={getLocalizedUrl(`/portfolio/${item.id}`, locale)}
                 class="btn btn-primary"
-                aria-label={labels.actions.preview}
+                aria-label={actions.preview}
               >
-                {labels.actions.preview}
+                {actions.preview}
               </a>
             </div>
           </div>

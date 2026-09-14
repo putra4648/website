@@ -2,6 +2,7 @@ import { t, type Dictionary } from "intlayer";
 
 const blogContent = {
   key: "blog",
+  importMode: "dynamic",
   content: {
     title: t({ en: "Blog", id: "Blog" }),
     description: t({
