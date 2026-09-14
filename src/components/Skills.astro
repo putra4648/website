@@ -38,49 +38,29 @@ const skill = {
         "Adaptability",
     ],
 };
-const mapIcons = (key: string) => {
-    switch (key) {
-        case "programmings":
-            return "material-symbols:code";
-        case "devtools":
-            return "material-symbols:code";
-        case "databases":
-            return "material-symbols:database";
-        case "frontend":
-            return "material-symbols:web";
-        case "backend":
-            return "material-symbols:computer";
-        case "infrastructures":
-            return "material-symbols:cloud";
-        case "integrations":
-            return "material-symbols:link";
-        case "softskills":
-            return "material-symbols:article-person";
-    }
-};
+const { id } = Astro.props;
 ---
 
-<div class="card bg-base-200 mt-10">
+<div class="card bg-base-200 mt-10" id={id}>
     <div class="card-body">
-        <div class="card-title font-bold md:text-2xl flex items-center gap-2">
-            Skills
-        </div>
+        <div class="card-title font-bold flex items-center gap-2">Skills</div>
         <div class="grid md:grid-cols-4 gap-3">
             {
                 Object.entries(skill).map(([key, value]) => (
-                    <div class="card bg-base-100">
-                        <div class="card-body">
-                            <h2 class="card-title flex items-center gap-2 capitalize">
-                                <Icon name={mapIcons(key)} /> {key}
-                            </h2>
-                            <div class="flex flex-wrap gap-2">
-                                {value.map((i) => (
-                                    <span class="badge badge-soft rounded-md">
-                                        {i}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
+                    <div>
+                        <p class="font-bold text-md mb-2">
+                            {key.charAt(0).toUpperCase() + key.slice(1)}
+                        </p>
+                        {value.map((v, i) => (
+                            <span >
+                                {v}{" "}
+                                {i !== value.length - 1 ? (
+                                    <span class="mx-1">&middot;</span>
+                                ) : (
+                                    ""
+                                )}
+                            </span>
+                        ))}
                     </div>
                 ))
             }

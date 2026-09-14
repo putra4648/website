@@ -1,25 +1,27 @@
 ---
-import { localeMap, getLocaleFromPath, type LocalesValues } from "intlayer";
+import { localeMap } from "intlayer";
 import Footer from "../../components/Footer.astro";
 import Intro from "../../components/Intro.astro";
 import Navbar from "../../components/Navbar.astro";
-import Skills from "../../components/Skills.astro";
 import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Blog from "../../components/Blog.astro";
+
+const blogs = (await getCollection("blog")) as CollectionEntry<"blog">[];
 
 export function getStaticPaths() {
   return localeMap(({ locale }) => ({
     params: { locale },
   }));
 }
-
-const locale = getLocaleFromPath(Astro.url.pathname) as LocalesValues;
 ---
 
 <Layout>
   <Navbar />
   <div class="container mx-auto my-10">
     <Intro />
-    <Skills />
+    <Blog id="blog" blogs={blogs} />
   </div>
   <Footer />
 </Layout>

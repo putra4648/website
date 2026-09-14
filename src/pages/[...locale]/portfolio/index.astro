@@ -1,14 +1,15 @@
 ---
 import { getCollection } from "astro:content";
-import { Locales } from "intlayer";
+import { localeMap } from "intlayer";
 import Footer from "../../../components/Footer.astro";
 import Navbar from "../../../components/Navbar.astro";
-import Pagination from "../../../components/Pagination.astro";
 import Portfolio from "../../../components/Portfolio.astro";
 import Layout from "../../../layouts/Layout.astro";
 
 export async function getStaticPaths() {
-  return [{ params: { locale: Locales.INDONESIAN } }];
+  return localeMap(({ locale }) => ({
+    params: { locale },
+  }));
 }
 
 const portfolios = (await getCollection("portfolio")).filter((post) => !post.data.hidden);

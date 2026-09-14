@@ -1,0 +1,102 @@
+---
+import {
+  getLocaleFromPath,
+  getLocalizedUrl,
+    getIntlayer,
+  type LocalesValues,
+} from "intlayer";
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "./FormattedDate.astro";
+import { Icon } from "astro-icon/components";
+
+type Props = {
+    id: string;
+    blogs: CollectionEntry<"blog">[];
+};
+type BlogArticle = { title: string; description: string };
+
+const { id, blogs } = Astro.props;
+
+const locale = getLocaleFromPath(Astro.url.pathname) as LocalesValues;
+const blog = getIntlayer("blog", locale);
+const articles = blog.articles as unknown as Record<string, BlogArticle>;
+const latestBlogs = [...blogs]
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .slice(0, 5);
+---
+
+<div class="card bg-base-200 mt-10" id={id}>
+    <div class="card-body">
+        <div class="card-title font-bold flex items-center gap-2">
+            My Latest Blog Posts
+        </div>
+        <div class="grid md:grid-cols-4 gap-3">
+            {
+                latestBlogs.map((post) => {
+                    const slug = post.id.split("/").pop()!.replace(/\.mdx?$/, "");
+                    const article = articles[slug];
+
+                    return (
+                        <div
+                            class="card card-border bg-base-100 shadow-[6px_6px_0_0_rgba(0,0,0,0.2)]
+               hover:shadow-[0_4px_0_0_rgba(0,0,0,0.2)]
+               active:shadow-none active:translate-y-1.5
+               transition-all duration-75"
+                        >
+                            <figure>
+                                <Image
+                                    src={`/open-graph/${post.id}.png`}
+                                    alt={article.title}
+                                    width={500}
+                                    height={500}
+                                />
+                            </figure>
+
+                            <div class="card-body">
+                                <h2 class="card-title flex justify-between">
+                                    <p class="line-clamp-2">{article.title}</p>
+                                    <div>
+                                        <span
+                                            class={`fi fi-${post.data.lang == "en" ? "gb" : "id"}`}
+                                        />
+                                    </div>
+                                </h2>
+                                <small class="card-subtitle">
+                                    <FormattedDate date={post.data.pubDate} />
+                                </small>
+                                <div class="card-actions justify-end">
+                                    <a
+                                        href={getLocalizedUrl(
+                                            `/blog/${post.id}`,
+                                            locale,
+                                        )}
+                                        class="btn btn-primary"
+                                        aria-label={blog.actions.readMore}
+                                    >
+                                        <Icon
+                                            name="material-symbols:arrow-forward"
+                                            class="text-xl"
+                                        />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })
+            }
+        </div>
+        <div class="card-actions justify-end mt-4">
+            <a
+                href={getLocalizedUrl("/blog", locale)}
+                class="btn btn-primary"
+            >
+                {blog.actions.seeAll}
+                <Icon
+                    name="material-symbols:arrow-forward"
+                    class="text-xl"
+                />
+            </a>
+        </div>
+    </div>
+</div>

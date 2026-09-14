@@ -1,14 +1,14 @@
 ---
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-import Footer from "../../components/Footer.astro";
-import Layout from "../../layouts/Layout.astro";
-import FormattedDate from "../../components/FormattedDate.astro";
-import Navbar from "../../components/Navbar.astro";
+import Footer from "../../../components/Footer.astro";
+import Layout from "../../../layouts/Layout.astro";
+import FormattedDate from "../../../components/FormattedDate.astro";
+import Navbar from "../../../components/Navbar.astro";
 import type { Page } from "astro";
-import Pagination from "../../components/Pagination.astro";
+import Pagination from "../../../components/Pagination.astro";
 import { Icon } from "astro-icon/components";
-import { getIntlayer, getLocaleFromPath, getLocalizedUrl, type LocalesValues } from "intlayer";
+import { getIntlayer, getLocaleFromPath, getLocalizedUrl, localeMap, type LocalesValues } from "intlayer";
 
 type Props = {
   page: Page<any>;
@@ -18,7 +18,12 @@ export async function getStaticPaths({ paginate }: any) {
   const posts = (await getCollection("blog")).filter((post) => post.data.lang === "en").sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
   );
-  return paginate(posts, { pageSize: 10 });
+  return localeMap(({ locale }) =>
+    paginate(
+      posts.filter((post) => post.data.lang === locale),
+      { params: { locale }, pageSize: 10 },
+    ),
+  ).flat();
 }
 
 const { page } = Astro.props;

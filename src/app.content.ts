@@ -2,6 +2,7 @@ import { t, type Dictionary } from "intlayer";
 
 const appContent = {
   key: "app",
+  importMode: "dynamic",
   content: {
     title: t({
       en: "Hello World",
@@ -11,6 +12,8 @@ const appContent = {
       home: t({ en: "Home", id: "Beranda" }),
       portfolio: t({ en: "Portfolio", id: "Portofolio" }),
       blog: t({ en: "Blog", id: "Blog" }),
+      guestbook: t({ en: "Guestbook", id: "Buku Tamu" }),
+      resume: t({ en: "Resume", id: "Resume" }),
     },
     actions: {
       backToBlog: t({ en: "Back to Blog", id: "Kembali ke Blog" }),

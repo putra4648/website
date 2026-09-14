@@ -10,7 +10,7 @@ interface Props {
   post: CollectionEntry<"blog">["data"];
   // Tambahkan property minutesRead secara manual di sini
   minutesRead: string;
-  // lastModified: string;
+  lastModified: string;
 }
 
 const locale = getLocaleFromPath(Astro.url.pathname) as LocalesValues;
@@ -18,7 +18,7 @@ const labels = getIntlayer("blog", locale);
 const slug = Astro.params.slug ?? Astro.url.pathname.split("/").filter(Boolean).pop()!;
 const article = (labels.articles as Record<string, { title: string; description: string; tags: string[] }>)[slug];
 const { pubDate, updatedDate } = Astro.props.post;
-const { minutesRead } = Astro.props;
+const { minutesRead, lastModified } = Astro.props;
 ---
 
 <html>
@@ -48,7 +48,7 @@ const { minutesRead } = Astro.props;
               <div class="flex gap-1 my-2">
                 {article.tags.map((tag) => <div class={`badge badge-soft`}>{tag}</div>)}
               </div>
-              <!-- <p class="text-end">Last Edited {lastModified}</p> -->
+              <p class="text-end">Last Edited {lastModified}</p>
               <hr />
             </div>
           </div>

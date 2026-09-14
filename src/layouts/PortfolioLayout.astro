@@ -14,12 +14,10 @@ interface Props {
 const { post } = Astro.props;
 const { year, image, stack } = post;
 const locale = getLocaleFromPath(Astro.url.pathname) as LocalesValues;
-const labels = getIntlayer("portfolio", locale);
+const { actions, articles, sections } = getIntlayer("portfolio", locale);
 type PortfolioArticle = { title: string; description: string };
 const slug = Astro.props.id;
-const article = (
-    labels as unknown as { articles: Record<string, PortfolioArticle> }
-).articles[slug];
+const article = (articles as unknown as Record<string, PortfolioArticle>)[slug];
 ---
 
 <html>
@@ -28,7 +26,7 @@ const article = (
             <main class="max-w-4/5 mx-auto prose my-3">
                 <a role="button" class="btn btn-ghost btn-lg" href={locale === "en" ? "/portfolio" : `/${locale}/portfolio`}>
                     <Icon name="material-symbols:arrow-back" />
-                    {labels.actions.back}
+                    {actions.back}
                 </a>
                 <div class="">
                     <h1>{article.title}</h1>
@@ -48,7 +46,7 @@ const article = (
                     {
                         image && (
                             <div>
-                                <h2>{labels.sections.preview}</h2>
+                                <h2>{sections.preview}</h2>
                                 <Image
                                     src={image}
                                     alt={article.title}

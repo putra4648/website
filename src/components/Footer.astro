@@ -1,8 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
+import Newsletter from "./Newsletter.astro";
 
 const today = new Date();
-const links = [
+const socialLinks = [
   {
     icon: "cib:github",
     to: "https://github.com/putra4648",
@@ -12,25 +13,57 @@ const links = [
     to: "https://discord.com/users/1414837624257904741",
   },
 ];
+const links = [
+  {
+    name: "Resume",
+    href: "/resume",
+  },
+  {
+    name: "Skills",
+    href: "#skills",
+  },
+  {
+    name: "Portfolio",
+    href: "/portfolio",
+  },
+  {
+    name: "Guestbook",
+    href: "/guestbook",
+  },
+  {
+    name: "Blog",
+    href: "/blog",
+  },
+];
 ---
 
 <footer
   class="footer footer-horizontal footer-center text-base-content rounded p-10"
 >
   <nav>
+    <Newsletter />
+    {
+      links.map((link) => {
+        return (
+          <a href={link.href} class="link">
+            {link.name}
+          </a>
+        );
+      })
+    }
     <div class="grid grid-flow-col gap-3">
       {
-        links.map((link) => {
+        socialLinks.map((link) => {
           return (
             <a href={link.to} class="link" target="_blank">
-              <Icon name={link.icon} class="text-3xl" />
+              <Icon name={link.icon} class="text-md" />
             </a>
           );
         })
       }
     </div>
   </nav>
-  <aside>
+  <!-- <aside>
     <p>Copyright © {today.getFullYear()} - Putra</p>
-  </aside>
+  </aside> -->
 </footer>
