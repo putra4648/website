@@ -1,9 +1,16 @@
 ---
+import { localeMap } from "intlayer";
 import Footer from "../../components/Footer.astro";
 import Navbar from "../../components/Navbar.astro";
 import Resume from "../../components/Resume.astro";
 import Skills from "../../components/Skills.astro";
 import Layout from "../../layouts/Layout.astro";
+
+export function getStaticPaths() {
+    return localeMap(({ locale }) => ({
+        params: { locale },
+    }));
+}
 ---
 
 <Layout>
