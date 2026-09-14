@@ -21,16 +21,19 @@ const { id, blogs } = Astro.props;
 const locale = getLocaleFromPath(Astro.url.pathname) as LocalesValues;
 const blog = getIntlayer("blog", locale);
 const articles = blog.articles as unknown as Record<string, BlogArticle>;
+const latestBlogs = [...blogs]
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .slice(0, 5);
 ---
 
 <div class="card bg-base-200 mt-10" id={id}>
     <div class="card-body">
         <div class="card-title font-bold flex items-center gap-2">
-            Work Experience
+            My Latest Blog Posts
         </div>
         <div class="grid md:grid-cols-4 gap-3">
             {
-                blogs.map((post) => {
+                latestBlogs.map((post) => {
                     const slug = post.id.split("/").pop()!.replace(/\.mdx?$/, "");
                     const article = articles[slug];
 
@@ -82,6 +85,18 @@ const articles = blog.articles as unknown as Record<string, BlogArticle>;
                     );
                 })
             }
+        </div>
+        <div class="card-actions justify-end mt-4">
+            <a
+                href={getLocalizedUrl("/blog", locale)}
+                class="btn btn-primary"
+            >
+                {blog.actions.seeAll}
+                <Icon
+                    name="material-symbols:arrow-forward"
+                    class="text-xl"
+                />
+            </a>
         </div>
     </div>
 </div>

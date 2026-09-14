@@ -1,0 +1,27 @@
+---
+import Footer from "../../components/Footer.astro";
+import Navbar from "../../components/Navbar.astro";
+import Resume from "../../components/Resume.astro";
+import Skills from "../../components/Skills.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout>
+    <Navbar />
+    <div class="container mx-auto my-10">
+        <div
+            class="grid md:grid-cols-2 gap-10 justify-items-center content-center"
+        >
+            <div>
+                <div class="font-bold mb-5 text-center md:text-left">
+                    Hi, I'm Putra. Currently working as Fullstack Developer but
+                    I open to new opportunities as Technical System Analyst. I
+                    build scalable enterprise solutions. You can check my resume and skills below.
+                </div>
+            </div>
+        </div>
+        <Resume id="resume" />
+        <Skills id="skills" />
+    </div>
+    <Footer />
+</Layout>
