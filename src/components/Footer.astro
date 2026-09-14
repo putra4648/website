@@ -46,7 +46,7 @@ const links = [
       {
         links.map((link) => {
           return (
-            <a href={link.href.includes("#") ? link.href : `#${link.href}`} class="link">
+            <a href={link.href} class="link">
               {link.name}
             </a>
           );

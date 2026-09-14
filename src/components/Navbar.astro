@@ -12,11 +12,6 @@ import LanguagePicker from "./LanguagePicker.astro";
 const lang = getLocaleFromPath(Astro.url.pathname) as LocalesValues;
 const t = getIntlayer("app", lang);
 const translatePath = (path: string) => getLocalizedUrl(path, lang);
-
-
-const mapUrl = (url: string) => {
-  return translatePath(url.startsWith("#") ? "#" + url : url);
-}
 ---
 
 <div
@@ -31,15 +26,13 @@ const mapUrl = (url: string) => {
     </div>
     <div class="hidden md:flex navbar-end">
       <LanguagePicker />
-      <NavbarLink
-        icon="material-symbols:home"
-        class="mx-2"
-        href={mapUrl("/")}>{t.nav.home}</NavbarLink
+      <NavbarLink icon="material-symbols:home" class="mx-2" href={translatePath("/")}
+        >{t.nav.home}</NavbarLink
       >
       <NavbarLink
         class="mx-2"
         icon="material-symbols:folder-code"
-        href={mapUrl("#resume")}>{t.nav.resume}</NavbarLink
+        href={translatePath("#resume")}>{t.nav.resume}</NavbarLink
       >
       <NavbarLink class="mx-2" icon="material-symbols:book" href={"/guestbook"}
         >{t.nav.guestbook}</NavbarLink
@@ -47,7 +40,7 @@ const mapUrl = (url: string) => {
       <NavbarLink
         icon="material-symbols:globe"
         class="mx-2"
-        href={mapUrl("/blog")}>{t.nav.blog}</NavbarLink
+        href={translatePath("/blog")}>{t.nav.blog}</NavbarLink
       >
     </div>
     <div class="navbar-end md:hidden">
@@ -71,10 +64,10 @@ const mapUrl = (url: string) => {
           tabindex="-1"
           class="menu menu-lg dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
         >
-          <li><a href={mapUrl("/")}>{t.nav.home}</a></li>
-          <li><a href={mapUrl("#resume")}>{t.nav.resume}</a></li>
-          <li><a href={mapUrl("guestbook")}>{t.nav.guestbook}</a></li>
-          <li><a href={mapUrl("/blog")}>{t.nav.blog}</a></li>
+          <li><a href={translatePath("/")}>{t.nav.home}</a></li>
+          <li><a href={translatePath("#resume")}>{t.nav.resume}</a></li>
+          <li><a href={translatePath("guestbook")}>{t.nav.guestbook}</a></li>
+          <li><a href={translatePath("/blog")}>{t.nav.blog}</a></li>
           <li>
             <LanguagePicker />
           </li>
