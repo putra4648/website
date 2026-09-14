@@ -1,18 +1,34 @@
 ---
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
+import {
+  getIntlayer,
+  getLocaleFromPath,
+  getLocalizedUrl,
+  type LocalesValues,
+} from "intlayer";
 
 type Props = {
   portfolios: CollectionEntry<"portfolio">[];
 };
 
 const { portfolios } = Astro.props;
+const locale = getLocaleFromPath(Astro.url.pathname) as LocalesValues;
+const labels = getIntlayer("portfolio", locale);
+type PortfolioArticle = { title: string; description: string };
+const articles = (labels as unknown as {
+  articles: Record<string, PortfolioArticle>;
+}).articles;
 ---
 
 <div class="container mx-auto my-5">
   <div class="grid md:grid-cols-3 gap-4">
     {
       portfolios.map((item, index) => (
+        (() => {
+          const slug = item.id.split("/").pop()!.replace(/\.mdx?$/, "");
+          const article = articles[slug];
+          return (
         <div
           class="card card-border bg-base-100  shadow-[6px_6px_0_0_rgba(0,0,0,0.2)]
                hover:shadow-[0_4px_0_0_rgba(0,0,0,0.2)]
@@ -21,22 +37,28 @@ const { portfolios } = Astro.props;
         >
           <figure class="aspect-square ">
             {item.data.image && (
-              <Image src={item.data.image} alt={item.data.title} />
+              <Image src={item.data.image} alt={article.title} />
             )}
           </figure>
           <div class="card-body">
             <h2 class="card-title flex justify-between">
-              {item.data.title}
+              {article.title}
               <span>{item.data.year}</span>
             </h2>
-            <p>{item.data.description.join(". ")}</p>
+            <p>{article.description}</p>
             <div class="card-actions justify-end">
-              <a href={`/portfolio/${item.id}`} class="btn btn-primary">
-                Preview
+              <a
+                href={getLocalizedUrl(`/portfolio/${item.id}`, locale)}
+                class="btn btn-primary"
+                aria-label={labels.actions.preview}
+              >
+                {labels.actions.preview}
               </a>
             </div>
           </div>
         </div>
+          );
+        })()
       ))
     }
   </div>

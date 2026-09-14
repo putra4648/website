@@ -8,12 +8,9 @@ const blog = defineCollection({
   // Type-check frontmatter using a schema
   schema: ({ image }) =>
     z.object({
-      title: z.string(),
-      description: z.string(),
       pubDate: z.coerce.date(),
       updatedDate: z.coerce.date().optional(),
       heroImage: image().optional(),
-      tags: z.array(z.string()).default([]),
       lang: z.enum(["id", "en"]).default("id"),
     }),
 });
@@ -24,8 +21,6 @@ const portfolio = defineCollection({
   // Type-check frontmatter using a schema
   schema: ({ image }) =>
     z.object({
-      title: z.string(),
-      description: z.array(z.string()),
       year: z.number(),
       stack: z.array(z.string()).default([]),
       source: z.string().optional(),

@@ -1,16 +1,15 @@
 ---
-import { Image } from "astro:assets";
+import { Image, } from "astro:assets";
 
 interface Props {
     imageFolder: string;
 }
 
 const { imageFolder } = Astro.props;
-const matches = import.meta.glob(`../assets/**/*.{png,jpg,jpeg,webp}`, {
+const matches: Record<string, { default: ImageMetadata }> = import.meta.glob(`../assets/**/*.{png,jpg,jpeg,webp}`, {
     eager: true,
 });
-const images = Object.values(matches)
-    .filter((image) => image.default.src.includes("/" + imageFolder + "/"))
+const images = Object.values(matches).filter((image) => image.default.src.includes("/" + imageFolder + "/"))
     .map((image) => {
         const img = image.default as ImageMetadata;
         function caption() {
