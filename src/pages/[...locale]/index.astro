@@ -4,8 +4,11 @@ import Footer from "../../components/Footer.astro";
 import Intro from "../../components/Intro.astro";
 import Navbar from "../../components/Navbar.astro";
 import Layout from "../../layouts/Layout.astro";
-import Skills from "../../components/Skills.astro";
-import Resume from "../../components/Resume.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Blog from "../../components/Blog.astro";
+
+const blogs = (await getCollection("blog")) as CollectionEntry<"blog">[];
 
 export function getStaticPaths() {
   return localeMap(({ locale }) => ({
@@ -18,8 +21,9 @@ export function getStaticPaths() {
   <Navbar />
   <div class="container mx-auto my-10">
     <Intro />
-    <Resume id="resume" />
-    <Skills id="skills" />
+     <Blog id="blog" blogs={blogs} />
+    <!-- <Resume id="resume" />
+    <Skills id="skills" /> -->
   </div>
   <Footer />
 </Layout>

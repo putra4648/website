@@ -38,26 +38,6 @@ const skill = {
         "Adaptability",
     ],
 };
-const mapIcons = (key: string) => {
-    switch (key) {
-        case "programmings":
-            return "material-symbols:code";
-        case "devtools":
-            return "material-symbols:code";
-        case "databases":
-            return "material-symbols:database";
-        case "frontend":
-            return "material-symbols:web";
-        case "backend":
-            return "material-symbols:computer";
-        case "infrastructures":
-            return "material-symbols:cloud";
-        case "integrations":
-            return "material-symbols:link";
-        case "softskills":
-            return "material-symbols:article-person";
-    }
-};
 const { id } = Astro.props;
 ---
 
@@ -67,14 +47,20 @@ const { id } = Astro.props;
         <div class="grid md:grid-cols-4 gap-3">
             {
                 Object.entries(skill).map(([key, value]) => (
-
-                    <div class="breadcrumbs text-sm p-0">
-                        <ul>
-                            <li class="font-bold no-underline">{key}</li>
-                            {value.map((i) => (
-                                <li class="badge badge-soft rounded-md">{i}</li>
-                            ))}
-                        </ul>
+                    <div>
+                        <p class="font-bold text-md mb-2">
+                            {key.charAt(0).toUpperCase() + key.slice(1)}
+                        </p>
+                        {value.map((v, i) => (
+                            <span >
+                                {v}{" "}
+                                {i !== value.length - 1 ? (
+                                    <span class="mx-1">&middot;</span>
+                                ) : (
+                                    ""
+                                )}
+                            </span>
+                        ))}
                     </div>
                 ))
             }

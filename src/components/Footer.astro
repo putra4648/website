@@ -33,7 +33,7 @@ const links = [
   {
     name: "Blog",
     href: "/blog",
-  }
+  },
 ];
 ---
 
@@ -42,17 +42,15 @@ const links = [
 >
   <nav>
     <Newsletter />
-    <div class="grid" grid-cols-2>
-      {
-        links.map((link) => {
-          return (
-            <a href={link.href} class="link">
-              {link.name}
-            </a>
-          );
-        })
-      }
-    </div>
+    {
+      links.map((link) => {
+        return (
+          <a href={link.href} class="link">
+            {link.name}
+          </a>
+        );
+      })
+    }
     <div class="grid grid-flow-col gap-3">
       {
         socialLinks.map((link) => {

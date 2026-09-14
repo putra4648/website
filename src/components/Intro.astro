@@ -1,44 +1,19 @@
 ---
-import { Icon } from "astro-icon/components";
 
-// const skills = [
-//     {
-//         name: "Full-Stack Proficiency & Versatility",
-//         icon: "material-symbols:code",
-//         title: "3+ Years of Full-Stack Expertise",
-//         description: `Proven track record in building end-to-end applications using a modern tech stack, including Golang, Java (Spring Boot), and Nuxt/Vue. I bridge the gap between complex backend architecture and seamless frontend interfaces`,
-//     },
-//     {
-//         name: "Specialized Domain Knowledge",
-//         icon: "material-symbols:domain",
-//         title: "Expertise in ERP & Logistics Systems",
-//         description: `Deeply focused on developing mission-critical systems like ERP (Enterprise Resource Planning) and WMS (Warehouse Management System). I understand the technical and operational complexities of inventory management and business automation`,
-//     },
-//     {
-//         name: "Product-Driven Mindset",
-//         icon: "material-symbols:manufacturing",
-//         title: "SaaS & Product Development Focus",
-//         description: `Beyond just writing code, I have a strong interest in building SaaS products that solve real-world problems. From conceptualizing MVPs to implementing scalable features, I build with a focus on business value and user efficiency.`,
-//     },
-//     {
-//         name: "Entrepreneurial Spirit",
-//         icon: "material-symbols:rocket-launch",
-//         title: "Entrepreneurial & Growth-Oriented",
-//         description: `Passionate about building digital assets and scalable SaaS solutions. I combine technical skills with a business mindset to transform innovative ideas into functional, revenue-generating products`,
-//     },
-// ];
 ---
 
 <div class="grid md:grid-cols-2 gap-10 justify-items-center content-center">
     <div>
-        <div
-            class="font-bold mb-5 text-center md:text-left"
-        >
-            Hi, I'm Putra. A Technical System Analyst building scalable enterprise
-            solutions
+        <div class="font-bold mb-5 text-center md:text-left">
+            Hi, I'm Putra. A Technical System Analyst building scalable
+            enterprise solutions
         </div>
         <div class="font-mono text-center md:text-left">
-            I specialize in modernzing legacy infrastructure, designing resilent database architectures, and digitalizing complex enterprise workflows. With experience spanning GOlang, Java, and modern web frameworks. I transform chaotic legacy systems into hight-performance digital products.
+            I specialize in modernzing legacy infrastructure, designing resilent
+            database architectures, and digitalizing complex enterprise
+            workflows. With experience spanning GOlang, Java, and modern web
+            frameworks. I transform chaotic legacy systems into
+            hight-performance digital products.
         </div>
     </div>
     <div class="self-center bg-bone aspect-square relative">
@@ -54,77 +29,3 @@ import { Icon } from "astro-icon/components";
         />
     </div>
 </div>
-<div class="mt-10 flex flex-wrap gap-4 justify-center">
-    <button
-        onclick="my_modal_1.showModal()"
-        class="btn btn-outline btn-primary btn-lg rounded-md ring-1 shadow-[6px_6px_0_0_rgba(0,0,0,0.2)]
-               hover:shadow-[0_4px_0_0_rgba(0,0,0,0.2)]
-               active:shadow-none active:translate-y-1.5
-               transition-all duration-75"
-    >
-        <Icon name="material-symbols:cases" />
-        See My Experience
-    </button>
-    <button
-        onclick="my_modal_2.showModal()"
-        class="btn btn-outline btn-primary btn-lg rounded-md ring-1 shadow-[6px_6px_0_0_rgba(0,0,0,0.2)]
-               hover:shadow-[0_4px_0_0_rgba(0,0,0,0.2)]
-               active:shadow-none active:translate-y-1.5
-               transition-all duration-75"
-    >
-        <Icon name="material-symbols:mail" />
-        Send Me a Message
-    </button>
-</div>
-<dialog id="my_modal_1" class="modal">
-    <div class="modal-box w-11/12 max-w-5xl">
-        <form method="dialog">
-            <button class="btn btn-circle btn-ghost absolute right-2 top-2">
-                <Icon name="material-symbols:close" />
-            </button>
-        </form>
-        <h3 class="font-bold">Work Experience</h3>
-        <!-- <Timeline items={timelines} /> -->
-    </div>
-</dialog>
-
-<dialog id="my_modal_2" class="modal">
-    <div class="modal-box w-11/12 max-w-5xl">
-        <form method="dialog">
-            <button class="btn btn-circle btn-ghost absolute right-2 top-2">
-                <Icon name="material-symbols:close" />
-            </button>
-        </form>
-        <h3 class="font-bold">Send Me a Message</h3>
-        <form
-            action="https://formspree.io/f/xojyqzoz"
-            method="post"
-            class="flex flex-col gap-2"
-        >
-            <label class="form-control w-full">
-                <div class="label">
-                    <span class="label-text">Your email?</span>
-                </div>
-                <input
-                    required
-                    name="email"
-                    type="email"
-                    placeholder="youremail@domain.name"
-                    class="input input-bordered w-full"
-                />
-            </label>
-            <label class="form-control w-full">
-                <div class="label">
-                    <span class="label-text">Your message</span>
-                </div>
-                <textarea
-                    required
-                    name="message"
-                    placeholder="Type here"
-                    rows={5}
-                    class="textarea textarea-bordered w-full"></textarea>
-            </label>
-            <button type="submit" class="btn btn-primary">Send</button>
-        </form>
-    </div>
-</dialog>

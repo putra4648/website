@@ -34,6 +34,11 @@ const translatePath = (path: string) => getLocalizedUrl(path, lang);
         icon="material-symbols:folder-code"
         href={translatePath("#resume")}>{t.nav.resume}</NavbarLink
       >
+      <NavbarLink
+        class="mx-2"
+        icon="material-symbols:folder-code"
+        href={translatePath("#skills")}>{t.nav.skills}</NavbarLink
+      >
       <NavbarLink class="mx-2" icon="material-symbols:book" href={"/guestbook"}
         >{t.nav.guestbook}</NavbarLink
       >
@@ -66,6 +71,7 @@ const translatePath = (path: string) => getLocalizedUrl(path, lang);
         >
           <li><a href={translatePath("/")}>{t.nav.home}</a></li>
           <li><a href={translatePath("#resume")}>{t.nav.resume}</a></li>
+          <li><a href={translatePath("#skills")}>{t.nav.skills}</a></li>
           <li><a href={translatePath("guestbook")}>{t.nav.guestbook}</a></li>
           <li><a href={translatePath("/blog")}>{t.nav.blog}</a></li>
           <li>
