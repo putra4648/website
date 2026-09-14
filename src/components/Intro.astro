@@ -112,12 +112,12 @@ const timelines = [
 <div class="grid md:grid-cols-2 gap-10 justify-items-center content-center">
     <div>
         <div
-            class="font-bold md:text-5xl text-2xl mb-5 text-center md:text-left"
+            class="font-bold mb-5 text-center md:text-left"
         >
             Hi, I'm Putra. A Technical System Analyst building scalable enterprise
             solutions
         </div>
-        <div class="md:text-xl text-lg font-mono text-center md:text-left">
+        <div class="font-mono text-center md:text-left">
             I specialize in modernzing legacy infrastructure, designing resilent database architectures, and digitalizing complex enterprise workflows. With experience spanning GOlang, Java, and modern web frameworks. I transform chaotic legacy systems into hight-performance digital products.
         </div>
     </div>
@@ -156,42 +156,6 @@ const timelines = [
         Send Me a Message
     </button>
 </div>
-<!-- 
-<div class="card shadow-sm mt-10 bg-base-200">
-    <div class="card-body">
-        <div class="card-title font-bold md:text-2xl flex items-center gap-2">
-            About Me
-        </div>
-        <div class="grid md:grid-cols-2 gap-4">
-            <div class="md:text-lg font-mono">
-                Technical System Analyst / Fullstack Developer with strong
-                background in enteprise business process digitalization,
-                database architecture, and requirement analysis.
-            </div>
-            <div class="grid md:grid-cols-2 gap-4">
-                {
-                    skills.map((skill) => (
-                        <div class="flex items-center gap-2">
-                            <div class="card bg-base-100 shadow-sm min-h-56 relative">
-                                <div class="card-body z-10">
-                                    <h2 class="card-title text-xl flex items-center gap-2">
-                                        <Icon
-                                            name={skill.icon}
-                                            class="text-xl"
-                                        />
-                                        {skill.name}
-                                    </h2>
-                                    <p>{skill.description}</p>
-                                </div>
-                            </div>
-                        </div>
-                    ))
-                }
-            </div> 
-        </div>
-    </div>
-</div>-->
-
 <dialog id="my_modal_1" class="modal">
     <div class="modal-box w-11/12 max-w-5xl">
         <form method="dialog">
@@ -199,7 +163,7 @@ const timelines = [
                 <Icon name="material-symbols:close" />
             </button>
         </form>
-        <h3 class="text-lg font-bold">Work Experience</h3>
+        <h3 class="font-bold">Work Experience</h3>
         <Timeline items={timelines} />
     </div>
 </dialog>
@@ -211,7 +175,7 @@ const timelines = [
                 <Icon name="material-symbols:close" />
             </button>
         </form>
-        <h3 class="text-lg font-bold">Send Me a Message</h3>
+        <h3 class="font-bold">Send Me a Message</h3>
         <form
             action="https://formspree.io/f/xojyqzoz"
             method="post"

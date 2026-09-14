@@ -11,6 +11,8 @@ const appContent = {
       home: t({ en: "Home", id: "Beranda" }),
       portfolio: t({ en: "Portfolio", id: "Portofolio" }),
       blog: t({ en: "Blog", id: "Blog" }),
+      guestbook: t({ en: "Guestbook", id: "Buku Tamu" }),
+      skills: t({ en: "Skills", id: "Keahlian" }),
     },
     actions: {
       backToBlog: t({ en: "Back to Blog", id: "Kembali ke Blog" }),

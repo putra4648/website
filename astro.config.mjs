@@ -29,6 +29,9 @@ export default defineConfig({
       enabled: true,
     }
   }),
+  redirects: {
+    "/": "/en",
+  },
   fonts: [{
     provider: fontProviders.google(),
     name: "Saira Stencil",

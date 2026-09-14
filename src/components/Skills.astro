@@ -58,11 +58,12 @@ const mapIcons = (key: string) => {
             return "material-symbols:article-person";
     }
 };
+const {id} = Astro.props;
 ---
 
-<div class="card bg-base-200 mt-10">
+<div class="card bg-base-200 mt-10" id={id}>
     <div class="card-body">
-        <div class="card-title font-bold md:text-2xl flex items-center gap-2">
+        <div class="card-title font-bold flex items-center gap-2">
             Skills
         </div>
         <div class="grid md:grid-cols-4 gap-3">

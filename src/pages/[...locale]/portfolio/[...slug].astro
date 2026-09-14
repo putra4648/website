@@ -1,19 +1,21 @@
 ---
 import { type CollectionEntry, getCollection, render } from "astro:content";
-import { Locales } from "intlayer";
+import { localeMap } from "intlayer";
 import PortfolioLayout from "../../../layouts/PortfolioLayout.astro";
 
 export async function getStaticPaths() {
   const pages = await getCollection("portfolio");
-  return pages
-    .filter((page) => !page.data.hidden)
-    .map((page) => ({
-      params: {
-        locale: Locales.INDONESIAN,
-        slug: page.id.split("/").pop()!.replace(/\.mdx?$/, ""),
-      },
-      props: page,
-    }));
+  return localeMap(({ locale }) =>
+    pages
+      .filter((page) => !page.data.hidden)
+      .map((page) => ({
+        params: {
+          locale,
+          slug: page.id.split("/").pop()!.replace(/\.mdx?$/, ""),
+        },
+        props: page,
+      })),
+  ).flat();
 }
 
 type Props = CollectionEntry<"portfolio">;

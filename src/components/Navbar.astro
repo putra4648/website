@@ -1,12 +1,22 @@
 ---
 import { SITE_TITLE } from "../consts";
-import { getIntlayer, getLocaleFromPath, getLocalizedUrl, type LocalesValues } from "intlayer";
+import {
+  getIntlayer,
+  getLocaleFromPath,
+  getLocalizedUrl,
+  type LocalesValues,
+} from "intlayer";
 import NavbarLink from "./NavbarLink.astro";
 import LanguagePicker from "./LanguagePicker.astro";
 
 const lang = getLocaleFromPath(Astro.url.pathname) as LocalesValues;
 const t = getIntlayer("app", lang);
 const translatePath = (path: string) => getLocalizedUrl(path, lang);
+
+
+const mapUrl = (url: string) => {
+  return translatePath(url.startsWith("#") ? "#" + url : url);
+}
 ---
 
 <div
@@ -15,29 +25,32 @@ const translatePath = (path: string) => getLocalizedUrl(path, lang);
 >
   <header class="sticky top-0 navbar shadow-sm px-3 z-1">
     <div class="navbar-start">
-      <div class="text-lg font-bold">
+      <div class="text-md font-bold">
         <a href="/">{SITE_TITLE}</a>
       </div>
+    </div>
+    <div class="ml-auto">
+      <LanguagePicker />
     </div>
     <div class="hidden md:flex navbar-end">
       <NavbarLink
         icon="material-symbols:home"
         class="mx-2"
-        href={translatePath("/")}>{t.nav.home}</NavbarLink
+        href={mapUrl("/")}>{t.nav.home}</NavbarLink
       >
       <NavbarLink
         class="mx-2"
         icon="material-symbols:folder-code"
-        href={translatePath("/portfolio")}
-        >{t.nav.portfolio}</NavbarLink
+        href={mapUrl("/skills")}>{t.nav.skills}</NavbarLink
+      >
+      <NavbarLink class="mx-2" icon="material-symbols:book" href={"/guestbook"}
+        >{t.nav.guestbook}</NavbarLink
       >
       <NavbarLink
         icon="material-symbols:globe"
         class="mx-2"
-        href={translatePath("/blog")}
-        >{t.nav.blog}</NavbarLink
+        href={translatePath("/blog")}>{t.nav.blog}</NavbarLink
       >
-      <LanguagePicker /> 
     </div>
     <div class="navbar-end md:hidden">
       <div class="dropdown dropdown-end">
@@ -60,21 +73,18 @@ const translatePath = (path: string) => getLocalizedUrl(path, lang);
           tabindex="-1"
           class="menu menu-lg dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
         >
-          <li><a href={translatePath("/")}>{t.nav.home}</a></li>
+          <li><a href={mapUrl("/")}>{t.nav.home}</a></li>
+          <li><a href={mapUrl("/guestbook")}>{t.nav.guestbook}</a></li>
           <li>
-            <a href={translatePath("/portfolio")}
-              >{t.nav.portfolio}</a
-            >
+            <a href={mapUrl("/skills")}>{t.nav.skills}</a>
           </li>
           <li>
-            <a href={translatePath("/blog")}
-              >{t.nav.blog}</a
-            >
+            <a href={mapUrl("/blog")}>{t.nav.blog}</a>
           </li>
           <!-- <hr /> -->
           <li>
             <LanguagePicker />
-          </li> 
+          </li>
         </ul>
       </div>
     </div>
