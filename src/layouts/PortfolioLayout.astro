@@ -24,7 +24,11 @@ const article = (articles as unknown as Record<string, PortfolioArticle>)[slug];
     <body>
         <Layout title={article.title} description={article.description}>
             <main class="max-w-4/5 mx-auto prose my-3">
-                <a role="button" class="btn btn-ghost btn-lg" href={locale === "en" ? "/portfolio" : `/${locale}/portfolio`}>
+                <a
+                    role="button"
+                    class="btn btn-ghost btn-lg"
+                    href={`/${locale}/portfolio`}
+                >
                     <Icon name="material-symbols:arrow-back" />
                     {actions.back}
                 </a>
