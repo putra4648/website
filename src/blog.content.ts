@@ -5,9 +5,10 @@ const blogContent = {
   importMode: "dynamic",
   content: {
     title: t({ en: "Blog", id: "Blog" }),
+    subtitle: t({ en: "Welcome to my personal site As a tech professional, I use this space to document my learning, explore industry trends, and share practical knowledge with the broader tech community", id: "Keseharian sebagai anak Tech mulai dari explore hingga penggunaan tech dalam kehidupan sehari-hari" }),
     description: t({
-      en: "Notes, lessons, and stories from my journey as a developer.",
-      id: "Catatan, pembelajaran, dan cerita dari perjalanan saya sebagai pengembang.",
+      en: "Notes, lessons, and stories from my journey as a developer",
+      id: "Catatan, pembelajaran, dan cerita dari perjalanan saya sebagai pengembang",
     }),
     actions: {
       back: t({ en: "Back to Blog", id: "Kembali ke Blog" }),
@@ -20,11 +21,19 @@ const blogContent = {
       readingTime: t({ en: "min read", id: "menit baca" }),
     },
     articles: {
+      "llm-1": {
+        title: t({ en: "Local LLM - Part 1", id: "Local LLM - Part 1" }),
+        description: t({
+          en: "LLM local untuk kemudahaan dalam pekerjaan sehari-hari",
+          id: "LLM local untuk kemudahaan dalam pekerjaan sehari-hari",
+        }),
+        tags: ["ai", "journey", "tech", "llm"],
+      },
       "kehidupan-1": {
         title: t({ en: "Kehidupan - Part 1", id: "Kehidupan - Part 1" }),
         description: t({
-          en: "Perjalanan hidup seorang agar tidak setress, dengan berbagai pengalaman dan pembelajaran yang membentuknya menjadi pribadi yang lebih baik.",
-          id: "Perjalanan hidup seorang agar tidak setress, dengan berbagai pengalaman dan pembelajaran yang membentuknya menjadi pribadi yang lebih baik.",
+          en: "Perjalanan hidup seorang agar tidak setress, dengan berbagai pengalaman dan pembelajaran yang membentuknya menjadi pribadi yang lebih baik",
+          id: "Perjalanan hidup seorang agar tidak setress, dengan berbagai pengalaman dan pembelajaran yang membentuknya menjadi pribadi yang lebih baik",
         }),
         tags: ["life", "journey", "tech"],
       },
@@ -34,8 +43,8 @@ const blogContent = {
           id: "Mengapa custom ROM tidak selalu menjadi pilihan terbaik untuk perangkat Android Anda",
         }),
         description: t({
-          en: "Sebuah alasan untuk tetap stay dengan ROM resmi daripada mencoba custom ROM yang mungkin memiliki risiko keamanan dan stabilitas.",
-          id: "Sebuah alasan untuk tetap stay dengan ROM resmi daripada mencoba custom ROM yang mungkin memiliki risiko keamanan dan stabilitas.",
+          en: "Sebuah alasan untuk tetap stay dengan ROM resmi daripada mencoba custom ROM yang mungkin memiliki risiko keamanan dan stabilitas",
+          id: "Sebuah alasan untuk tetap stay dengan ROM resmi daripada mencoba custom ROM yang mungkin memiliki risiko keamanan dan stabilitas",
         }),
         tags: ["tech", "android", "custom-rom", "security"],
       },
@@ -50,16 +59,16 @@ const blogContent = {
       "my-kisah-2": {
         title: t({ en: "My Kisah - Part 2", id: "My Kisah - Part 2" }),
         description: t({
-          en: "Terjebak di labirin Spring Boot, perang lawan ego overengineering, sampai 'perselingkuhan' sesaat dengan React. Sebuah perjalanan mencari efisiensi di tengah kabut kode.",
-          id: "Terjebak di labirin Spring Boot, perang lawan ego overengineering, sampai 'perselingkuhan' sesaat dengan React. Sebuah perjalanan mencari efisiensi di tengah kabut kode.",
+          en: "Terjebak di labirin Spring Boot, perang lawan ego overengineering, sampai 'perselingkuhan' sesaat dengan React Sebuah perjalanan mencari efisiensi di tengah kabut kode",
+          id: "Terjebak di labirin Spring Boot, perang lawan ego overengineering, sampai 'perselingkuhan' sesaat dengan React Sebuah perjalanan mencari efisiensi di tengah kabut kode",
         }),
         tags: ["life", "journey", "tech"],
       },
       "my-kisah-3": {
         title: t({ en: "My Kisah - Part 3", id: "My Kisah - Part 3" }),
         description: t({
-          en: "Meninggalkan zona nyaman Spring Boot untuk mendalami ekosistem React.",
-          id: "Meninggalkan zona nyaman Spring Boot untuk mendalami ekosistem React.",
+          en: "Meninggalkan zona nyaman Spring Boot untuk mendalami ekosistem React",
+          id: "Meninggalkan zona nyaman Spring Boot untuk mendalami ekosistem React",
         }),
         tags: ["life", "journey", "tech"],
       },
@@ -77,8 +86,8 @@ const blogContent = {
           id: "Why I Chose Flutter as an Android Developer",
         }),
         description: t({
-          en: "From a loud laptop fan to building seamless cross-platform apps.",
-          id: "From a loud laptop fan to building seamless cross-platform apps.",
+          en: "From a loud laptop fan to building seamless cross-platform apps",
+          id: "From a loud laptop fan to building seamless cross-platform apps",
         }),
         tags: ["Flutter", "Android", "Developer Journey", "Dart", "Storytelling"],
       },

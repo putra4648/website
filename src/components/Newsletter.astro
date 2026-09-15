@@ -3,15 +3,18 @@ import { Icon } from "astro-icon/components";
 ---
 
 <div class="container mx-auto">
-    <div class="text-md">Subscribe to My Newsletter</div>
-    <div class="join">
-        <div>
-            <label class="input validator join-item">
-                <Icon name="material-symbols:mail" />
-                <input type="email" placeholder="mail@site.com" required />
-            </label>
-            <div class="validator-hint hidden">Enter valid email address</div>
-        </div>
-        <button class="btn btn-neutral join-item">Join</button>
-    </div>
+    <form>
+        <h6 class="footer-title">Newsletter</h6>
+        <fieldset class="w-80">
+            <label>Enter your email address</label>
+            <div class="join">
+                <input
+                    type="text"
+                    placeholder="username@site.com"
+                    class="input join-item"
+                />
+                <button class="btn btn-primary join-item">Subscribe</button>
+            </div>
+        </fieldset>
+    </form>
 </div>

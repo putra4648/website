@@ -13,16 +13,16 @@ const images = Object.values(matches).filter((image) => image.default.src.includ
     .map((image) => {
         const img = image.default as ImageMetadata;
         function caption() {
-            if (img.src.includes("erp-dashboard.png")) {
+            if (img.src.includes("erp-dashboard.webp")) {
                 return "MyERP ERP Dashboard: A unified view of total products, low stock alerts, recent movements, and pending adjustments.";
             }
-            if (img.src.includes("erp-index.png")) {
+            if (img.src.includes("erp-index.webp")) {
                 return `MyERP Homepage: "Enterprise Simplified." and unified platform for managing your business.`;
             }
-            if (img.src.includes("erp-stock-transaction.png")) {
+            if (img.src.includes("erp-stock-transaction.webp")) {
                 return "MyERP Stock Transactions: Track date, product, warehouse, supplier, and quantity for inventory movements.";
             }
-            if (img.src.includes("erp-movement.png")) {
+            if (img.src.includes("erp-movement.webp")) {
                 return "MyERP Stock Movement: View movement numbers, origin, destination, and status for inventory transfers.";
             }
             return "";
