@@ -45,7 +45,7 @@ const { minutesRead, lastModified } = Astro.props;
               </div>
               <h1>{article.title}</h1>
               {article.description}
-              <div class="flex gap-1 my-2">
+              <div class="flex flex-wrap gap-1 my-2">
                 {article.tags.map((tag) => <div class={`badge badge-soft`}>{tag}</div>)}
               </div>
               <p class="text-end">Last Edited {lastModified}</p>
