@@ -8,14 +8,20 @@ import Navbar from "../../../components/Navbar.astro";
 import type { Page } from "astro";
 import Pagination from "../../../components/Pagination.astro";
 import { Icon } from "astro-icon/components";
-import { getIntlayer, getLocaleFromPath, getLocalizedUrl, localeMap, type LocalesValues } from "intlayer";
+import {
+  getIntlayer,
+  getLocaleFromPath,
+  getLocalizedUrl,
+  localeMap,
+  type LocalesValues,
+} from "intlayer";
 
 type Props = {
   page: Page<any>;
 };
 
 export async function getStaticPaths({ paginate }: any) {
-  const posts = (await getCollection("blog")).filter((post) => post.data.lang === "en").sort(
+  const posts = (await getCollection("blog")).filter((p) => !p.data.isDraft).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
   );
   return localeMap(({ locale }) =>
@@ -38,57 +44,69 @@ const articles = blog.articles as unknown as Record<string, BlogArticle>;
   <body>
     <Navbar />
     <Layout>
-      <div
-        class="flex flex-col space-y-4 items-center min-h-[calc(100vh-200px)]"
-      >
-        <div class="grid md:grid-cols-3 gap-3">
-          {
-            ((page as any).data || []).map((post: any) => {
-              const slug = post.id.split("/").pop()!.replace(/\.mdx?$/, "");
-              const article = articles[slug];
-              return (
-                <div
-                  class="card card-border bg-base-100 shadow-[6px_6px_0_0_rgba(0,0,0,0.2)]
+      <div class="container mx-auto">
+        <div
+          class="flex flex-col space-y-4 items-center min-h-[calc(100vh-200px)]"
+        >
+          <div class="text-mono">
+            {blog.subtitle}
+          </div>
+          <div class="grid md:grid-cols-3 gap-3">
+            {
+              ((page as any).data || []).map((post: any) => {
+                const slug = post.id
+                  .split("/")
+                  .pop()!
+                  .replace(/\.mdx?$/, "");
+                const article = articles[slug];
+                return (
+                  <div
+                    class="card card-border bg-base-100 shadow-[6px_6px_0_0_rgba(0,0,0,0.2)]
                hover:shadow-[0_4px_0_0_rgba(0,0,0,0.2)]
                active:shadow-none active:translate-y-1.5
                transition-all duration-75"
-                >
-                  <figure>
-                    <Image
-                      src={`/open-graph/${post.id}.png`}
-                      alt={article.title}
-                      width={500}
-                      height={500}
-                    />
-                  </figure>
+                  >
+                    <figure>
+                      <Image
+                        src={`/open-graph/${post.id}.png`}
+                        alt={article.title}
+                        width={300}
+                        height={300}
+                      />
+                    </figure>
 
-                  <div class="card-body">
-                    <h2 class="card-title flex justify-between">
-                      <p class="line-clamp-2">{article.title}</p>
-                      <div>
-                        <span
-                          class={`fi fi-${post.data.lang == "en" ? "gb" : "id"}`}
-                        />
+                    <div class="card-body">
+                      <h2 class="card-title flex justify-between">
+                        <p class="line-clamp-2">{article.title}</p>
+                        <div>
+                          <span
+                            class={`fi fi-${post.data.lang == "en" ? "gb" : "id"}`}
+                          />
+                        </div>
+                      </h2>
+                      <small class="card-subtitle">
+                        <FormattedDate date={post.data.pubDate} />
+                      </small>
+                      <div class="card-actions justify-end">
+                        <a
+                          href={getLocalizedUrl(`/blog/${post.id}`, locale)}
+                          class="btn btn-primary"
+                          aria-label={blog.actions.readMore}
+                        >
+                          <Icon
+                            name="material-symbols:arrow-forward"
+                            class="text-xl"
+                          />
+                        </a>
                       </div>
-                    </h2>
-                    <small class="card-subtitle">
-                      <FormattedDate date={post.data.pubDate} />
-                    </small>
-                    <div class="card-actions justify-end">
-                      <a href={getLocalizedUrl(`/blog/${post.id}`, locale)} class="btn btn-primary" aria-label={blog.actions.readMore}>
-                        <Icon
-                          name="material-symbols:arrow-forward"
-                          class="text-xl"
-                        />
-                      </a>
                     </div>
                   </div>
-                </div>
-              );
-            })
-          }
+                );
+              })
+            }
+          </div>
+          <Pagination page={page} />
         </div>
-        <Pagination page={page} />
       </div>
     </Layout>
     <Footer />

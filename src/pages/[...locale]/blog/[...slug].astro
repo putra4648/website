@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 
   return localeMap(({ locale }) =>
     pages
-      .filter((page) => page.data.lang === locale)
+      .filter((page) => page.data.lang === locale && !page.data.isDraft)
       .map((page) => ({
         params: {
           locale,

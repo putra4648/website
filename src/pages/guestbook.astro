@@ -1,4 +1,13 @@
 ---
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
-# Welcome to my Guestbook!
+<Layout>
+    <Navbar />
+    <div class="container mx-auto">
+        <h1>Welcome to my guestbook</h1>
+    </div>
+    <Footer />
+</Layout>
