@@ -21,7 +21,7 @@ const { id, blogs } = Astro.props;
 const locale = getLocaleFromPath(Astro.url.pathname) as LocalesValues;
 const blog = getIntlayer("blog", locale);
 const articles = blog.articles as unknown as Record<string, BlogArticle>;
-const latestBlogs = [...blogs]
+const latestBlogs = [...blogs].filter((post) => !post.data.isDraft)
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
     .slice(0, 5);
 ---
