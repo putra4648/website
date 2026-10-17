@@ -1,69 +1,43 @@
 ---
 import { Icon } from "astro-icon/components";
-import Newsletter from "./Newsletter.astro";
 
 const today = new Date();
-const socialLinks = [
-  {
-    icon: "cib:github",
-    to: "https://github.com/putra4648",
-  },
-  {
-    icon: "cib:discord",
-    to: "https://discord.com/users/1414837624257904741",
-  },
-];
+
 const links = [
   {
-    name: "Resume",
+    icon: "cib:rss",
+    name: "RSS",
     href: "/resume",
   },
   {
-    name: "Skills",
-    href: "#skills",
+    icon: "cib:github",
+    name: "GitHub",
+    href: "https://github.com/putra4648",
   },
   {
-    name: "Portfolio",
-    href: "/portfolio",
-  },
-  {
-    name: "Guestbook",
-    href: "/guestbook",
-  },
-  {
-    name: "Blog",
-    href: "/blog",
+    icon: "cib:discord",
+    name: "Discord",
+    href: "https://discord.com/users/1414837624257904741",
   },
 ];
 ---
 
-<footer
-  class="footer footer-horizontal footer-center text-base-content rounded p-10"
->
-  <nav>
-    <Newsletter />
+<footer class="footer footer-horizontal footer-center p-5">
+  <div class="flex gap-4">
     {
       links.map((link) => {
         return (
-          <a href={link.href} class="link">
+          <a href={link.href} class="link flex items-center gap-2">
+            <Icon name={link.icon} />
             {link.name}
           </a>
         );
       })
     }
-    <div class="grid grid-flow-col gap-3">
-      {
-        socialLinks.map((link) => {
-          return (
-            <a href={link.to} class="link" target="_blank">
-              <Icon name={link.icon} class="text-md" />
-            </a>
-          );
-        })
-      }
-    </div>
-  </nav>
-  <!-- <aside>
-    <p>Copyright © {today.getFullYear()} - Putra</p>
-  </aside> -->
+  </div>
+
+  <aside>
+    <a href="https://github.com/putra4648/website" class="link">Source</a>
+    <p>© 2022 - {today.getFullYear()} Putra</p>
+  </aside>
 </footer>

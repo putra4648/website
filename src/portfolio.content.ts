@@ -4,11 +4,8 @@ const portfolioContent = {
   key: "portfolio",
   importMode: "dynamic",
   content: {
-    title: t({ en: "Portfolio", id: "Portofolio" }),
-    description: t({
-      en: "Selected projects and systems I have built.",
-      id: "Proyek dan sistem pilihan yang telah saya bangun.",
-    }),
+    title: t({ en: "Projects", id: "Portofolio" }),
+    subtitle: t({ en: "During my career as an IT guy, these are some projects I made in my spare time, even though some were for internal use. And of course, to sharpen my skills.", id: "Proyek dan sistem pilihan yang telah saya bangun." }),
     actions: {
       preview: t({ en: "Preview", id: "Pratinjau" }),
       back: t({ en: "Back to Portfolio", id: "Kembali ke Portofolio" }),

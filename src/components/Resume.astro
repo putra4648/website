@@ -78,7 +78,9 @@ const { id } = Astro.props;
   >
     <div class="card bg-base-200 mt-10" id={id}>
       <div class="card-body">
-        <div class="card-title font-bold flex items-center gap-2">Work Experience</div>
+        <div class="card-title font-bold flex items-center gap-2">
+          Work Experience
+        </div>
         <div class="grid md:grid-cols-4 gap-3">
           {
             experiences
@@ -90,7 +92,7 @@ const { id } = Astro.props;
                       <Icon name="material-symbols:star" />
                     </div>
                     <div class="timeline-start md:mb-10">
-                      <p class="font-mono italic">{i.year}</p>
+                      <p class="italic">{i.year}</p>
                       <div class="font-black">
                         {i.title} {i.company && `- ${i.company}`}
                       </div>

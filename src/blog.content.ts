@@ -5,7 +5,7 @@ const blogContent = {
   importMode: "dynamic",
   content: {
     title: t({ en: "Blog", id: "Blog" }),
-    subtitle: t({ en: "Welcome to my personal site As a tech professional, I use this space to document my learning, explore industry trends, and share practical knowledge with the broader tech community", id: "Keseharian sebagai anak Tech mulai dari explore hingga penggunaan tech dalam kehidupan sehari-hari" }),
+    subtitle: t({ en: "When I'm tired of coding, I also write a few articles here randomly, whether it's books I've read, global political upheavals, technology, or even the economy.", id: "Artikel iseng kalau lagi bosen ngoding, random aja isinya, entah buku yang dibaca, gejolak politik dunia, teknologi, sampai ekonomi." }),
     description: t({
       en: "Notes, lessons, and stories from my journey as a developer",
       id: "Catatan, pembelajaran, dan cerita dari perjalanan saya sebagai pengembang",

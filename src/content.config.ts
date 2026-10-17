@@ -11,7 +11,6 @@ const blog = defineCollection({
       pubDate: z.coerce.date(),
       updatedDate: z.coerce.date().optional(),
       isDraft: z.coerce.boolean().default(false),
-      heroImage: image().optional(),
       lang: z.enum(["id", "en"]).default("id"),
     }),
 });
@@ -25,7 +24,6 @@ const portfolio = defineCollection({
       year: z.number(),
       stack: z.array(z.string()).default([]),
       source: z.string().optional(),
-      image: image().optional(),
       hidden: z.boolean().default(false),
     }),
 });

@@ -1,6 +1,11 @@
 ---
 import { getCollection } from "astro:content";
-import { localeMap } from "intlayer";
+import {
+  getIntlayer,
+  getLocaleFromPath,
+  localeMap,
+  type LocalesValues,
+} from "intlayer";
 import Footer from "../../../components/Footer.astro";
 import Navbar from "../../../components/Navbar.astro";
 import Portfolio from "../../../components/Portfolio.astro";
@@ -11,14 +16,24 @@ export async function getStaticPaths() {
     params: { locale },
   }));
 }
+const locale = getLocaleFromPath(Astro.url.pathname) as LocalesValues;
+const portfolio = getIntlayer("portfolio", locale);
 
-const portfolios = (await getCollection("portfolio")).filter((post) => !post.data.hidden);
+const portfolios = (await getCollection("portfolio")).filter(
+  (post) => !post.data.hidden,
+);
 ---
 
 <Layout>
   <Navbar />
+  <div class="container mx-auto">
+    <div class="font-bold text-xl my-5">{portfolio.title}</div>
+    <div class="my-5">
+      {portfolio.subtitle}
+    </div>
+  </div>
   <div class="flex flex-col space-y-4 items-center min-h-[calc(100vh-200px)]">
     <Portfolio portfolios={portfolios} />
   </div>
-  <Footer />
 </Layout>
+<Footer />
