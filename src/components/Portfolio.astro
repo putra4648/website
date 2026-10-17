@@ -16,48 +16,41 @@ const { portfolios } = Astro.props;
 const locale = getLocaleFromPath(Astro.url.pathname) as LocalesValues;
 const { actions, articles } = getIntlayer("portfolio", locale);
 type PortfolioArticle = { title: string; description: string };
-const portfolioArticles = articles as unknown as Record<string, PortfolioArticle>;
+const portfolioArticles = articles as unknown as Record<
+  string,
+  PortfolioArticle
+>;
 ---
 
 <div class="container mx-auto my-5">
   <div class="grid md:grid-cols-3 gap-4">
     {
-      portfolios.map((item, index) => (
+      portfolios.map((item, index) =>
         (() => {
-          const slug = item.id.split("/").pop()!.replace(/\.mdx?$/, "");
+          const slug = item.id
+            .split("/")
+            .pop()!
+            .replace(/\.mdx?$/, "");
           const article = portfolioArticles[slug];
           return (
-        <div
-          class="card card-border bg-base-100  shadow-[6px_6px_0_0_rgba(0,0,0,0.2)]
+            <a
+              class="card card-border bg-base-100  shadow-[6px_6px_0_0_rgba(0,0,0,0.2)]
                hover:shadow-[0_4px_0_0_rgba(0,0,0,0.2)]
                active:shadow-none active:translate-y-1.5
                transition-all duration-75"
-        >
-          <figure class="aspect-square ">
-            {item.data.image && (
-              <Image src={item.data.image} alt={article.title} />
-            )}
-          </figure>
-          <div class="card-body">
-            <h2 class="card-title flex justify-between">
-              {article.title}
-              <span>{item.data.year}</span>
-            </h2>
-            <p>{article.description}</p>
-            <div class="card-actions justify-end">
-              <a
-                href={getLocalizedUrl(`/portfolio/${item.id}`, locale)}
-                class="btn btn-primary"
-                aria-label={actions.preview}
-              >
-                {actions.preview}
-              </a>
-            </div>
-          </div>
-        </div>
+              href={getLocalizedUrl(`/portfolio/${item.id}`, locale)}
+            >
+              <div class="card-body">
+                <h2 class="card-title flex flex-col items-start">
+                  <span>{item.data.year}</span>
+                  <span>{article.title}</span>
+                </h2>
+                <p>{article.description}</p>
+              </div>
+            </a>
           );
-        })()
-      ))
+        })(),
+      )
     }
   </div>
 </div>

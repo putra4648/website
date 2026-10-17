@@ -46,20 +46,6 @@ const article = (articles as unknown as Record<string, PortfolioArticle>)[slug];
                         <p>{article.description}</p>
                         <hr />
                     </div>
-
-                    {
-                        image && (
-                            <div>
-                                <h2>{sections.preview}</h2>
-                                <Image
-                                    src={image}
-                                    alt={article.title}
-                                    width={image.width}
-                                    height={image.height}
-                                />
-                            </div>
-                        )
-                    }
                 </div>
                 <div>
                     <slot />

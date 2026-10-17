@@ -16,27 +16,34 @@ import {
   type LocalesValues,
 } from "intlayer";
 
-type Props = {
-  page: Page<any>;
-};
-
-export async function getStaticPaths({ paginate }: any) {
+export async function getStaticPaths() {
   const posts = (await getCollection("blog"))
     .filter((p) => !p.data.isDraft)
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-  return localeMap(({ locale }) =>
-    paginate(
-      posts.filter((post) => post.data.lang === locale),
-      { params: { locale }, pageSize: 10 },
-    ),
-  ).flat();
+  return localeMap(({ locale }) => ({
+    params: { locale },
+    props: {
+      posts: posts.filter((post) => post.data.lang === locale),
+    },
+  }));
 }
 
-const { page } = Astro.props;
+const { posts } = Astro.props;
 const locale = getLocaleFromPath(Astro.url.pathname) as LocalesValues;
 const blog = getIntlayer("blog", locale);
 type BlogArticle = { title: string; description: string };
 const articles = blog.articles as unknown as Record<string, BlogArticle>;
+const postsByYear = posts.reduce((acc: Record<string, any[]>, post: any) => {
+  const year = new Date(post.data.pubDate).getFullYear();
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(post);
+  return acc;
+}, {});
+const sortedYears = Object.keys(postsByYear).sort(
+  (a, b) => Number(b) - Number(a),
+);
 ---
 
 <!doctype html>
@@ -45,67 +52,56 @@ const articles = blog.articles as unknown as Record<string, BlogArticle>;
     <Navbar />
     <Layout>
       <div class="container mx-auto">
-        <div
-          class="flex flex-col space-y-4 items-center min-h-[calc(100vh-200px)]"
-        >
-          <div class="text-center text-mono">
+        <div class="flex flex-col space-y-5 mt-5">
+          <div class="font-bold text-xl">Blogs</div>
+          <div class="text-mono">
             {blog.subtitle}
           </div>
-          <div class="grid md:grid-cols-3 gap-3">
+          <div class="flex flex-col space-y-8">
             {
-              ((page as any).data || []).map((post: any) => {
-                const slug = post.id
-                  .split("/")
-                  .pop()!
-                  .replace(/\.mdx?$/, "");
-                const article = articles[slug];
-                return (
-                  <div
-                    class="card card-border bg-base-100 shadow-[6px_6px_0_0_rgba(0,0,0,0.2)]
-               hover:shadow-[0_4px_0_0_rgba(0,0,0,0.2)]
-               active:shadow-none active:translate-y-1.5
-               transition-all duration-75"
-                  >
-                    <figure>
-                      <Image
-                        src={`/open-graph/${post.id}.png`}
-                        alt={article.title}
-                        width={300}
-                        height={300}
-                      />
-                    </figure>
+              sortedYears.map((year) => (
+                <div class="flex flex-col space-y-3">
+                  <div>
+                    <h2 class="text-lg font-bold">{year}</h2>
+                    <hr class="my-1 border-base-300" />
+                  </div>
 
-                    <div class="card-body">
-                      <h2 class="card-title flex justify-between">
-                        <p class="line-clamp-2">{article.title}</p>
-                        <div>
-                          <span
-                            class={`fi fi-${post.data.lang == "en" ? "gb" : "id"}`}
-                          />
-                        </div>
-                      </h2>
-                      <small class="card-subtitle">
-                        <FormattedDate date={post.data.pubDate} />
-                      </small>
-                      <div class="card-actions justify-end">
+                  <div class="grid md:grid-cols-3 gap-3">
+                    {postsByYear[year].map((post: any) => {
+                      const slug = post.id
+                        .split("/")
+                        .pop()!
+                        .replace(/\.mdx?$/, "");
+                      const article = articles[slug] || {};
+                      return (
                         <a
                           href={getLocalizedUrl(`/blog/${post.id}`, locale)}
-                          class="btn btn-primary"
-                          aria-label={blog.actions.readMore}
+                          class="card card-border bg-base-100 shadow-[6px_6px_0_0_rgba(0,0,0,0.2)]
+                          hover:shadow-[0_4px_0_0_rgba(0,0,0,0.2)]
+                          active:shadow-none active:translate-y-1.5
+                          transition-all duration-75"
                         >
-                          <Icon
-                            name="material-symbols:arrow-forward"
-                            class="text-xl"
-                          />
+                          <div class="card-body">
+                            <h3 class="card-title flex justify-between">
+                              <p class="line-clamp-2">{article.title}</p>
+                              <div>
+                                <span
+                                  class={`fi fi-${post.data.lang == "en" ? "gb" : "id"}`}
+                                />
+                              </div>
+                            </h3>
+                            <small class="card-subtitle">
+                              <FormattedDate date={post.data.pubDate} />
+                            </small>
+                          </div>
                         </a>
-                      </div>
-                    </div>
+                      );
+                    })}
                   </div>
-                );
-              })
+                </div>
+              ))
             }
           </div>
-          <Pagination page={page} />
         </div>
       </div>
     </Layout>
