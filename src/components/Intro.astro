@@ -1,31 +1,83 @@
 ---
+import { getLocaleFromPath, type LocalesValues, getIntlayer } from "intlayer";
 
+const experience = [
+    {
+        year: "2021 - 2022",
+        description:
+            "Freelance Mobile Developer focused on building scalable and user-centric applications while working with a diverse range of clients and projects",
+    },
+    {
+        year: "2023 - 2024",
+        description:
+            "Support Application at PT. Astra Honda Motor, maintain existing application and migrating from old technology stack to new technology stack",
+    },
+    {
+        year: "2024 - 2025",
+        description:
+            "Build brand new ERP including procurement, warehouse and production for PT. FTS Automotif Indonesia",
+    },
+    {
+        year: "2025 - 2026",
+        description:
+            "Build new module for production planning and controlling for PT. Sinar Sukses Mandiri (Project based)",
+    },
+    {
+        year: "2026 - 2026",
+        description:
+            "Maintain and improve existing application for company client (Project based)",
+    },
+];
+
+const locale = getLocaleFromPath(Astro.url.pathname) as LocalesValues;
+const intros = getIntlayer("intro", locale);
 ---
 
-<div class="grid md:grid-cols-2 gap-10 justify-items-center content-center">
-    <div>
-        <div class="font-bold mb-5 text-center md:text-left">
-            Hi, I'm Putra. A Technical System Analyst building scalable
-            enterprise solutions
-        </div>
-        <div class="font-mono text-center md:text-left">
-            I specialize in modernzing legacy infrastructure, designing resilent
-            database architectures, and digitalizing complex enterprise
-            workflows. With experience spanning GOlang, Java, and modern web
-            frameworks. I transform chaotic legacy systems into
-            hight-performance digital products.
-        </div>
+<div class="grid gap-5">
+    <div class="font-bold md:text-4xl text-xl">
+        {intros.title}
     </div>
-    <div class="self-center bg-bone aspect-square relative">
-        <div
-            class="bg-base-200 absolute top-2 left-2 w-full h-full -z-10 rounded hover:top-5 hover:left-5 transition-all duration-300"
-        >
-        </div>
-        <img
-            src="https://i.pravatar.cc/300?img=12"
-            alt="Hero"
-            class="w-full h-full rounded z-10"
-            loading="lazy"
-        />
+    <div>
+        <p>{intros.subtitle}</p>
+    </div>
+    <div class="grid gap-5 mt-5 md:text-md text-sm">
+        <div>{intros.intro1}</div>
+        <div>{intros.intro2}</div>
+        <div>{intros.intro3}</div>
+    </div>
+
+    <div>
+        <h4 class="text-2xl font-bold my-5">Experiences</h4>
+        <ul class="list-none">
+            {
+                (
+                    <table class="table-md">
+                        {experience.map((item) => {
+                            return (
+                                <tr>
+                                    <td class="w-40">{item.year}</td>
+                                    <td class="max-w-lg">{item.description}</td>
+                                </tr>
+                            );
+                        })}
+                    </table>
+                )
+            }
+        </ul>
+    </div>
+
+    <div>
+        <h4 class="text-2xl font-bold my-5">Links</h4>
+        <ul class="list-none">
+            <li class="link">
+                <a href="https://github.com/putra4648">Github</a>
+            </li>
+            <li class="link">
+                <a href="https://www.linkedin.com"> Linkedin </a>
+            </li>
+            <li class="link">
+                <a href="https://www.threads.net/@4648putra"> Thread </a>
+            </li>
+        </ul>
     </div>
 </div>

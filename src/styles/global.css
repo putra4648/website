@@ -10,6 +10,11 @@ html {
 
 @plugin "@tailwindcss/typography";
 @plugin "daisyui";
+
+.container {
+  @apply px-4 sm:px-6;
+}
+
 @plugin "daisyui/theme" {
   name: "my-theme";
   default: false;

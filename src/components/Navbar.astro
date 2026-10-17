@@ -29,25 +29,25 @@ const translatePath = (path: string) => getLocalizedUrl(path, lang);
       <NavbarLink
         icon="material-symbols:home"
         class="mx-2"
-        href={translatePath("/")}>{t.nav.home}</NavbarLink
+        url={translatePath("/")}>{t.nav.home}</NavbarLink
       >
-      <NavbarLink
+      <!-- <NavbarLink
         class="mx-2"
         icon="material-symbols:folder-code"
         href={translatePath("/resume")}>{t.nav.resume}</NavbarLink
-      >
+      > -->
       <NavbarLink
         class="mx-2"
         icon="material-symbols:workspaces"
-        href={translatePath("/portfolio")}>{t.nav.portfolio}</NavbarLink
+        url={translatePath("/portfolio")}>{t.nav.project}</NavbarLink
       >
-      <NavbarLink class="mx-2" icon="material-symbols:book" href="/guestbook"
+      <NavbarLink class="mx-2" icon="material-symbols:book" url="/guestbook"
         >{t.nav.guestbook}</NavbarLink
       >
       <NavbarLink
         icon="material-symbols:globe"
         class="mx-2"
-        href={translatePath("/blog")}>{t.nav.blog}</NavbarLink
+        url={translatePath("/blog")}>{t.nav.blog}</NavbarLink
       >
     </div>
     <div class="navbar-end md:hidden">
@@ -72,11 +72,11 @@ const translatePath = (path: string) => getLocalizedUrl(path, lang);
           class="menu menu-lg dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
         >
           <li><a href={translatePath("/")}>{t.nav.home}</a></li>
-          <li><a href={translatePath("/resume")}>{t.nav.resume}</a></li>
-          <li><a href={translatePath("/portfolio")}>{t.nav.portfolio}</a></li>
+          <!-- <li><a href={translatePath("/resume")}>{t.nav.resume}</a></li> -->
+          <li><a href={translatePath("/portfolio")}>{t.nav.project}</a></li>
           <li><a href={translatePath("/blog")}>{t.nav.blog}</a></li>
+          <li><a href={"/guestbook"}>{t.nav.guestbook}</a></li>
           <hr />
-          <li><a href="/guestbook">{t.nav.guestbook}</a></li>
           <li>
             <LanguagePicker />
           </li>

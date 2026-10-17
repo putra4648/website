@@ -8,30 +8,28 @@ interface Props {
 const { page } = Astro.props;
 ---
 
-<div class="join">
-    <div class="join">
-        {
-            page.url.prev ? (
-                <a href={page.url.prev} class="join-item btn">
-                    «
-                </a>
-            ) : (
-                <button class="join-item btn btn-disabled" disabled>
-                    «
-                </button>
-            )
-        }
-        <button class="join-item btn">Page {page.currentPage}</button>
-        {
-            page.url.next ? (
-                <a href={page.url.next} class="join-item btn">
-                    »
-                </a>
-            ) : (
-                <button class="join-item btn btn-disabled" disabled>
-                    »
-                </button>
-            )
-        }
-    </div>
+<div class="join btn-group btn-group-horizontal">
+    {
+        page.url.prev ? (
+            <a href={page.url.prev} class="join-item btn">
+                «
+            </a>
+        ) : (
+            <button class="join-item btn btn-disabled" disabled>
+                «
+            </button>
+        )
+    }
+    <button class="join-item btn">Page {page.currentPage}</button>
+    {
+        page.url.next ? (
+            <a href={page.url.next} class="join-item btn">
+                »
+            </a>
+        ) : (
+            <button class="join-item btn btn-disabled" disabled>
+                »
+            </button>
+        )
+    }
 </div>
