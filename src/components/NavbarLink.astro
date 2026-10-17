@@ -4,13 +4,13 @@ import { Icon } from "astro-icon/components";
 
 type Props = HTMLAttributes<"a"> & {
   icon: string;
+  url: string;
 };
 
-const { href, icon, class: className, ...props } = Astro.props;
+const { url, icon, class: className, ...props } = Astro.props;
+const isActive = Astro.url.pathname.startsWith(url);
 ---
 
-<a role="button" href={href} class="btn btn-ghost btn-lg" {...props}>
-  <Icon name={icon} />
-
+<a href={url} class={`mx-5 link ${isActive ? "font-bold" : ""}`} {...props}>
   <slot />
 </a>
