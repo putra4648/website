@@ -15,8 +15,14 @@ interface Props {
 
 const locale = getLocaleFromPath(Astro.url.pathname) as LocalesValues;
 const labels = getIntlayer("blog", locale);
-const slug = Astro.params.slug ?? Astro.url.pathname.split("/").filter(Boolean).pop()!;
-const article = (labels.articles as Record<string, { title: string; description: string; tags: string[] }>)[slug];
+const slug =
+  Astro.params.slug ?? Astro.url.pathname.split("/").filter(Boolean).pop()!;
+const article = (
+  labels.articles as Record<
+    string,
+    { title: string; description: string; tags: string[] }
+  >
+)[slug];
 const { pubDate, updatedDate } = Astro.props.post;
 const { minutesRead, lastModified } = Astro.props;
 ---
@@ -38,7 +44,8 @@ const { minutesRead, lastModified } = Astro.props;
                 {
                   updatedDate && (
                     <div class="last-updated-on">
-                      {labels.metadata.updated} <FormattedDate date={updatedDate} />
+                      {labels.metadata.updated}{" "}
+                      <FormattedDate date={updatedDate} />
                     </div>
                   )
                 }
@@ -46,64 +53,35 @@ const { minutesRead, lastModified } = Astro.props;
               <h1>{article.title}</h1>
               {article.description}
               <div class="flex flex-wrap gap-1 my-2">
-                {article.tags.map((tag) => <div class={`badge badge-soft`}>{tag}</div>)}
+                {
+                  article.tags.map((tag) => (
+                    <div class={`badge badge-soft`}>{tag}</div>
+                  ))
+                }
               </div>
-              <p class="text-end">Last Edited {lastModified}</p>
+              <p>Last Edited {lastModified}</p>
               <hr />
             </div>
           </div>
         </div>
         <div>
           <slot />
-          <div id="disqus_thread"></div>
-          <script is:inline>
-            /**
-             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-
-            // Patch for Disqus OKLCH issue
-            // Disqus script crashes when it encounters oklch() colors during theme detection
-            (function () {
-              const _getComputedStyle = window.getComputedStyle;
-              window.getComputedStyle = function (el, pseudo) {
-                const style = _getComputedStyle(el, pseudo);
-                return new Proxy(style, {
-                  get(target, prop) {
-                    const value = target[prop];
-                    if (typeof value === "string" && value.includes("oklch")) {
-                      // Return a safe fallback that Disqus can parse
-                      return "rgb(255, 255, 255)";
-                    }
-                    if (prop === "getPropertyValue") {
-                      return (propertyName) => {
-                        const val = target.getPropertyValue(propertyName);
-                        return typeof val === "string" && val.includes("oklch")
-                          ? "rgb(255, 255, 255)"
-                          : val;
-                      };
-                    }
-                    return typeof value === "function"
-                      ? value.bind(target)
-                      : value;
-                  },
-                });
-              };
-            })();
-
-            var disqus_config = function () {
-              this.page.url = window.location.href; // Better to use dynamic URL
-              this.page.identifier = window.location.pathname; // Unique identifier
-            };
-
-            (function () {
-              // DON'T EDIT BELOW THIS LINE
-              var d = document,
-                s = d.createElement("script");
-              s.src = "https://putracoderz.disqus.com/embed.js";
-              s.setAttribute("data-timestamp", +new Date());
-              (d.head || d.body).appendChild(s);
-            })();
-          </script>
+          <script
+            src="https://giscus.app/client.js"
+            data-repo="putra4648/website"
+            data-repo-id="R_kgDON7ddHw"
+            data-category="Show and tell"
+            data-category-id="DIC_kwDON7ddH84DI5rM"
+            data-mapping="url"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="preferred_color_scheme"
+            data-lang="en"
+            crossorigin="anonymous"
+            async
+          ></script>
         </div>
         <!-- <Footer /> -->
       </main>
