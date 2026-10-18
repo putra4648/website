@@ -91,6 +91,14 @@ const blogContent = {
         }),
         tags: ["Flutter", "Android", "Developer Journey", "Dart", "Storytelling"],
       },
+      "quarkus-and-vaadin": {
+        title: t({ en: "Quarkus and Vaadin", id: "Quarkus and Vaadin" }),
+        description: t({
+          en: "Quarkus and Vaadin",
+          id: "Quarkus and Vaadin",
+        }),
+        tags: ["Quarkus", "Vaadin", "Java", "Tech"],
+      },
     },
   },
 } satisfies Dictionary;
