@@ -91,11 +91,11 @@ const blogContent = {
         }),
         tags: ["Flutter", "Android", "Developer Journey", "Dart", "Storytelling"],
       },
-      "quarkus-and-vaadin": {
-        title: t({ en: "Quarkus and Vaadin", id: "Quarkus and Vaadin" }),
+      "quarkus-and-vaadin-1": {
+        title: t({ en: "Quarkus and Vaadin - Part 1", id: "Quarkus and Vaadin - Part 1" }),
         description: t({
-          en: "Quarkus and Vaadin",
-          id: "Quarkus and Vaadin",
+          en: "First time using Quarkus and Vaadin for building a web application",
+          id: "Pertama kali menggunakan Quarkus dan Vaadin untuk membuat aplikasi web",
         }),
         tags: ["Quarkus", "Vaadin", "Java", "Tech"],
       },
