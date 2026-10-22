@@ -3,12 +3,14 @@ import { type CollectionEntry, getCollection, render } from "astro:content";
 import { localeMap } from "intlayer";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
-import BlogPostLayout from "../../../layouts/BlogPostLayout.astro";
+import ArticleLayout from "../../../layouts/ArticlePostLayout.astro";
 
 dayjs.extend(utc);
 
 export async function getStaticPaths() {
-  const pages = (await getCollection("blog")) as CollectionEntry<"blog">[];
+  const pages = (await getCollection(
+    "article",
+  )) as CollectionEntry<"article">[];
 
   return localeMap(({ locale }) =>
     pages
@@ -16,26 +18,28 @@ export async function getStaticPaths() {
       .map((page) => ({
         params: {
           locale,
-          slug: page.id.split("/").pop()!.replace(/\.mdx?$/, ""),
+          slug: page.id
+            .split("/")
+            .pop()!
+            .replace(/\.mdx?$/, ""),
         },
         props: page,
       })),
   ).flat();
 }
 
-type Props = CollectionEntry<"blog">;
+type Props = CollectionEntry<"article">;
 const page = Astro.props;
 const { Content, remarkPluginFrontmatter } = await render(page);
 const lastModified = dayjs(remarkPluginFrontmatter.lastModified)
-    .utc()
-    .format("DD MMMM YYYY UTC");
-
+  .utc()
+  .format("DD MMMM YYYY UTC");
 ---
 
-<BlogPostLayout
-  post={page.data}
+<ArticleLayout
+  article={page.data}
   minutesRead={remarkPluginFrontmatter.minutesRead}
   lastModified={lastModified}
 >
   <Content />
-</BlogPostLayout>
+</ArticleLayout>
