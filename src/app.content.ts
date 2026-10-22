@@ -7,12 +7,12 @@ const appContent = {
     nav: {
       home: t({ en: "Home", id: "Beranda" }),
       project: t({ en: "Project", id: "Proyek" }),
-      blog: t({ en: "Blog", id: "Blog" }),
+      article: t({ en: "Article", id: "Artikel" }),
       guestbook: t({ en: "Guestbook", id: "Buku Tamu" }),
       resume: t({ en: "Resume", id: "Resume" }),
     },
     actions: {
-      backToBlog: t({ en: "Back to Blog", id: "Kembali ke Blog" }),
+      backToArticle: t({ en: "Back to Article", id: "Kembali ke Artikel" }),
       backToProject: t({
         en: "Back to Project",
         id: "Kembali ke Proyek",

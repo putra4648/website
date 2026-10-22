@@ -17,7 +17,7 @@ import {
 } from "intlayer";
 
 export async function getStaticPaths() {
-  const posts = (await getCollection("blog"))
+  const posts = (await getCollection("article"))
     .filter((p) => !p.data.isDraft)
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
   return localeMap(({ locale }) => ({
@@ -30,9 +30,9 @@ export async function getStaticPaths() {
 
 const { posts } = Astro.props;
 const locale = getLocaleFromPath(Astro.url.pathname) as LocalesValues;
-const blog = getIntlayer("blog", locale);
-type BlogArticle = { title: string; description: string };
-const articles = blog.articles as unknown as Record<string, BlogArticle>;
+const articleContent = getIntlayer("article", locale);
+type Article = { title: string; description: string };
+const articles = articleContent.articles as unknown as Record<string, Article>;
 const postsByYear = posts.reduce((acc: Record<string, any[]>, post: any) => {
   const year = new Date(post.data.pubDate).getFullYear();
   if (!acc[year]) {
@@ -53,9 +53,9 @@ const sortedYears = Object.keys(postsByYear).sort(
     <Layout>
       <div class="container mx-auto">
         <div class="flex flex-col space-y-5 mt-5">
-          <div class="font-bold text-xl">Blogs</div>
+          <div class="font-bold text-xl">Articles</div>
           <div class="text-mono">
-            {blog.subtitle}
+            {articleContent.subtitle}
           </div>
           <div class="flex flex-col space-y-8">
             {
@@ -75,7 +75,7 @@ const sortedYears = Object.keys(postsByYear).sort(
                       const article = articles[slug] || {};
                       return (
                         <a
-                          href={getLocalizedUrl(`/blog/${post.id}`, locale)}
+                          href={getLocalizedUrl(`/article/${post.id}`, locale)}
                           class="card card-border bg-base-100 shadow-[6px_6px_0_0_rgba(0,0,0,0.2)]
                           hover:shadow-[0_4px_0_0_rgba(0,0,0,0.2)]
                           active:shadow-none active:translate-y-1.5
