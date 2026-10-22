@@ -1,19 +1,19 @@
 import { t, type Dictionary } from "intlayer";
 
-const blogContent = {
-  key: "blog",
+const articleContent = {
+  key: "article",
   importMode: "dynamic",
   content: {
-    title: t({ en: "Blog", id: "Blog" }),
+    title: t({ en: "Article", id: "Artikel" }),
     subtitle: t({ en: "When I'm tired of coding, I also write a few articles here randomly, whether it's books I've read, global political upheavals, technology, or even the economy.", id: "Artikel iseng kalau lagi bosen ngoding, random aja isinya, entah buku yang dibaca, gejolak politik dunia, teknologi, sampai ekonomi." }),
     description: t({
       en: "Notes, lessons, and stories from my journey as a developer",
       id: "Catatan, pembelajaran, dan cerita dari perjalanan saya sebagai pengembang",
     }),
     actions: {
-      back: t({ en: "Back to Blog", id: "Kembali ke Blog" }),
+      back: t({ en: "Back to Article", id: "Kembali ke Artikel" }),
       readMore: t({ en: "Read article", id: "Baca artikel" }),
-      seeAll: t({ en: "See all blogs", id: "Lihat semua blog" }),
+      seeAll: t({ en: "See all articles", id: "Lihat semua artikel" }),
     },
     metadata: {
       published: t({ en: "Published", id: "Diterbitkan" }),
@@ -26,6 +26,14 @@ const blogContent = {
         description: t({
           en: "LLM local untuk kemudahaan dalam pekerjaan sehari-hari",
           id: "LLM local untuk kemudahaan dalam pekerjaan sehari-hari",
+        }),
+        tags: ["ai", "journey", "tech", "llm"],
+      },
+      "llm-2": {
+        title: t({ en: "Local LLM - Part 2", id: "Local LLM - Part 2" }),
+        description: t({
+          en: "LLM local untuk kemudahaan dalam pekerjaan sehari-hari - Part 2",
+          id: "LLM local untuk kemudahaan dalam pekerjaan sehari-hari - Part 2",
         }),
         tags: ["ai", "journey", "tech", "llm"],
       },
@@ -91,8 +99,16 @@ const blogContent = {
         }),
         tags: ["Flutter", "Android", "Developer Journey", "Dart", "Storytelling"],
       },
+      "quarkus-and-vaadin-1": {
+        title: t({ en: "Quarkus and Vaadin - Part 1", id: "Quarkus and Vaadin - Part 1" }),
+        description: t({
+          en: "First time using Quarkus and Vaadin for building a web application",
+          id: "Pertama kali menggunakan Quarkus dan Vaadin untuk membuat aplikasi web",
+        }),
+        tags: ["Quarkus", "Vaadin", "Java", "Tech"],
+      },
     },
   },
 } satisfies Dictionary;
 
-export default blogContent;
+export default articleContent;
